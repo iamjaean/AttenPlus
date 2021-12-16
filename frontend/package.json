@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel userpage.html",
-    "build": "parcel build userpage.html"
+    "dev": "parcel html/userpage.html",
+    "build": "parcel build html/userpage.html"
   },
   "author": "",
   "license": "ISC",
