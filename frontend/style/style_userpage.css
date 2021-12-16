@@ -68,6 +68,7 @@ header {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  padding-bottom: 20px;
 }
 .comp-top {
   display: flex;
@@ -98,6 +99,15 @@ header {
 .comp-img {
   width: 64px;
   height: 64px;
+  overflow: hidden;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.comp-img img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
 }
 
 .inputBox {
@@ -165,6 +175,13 @@ header {
   text-align: left;
   font-size: 11px;
   color: grey;
+  line-height: 18px;
+  letter-spacing: -0.005em;
+}
+
+.card div {
+  padding-top: 12px;
+  display: block;
 }
 
 .card div a {
