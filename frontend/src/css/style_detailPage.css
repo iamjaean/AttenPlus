@@ -1,0 +1,300 @@
+body {
+  margin: 0 0 0 0;
+  width: 1440px;
+}
+header {
+  height: 100px;
+
+  top: 0px;
+}
+.divideLayer {
+  height: 0px;
+  top: 30px;
+  background-color: #c8c8c8;
+  border: 1px solid #c8c8c8;
+}
+.headerContent {
+  height: 95px;
+}
+.headerContent ul {
+  list-style: none;
+  padding: 37px 0 0 27px;
+  margin: 0px;
+}
+
+.headerContent ul li {
+  list-style: none;
+  padding: 0 32px 0 0;
+  border: 0;
+  float: left;
+}
+
+.headerContent ul li a {
+  text-decoration-line: none;
+  color: black;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+}
+.challengeTitle {
+  justify-content: center;
+  display: flex;
+}
+.postCategory {
+  margin-top: 40px;
+  width: 98px;
+  height: 47px;
+  background: #efefef;
+  border-radius: 100px;
+  color: #979797;
+}
+
+.postCategory div {
+  text-align: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 47px;
+}
+
+.challengeTitle h1 {
+  margin: 21px 0 0 0;
+}
+.creator {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  margin: 21px 0 0 0;
+}
+
+.postImg {
+  margin-left: 42px;
+  /* position: relative; */
+
+  margin-top: 70px;
+  float: left;
+
+  width: 871px;
+  height: 588px;
+}
+.registerChallenge {
+  display: inline-block;
+  margin-left: 37px;
+  /* position: relative; */
+
+  margin-top: 70px;
+  width: 454px;
+  height: 588px;
+}
+.attendChallenge {
+  display: inline-block;
+  margin-left: 37px;
+  /* position: relative; */
+
+  margin-top: 70px;
+  width: 454px;
+  height: 588px;
+}
+.registerChallenge span {
+  padding-top: 44px;
+
+  display: inline-block;
+  top: 44px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+}
+.startDateTxt {
+  margin-top: 49px;
+}
+
+.startDate,
+.endDate {
+  line-height: 56px;
+  margin-top: 5px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 56px;
+}
+
+.registerButton {
+  margin-top: 81px;
+  width: 332px;
+  height: 58px;
+  background: #ff5c5c;
+  border-radius: 7px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  color: #ffffff;
+  border: 0px;
+  padding: 0 0 0 0;
+}
+.progressTxt {
+  margin-top: 65px;
+  margin-left: 33px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.calendar {
+  margin-left: 33px;
+  margin-top: 28px;
+  width: 386px;
+  height: 246px;
+  left: 983px;
+  top: 590px;
+
+  background: #ffffff;
+  border: 1px solid #dadada;
+  box-sizing: border-box;
+  border-radius: 19px;
+}
+
+.attendButton {
+  margin-top: 69px;
+  margin-left: 61px;
+  width: 332px;
+  height: 58px;
+  border: 0px;
+  background: #ff5c5c;
+  border-radius: 7px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  color: #ffffff;
+  border: 0px;
+}
+.divideLayerMiddle {
+  clear: both;
+  height: 0px;
+  border: 1px solid #c8c8c8;
+  background-color: #c8c8c8;
+
+  margin-top: 110px;
+}
+.challengeTxt {
+  float: left;
+  margin: 40px 0 0 42px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+
+  color: #000000;
+}
+.storyContent {
+  margin-top: 43px;
+  width: 871px;
+  height: 588px;
+  background: #c4c4c4;
+  font-size: 12px;
+}
+.reviewWrite {
+  float: right;
+  margin: 40px 445px 43px 0;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+}
+.createCard {
+  margin-top: 43px;
+  margin-right: 36px;
+  float: right;
+  width: 454px;
+  height: 140px;
+  background: #fffefe;
+  border: 1px solid #bcbcbc;
+  box-sizing: border-box;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  padding-top: 35px;
+}
+.createCardLink {
+  margin-top: 14px;
+}
+.registerDateTitle {
+  justify-content: center;
+  display: flex;
+}
+.reviewCard {
+  float: right;
+  margin: 0 36px 25px 0;
+  width: 454px;
+  height: 223px;
+  background: #fffefe;
+  border: 1px solid #bcbcbc;
+  box-sizing: border-box;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+}
+.reviewIcon {
+  width: 33.74px;
+  height: 33px;
+  padding: 26px 7.26px 24px 33px;
+  display: inline-block;
+  float: left;
+}
+.reviewUser {
+  height: 21px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  float: left;
+  padding-top: 32px;
+}
+.reviewText {
+  width: 387px;
+  height: 112px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: justify;
+  color: #000000;
+  float: left;
+  padding-left: 33px;
+}
+.reviewListBoard {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  height: 588px;
+  width: 527px;
+  overflow-y: scroll;
+}
+.reviewListBoard::-webkit-scrollbar {
+  display: none;
+}
