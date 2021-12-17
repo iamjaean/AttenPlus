@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/userpage.css" />
+    <title>My Page</title>
+  </head>
+  <body>
+    <header>
+      <h1>Here is the header1.</h1>
+    </header>
+    <div class="banner">
+      <h1>김철수님의 페이지</h1>
+    </div>
+
+    <div class="tabs">
+      <ul class="tabs_sidebar">
+        <li data-tab-target="#content1" class="tab active"><h3>프로필</h3></li>
+        <li data-tab-target="#content2" class="tab"><h3>참여한 챌린지</h3></li>
+        <li data-tab-target="#content3" class="tab"><h3>만든 챌린지</h3></li>
+      </ul>
+    </div>
+
+    <div class="content active" id="content1" data-tab-content>
+      <div class="profile">
+        <div class="comp">
+          <div class="comp-top">
+            <p class="comp-title"><strong>프로필 사진</strong></p>
+            <button class="update-btn">수정</button>
+          </div>
+          <div class="comp-img">
+            <img src="../../public/assets/img/run.jpg" alt="프로필 사진" />
+          </div>
+        </div>
+        <div class="comp">
+          <div class="comp-top">
+            <p class="comp-title"><strong>이름</strong></p>
+            <button
+              class="update-btn"
+              id="name"
+              onclick="changeContent(this.id)"
+            >
+              수정
+            </button>
+          </div>
+          <p class="comp-content" id="name-content">김철수</p>
+        </div>
+        <div class="comp">
+          <div class="comp-top">
+            <p class="comp-title"><strong>소개</strong></p>
+            <button
+              class="update-btn"
+              id="introduce"
+              onclick="changeContent(this.id)"
+            >
+              수정
+            </button>
+          </div>
+          <p class="comp-content" id="introduce-content">
+            자기소개를 넣어주세요.
+          </p>
+        </div>
+        <div class="comp">
+          <div class="comp-top">
+            <p class="comp-title"><strong>웹사이트</strong></p>
+            <button
+              class="update-btn"
+              id="website"
+              onclick="changeContent(this.id)"
+            >
+              수정
+            </button>
+          </div>
+          <p class="comp-content" id="website-content">내용</p>
+        </div>
+        <div class="comp">
+          <div class="comp-top">
+            <p class="comp-title"><strong>달성한 업적</strong></p>
+          </div>
+          <p class="comp-content">내용</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content" id="content2" data-tab-content>
+      <div class="joinedChallenge card-wrapper">
+        <article class="card">
+          <a href=""><img src="../../public/assets/img/run.jpg" alt="첼린지 이미지" /></a>
+          <div>
+            <p class="category-tag">카테고리</p>
+            <a href="">아직 저녁 먹긴 이르다! 퇴근 후 집까지 뛰어가기 첼린지</a>
+          </div>
+        </article>
+        <article class="card">
+          <a href=""><img src="../../public/assets/img/run.jpg" alt="첼린지 이미지" /></a>
+          <div>
+            <p class="category-tag">카테고리</p>
+            <a href="">아직 저녁 먹긴 이르다! 퇴근 후 집까지 뛰어가기 첼린지</a>
+          </div>
+        </article>
+        <article class="card">
+          <a href=""><img src="../../public/assets/img/run.jpg" alt="첼린지 이미지" /></a>
+          <div>
+            <p class="category-tag">카테고리</p>
+            <a href="">아직 저녁 먹긴 이르다! 퇴근 후 집까지 뛰어가기 첼린지</a>
+          </div>
+        </article>
+        <article class="card">
+          <a href=""><img src="../../public/assets/img/run.jpg" alt="첼린지 이미지" /></a>
+          <div>
+            <p class="category-tag">카테고리</p>
+            <a href="">아직 저녁 먹긴 이르다! 퇴근 후 집까지 뛰어가기 첼린지</a>
+          </div>
+        </article>
+        <article class="card">
+          <a href=""><img src="../../public/assets/img/run.jpg" alt="첼린지 이미지" /></a>
+          <div>
+            <p class="category-tag">카테고리</p>
+            <a href="">아직 저녁 먹긴 이르다! 퇴근 후 집까지 뛰어가기 첼린지</a>
+          </div>
+        </article>
+        
+      </div>
+    </div>
+
+    <div class="content" id="content3" data-tab-content>
+      <div class="CompletedChallenge card-wrapper">
+        <article class="card">
+          <a href=""><img src="../image/run.jpg" alt="첼린지 이미지" /></a>
+          <div>
+            <p class="category-tag">카테고리</p>
+            <a href="">첼린지 제목</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <footer>
+      <h3>Here is footer.</h3>
+    </footer>
+
+    <script src="../js/userInfoCorrection.js"></script>
+    <script src="../js/userpageTabs.js"></script>
+  </body>
+</html>
