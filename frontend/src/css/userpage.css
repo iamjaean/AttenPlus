@@ -182,8 +182,10 @@ header {
 .card img {
   display: block;
   align-self: center;
-  width: 100%;
+  width: 246px;
+  height: 184px;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .category-tag {
@@ -192,11 +194,6 @@ header {
   color: grey;
   line-height: 18px;
   letter-spacing: -0.005em;
-}
-
-.card div {
-  padding-top: 12px;
-  display: block;
 }
 
 .card div a {
