@@ -265,7 +265,7 @@ header {
   display: inline-block;
   float: left;
 }
-.reviewUser {
+.reviewWriteUser {
   height: 21px;
   font-family: Roboto;
   font-style: normal;
@@ -297,4 +297,29 @@ header {
 }
 .reviewListBoard::-webkit-scrollbar {
   display: none;
+}
+.attend {
+  position: relative;
+  width: 39px;
+  height: 39px;
+  top: -1px;
+  left: -1px;
+  content: " ";
+  display: block;
+  background: #1f9de6;
+}
+
+.dayContainer {
+  pointer-events: none;
+}
+
+.absent {
+  position: relative;
+  width: 39px;
+  height: 39px;
+  top: -1px;
+  left: -1px;
+  content: " ";
+  display: block;
+  background: #ff6969;
 }
