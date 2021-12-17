@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
 });
 
 //회원가입
-router.get(
+router.post(
   "/register",
   asyncHandler(async (req, res, next) => {
     const { email, userName, password } = req.body;
