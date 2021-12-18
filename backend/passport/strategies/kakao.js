@@ -1,11 +1,9 @@
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const KakaoStrategy = require("passport-kakao").Strategy;
 const { User, OAuth } = require("../../models");
 
 const config = {
-  clientID:
-    "277030529334-r05cp04ccqu8sgg5e5b463as77j763ip.apps.googleusercontent.com",
-  clientSecret: "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",
-  callbackURL: "/auth/google/callback",
+  clientID: "8f0f0f5a6feaa2bf566b547b6df5e468",
+  callbackURL: "/auth/kakao/callback",
 };
 
 async function findOrCreateUser({ name, email }) {
@@ -20,17 +18,19 @@ async function findOrCreateUser({ name, email }) {
   const created = await User.create({
     name,
     email,
-    password: "GOOGLE_OAUTH",
+    password: "KAKAO_OAUTH",
   });
 
   return created;
 }
 
-module.exports = new GoogleStrategy(
+const kakao = new KakaoStrategy(
   config,
   async (accessToken, refreshToken, profile, done) => {
-    const { email, name } = profile._json;
-
+    console.log(profile._json);
+    const email = profile._json.kakao_account.email;
+    const name = profile._json.kakao_account.profile.nickname;
+    console.log(email, name);
     try {
       const user = await findOrCreateUser({ email, name });
       done(null, {
@@ -43,3 +43,5 @@ module.exports = new GoogleStrategy(
     }
   }
 );
+
+module.exports = kakao;
