@@ -4,6 +4,8 @@ const { setUserToken } = require("../utils/jwt");
 
 const router = Router();
 
+// router.get("/",)
+
 router.post(
   "/",
   passport.authenticate("local", { session: false }),
@@ -27,18 +29,16 @@ router.get(
   }
 );
 
-router.get("/kakao", passport.authenticate("kakao"));
+// router.get("/kakao", passport.authenticate("kakao"));
 
 router.get(
   "/kakao/callback",
   passport.authenticate("kakao", { session: false }),
   (req, res, next) => {
+    console.log(req.user);
     setUserToken(res, req.user);
     res.redirect("/");
   }
 );
 
-router.get("/success", (req, res) => {
-  res.send(req.body);
-});
 module.exports = router;

@@ -20,14 +20,12 @@ async function findOrCreateUser({ name, email }) {
     email,
     password: "KAKAO_OAUTH",
   });
-
   return created;
 }
 
 const kakao = new KakaoStrategy(
   config,
   async (accessToken, refreshToken, profile, done) => {
-    console.log(profile._json);
     const email = profile._json.kakao_account.email;
     const name = profile._json.kakao_account.profile.nickname;
     console.log(email, name);
