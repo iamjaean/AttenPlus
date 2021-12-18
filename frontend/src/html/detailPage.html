@@ -7,7 +7,7 @@
     <title>작심삼일</title>
     <link rel="stylesheet" href="../css/style_detailPage.css" />
     <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
   </head>
   <header class="global-header">
     <div class="logo">
@@ -43,110 +43,104 @@
     </div>
   </header>
   <body>
-    <div class="headerContent">
-      <ul>
-        <li><a href="">전체보기</a></li>
-        <li><a href="">운동</a></li>
-        <li><a href="">정서</a></li>
-        <li><a href="">생활</a></li>
-        <li><a href="">역량</a></li>
-        <li><a href="">취미</a></li>
-      </ul>
-    </div>
-    <div class="divideLayer"></div>
-    <div class="challengeTitle">
-      <div class="postCategory"><div>생활</div></div>
-    </div>
-    <div class="challengeTitle">
-      <h1>미라클 모닝! 아침 5시 일어나기</h1>
-    </div>
-    <div class="challengeTitle">
-      <div class="creator">
-        <span class="creatorIcon">icon</span>
-        <span class="creatorName">만든사람</span>
+    <div class="detailPageListAll">
+      <div class="headerContent">
+        <ul>
+          <li><a href="">전체보기</a></li>
+          <li><a href="">운동</a></li>
+          <li><a href="">정서</a></li>
+          <li><a href="">생활</a></li>
+          <li><a href="">역량</a></li>
+          <li><a href="">취미</a></li>
+        </ul>
       </div>
-    </div>
-
-    <div class="postImg"><img src="" alt="챌린지 대표 이미지" /></div>
-    <!-- 사용자가 이 챌린지에 참여하지 않았을 경우 -->
-    <!-- <aside class="registerChallenge">
-      <div class="registerDateTitle">
-        <div>
-          <span class="startDateTxt">시작일</span>
-
-          <div class="startDate">2022-01-01</div>
-          <span>종료일</span>
-          <div class="endDate">2022-01-07</div>
+      <div class="divideLayer"></div>
+      <div class="challengeTitle">
+        <div class="postCategory"><div>생활</div></div>
+      </div>
+      <div class="challengeTitle">
+        <!-- <h1>미라클 모닝! 아침 5시 일어나기</h1> -->
+      </div>
+      <div class="challengeTitle">
+        <div class="creator">
+          <span class="creatorIcon">icon</span>
+          <span class="creatorName">만든사람</span>
         </div>
       </div>
-      <div class="registerDateTitle">
-        <button class="registerButton">이 챌린지 참여하기</button>
+
+      <div class="detailPostImg"><img src="../../public/assets/img/hobbyImg.jpg" alt="챌린지 대표 이미지" /></div>
+      <!-- 사용자가 이 챌린지에 참여하지 않았을 경우 -->
+      <!-- <aside class="registerChallenge">
+        <div class="registerDateTitle">
+          <div>
+            <span class="startDateTxt">시작일</span>
+
+            <div class="startDate">2022-01-01</div>
+            <span>종료일</span>
+            <div class="endDate">2022-01-07</div>
+          </div>
+        </div>
+        <div class="registerDateTitle">
+          <button class="registerButton">이 챌린지 참여하기</button>
+        </div>
+      </aside> -->
+
+      <!-- 사용자가 이 챌린지에 참여하였을 경우 -->
+
+      <aside class="attendChallenge">
+        <div class="challengeTitle">
+          <div class="progressTxt">진행 상황</div>
+        </div>
+        <div class="challengeTitle">
+          <input class="calendar" />
+        </div>
+        <div class="challengeTitle">
+          <button class="attendButton">출석하기</button>
+        </div>
+      </aside>
+
+      <div class="divideLayerMiddle"></div>
+
+      <div class="challengeTxt">
+        챌린지 소개
+        <div class="storyContent">챌린지 소개 텍스트 컨텐츠</div>
+        <!-- 텍스트 내용을 ``로 해야함 -->
       </div>
-    </aside> -->
 
-    <!-- 사용자가 이 챌린지에 참여하였을 경우 -->
-    <aside class="attendChallenge">
-      <div class="progressTxt">진행 상황</div>
-      <input class="calendar">달력</input>
-      <button class="attendButton">출석하기</button>
-    </aside>
-
-    <div class="divideLayerMiddle"></div>
-
-    <div class="challengeTxt">
-      챌린지 소개
-      <div class="storyContent">챌린지 소개 텍스트 컨텐츠</div>
-    </div>
-
-    <div class="reviewWrite">후기</div>
-    <!-- 등록된 후기가 없는 경우 -->
-    <!-- <div class="createCard">
+      <div class="reviewWrite">후기</div>
+      <!-- 등록된 후기가 없는 경우 -->
+      <div class="createCard">
         등록된 후기가 없습니다.<br />첫번째 후기를 등록해보세요!
         <div class="createCardLink"><a href="">후기 쓰기</a></div>
       </div>
-    </div> -->
-
-    <!-- 등록된 후기가 있는 경우 -->
-    <div class="reviewListBoard">
-      <div class="reviewCard">
-        <span class="reviewIcon">icon</span>
-        <span class="reviewWriteUser">만든사람</span>
-
-        <div class="reviewText">후기 텍스트 컨텐츠 입니다</div>
-      </div>
-
-      <div class="reviewCard">
-        <span class="reviewIcon">icon</span>
-        <span class="reviewUser">만든사람</span>
-
-        <div class="reviewText">후기 텍스트 컨텐츠 입니다</div>
-      </div>
-      <div class="reviewCard">
-        <span class="reviewIcon">icon</span>
-        <span class="reviewUser">만든사람</span>
-
-        <div class="reviewText">후기 텍스트 컨텐츠 입니다</div>
-      </div>
-      <div class="reviewCard">
-        <span class="reviewIcon">icon</span>
-        <span class="reviewUser">만든사람</span>
-
-        <div class="reviewText">후기 텍스트 컨텐츠 입니다</div>
-      </div>
-      <div class="reviewCard">
-        <span class="reviewIcon">icon</span>
-        <span class="reviewUser">만든사람</span>
-
-        <div class="reviewText">후기 텍스트 컨텐츠 입니다</div>
-      </div>
-      <div class="reviewCard">
-        <span class="reviewIcon">icon</span>
-        <span class="reviewUser">만든사람</span>
-
-        <div class="reviewText">후기 텍스트 컨텐츠 입니다</div>
-      </div>
     </div>
 
+      <!-- 등록된 후기가 있는 경우 -->
+      <!-- 후기 여러개가 있을 경우 예시, 나중에 map 등으로 처리해야함-->
+      <!-- <div class="reviewListBoard">
+        <div class="reviewCard">
+          <span class="reviewIcon">icon</span>
+          <span class="reviewWriteUser">만든사람</span>
+
+          <div class="reviewText">후기 텍스트 컨텐츠 입니다</div>
+        </div>
+
+        <div class="reviewCard">
+          <span class="reviewIcon">icon</span>
+          <span class="reviewWriteUser">만든사람</span>
+
+          <div class="reviewText">후기 텍스트 컨텐츠 입니다</div>
+        </div>
+        <div class="reviewCard">
+          <span class="reviewIcon">icon</span>
+          <span class="reviewWriteUser">만든사람</span>
+
+          <div class="reviewText">후기 텍스트 컨텐츠 입니다</div>
+        </div> -->
+      </div>
+    </div>
+    <div class="detailPageMargin"></div>
+    <div class="line"></div>
     <footer class="global-footer">
       <dl class="footer-list">
         <div class="footer-item">
@@ -167,8 +161,7 @@
         </div>
       </dl>
     </footer>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="../js/detailPage.js"></script>
-
   </body>
 </html>
