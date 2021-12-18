@@ -12,9 +12,24 @@ header {
   width: 1056px;
   height: 183px;
   padding: 32px 16px 18px 32px;
-  vertical-align: middle;
+  display: flex;
   margin:auto;
 }
+.banner img{
+  width: 128px;
+  height: 128px;
+  overflow: hidden;
+  border-radius: 50%;
+  text-align: center;
+}
+.banner h1{
+  margin-left: 25px;
+  position: relative;
+  top: 50%;
+  height: 91px;
+  transform: translateY(-30%);
+}
+
 .tabs {
   width: 100%;
   height: 100%;
@@ -197,7 +212,7 @@ header {
 }
 
 .card div a {
-  font-size: 15px;
+  font-size: 20px;
   text-decoration: none;
   color: rgb(61, 61, 61);
   cursor: pointer;
