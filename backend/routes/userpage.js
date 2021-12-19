@@ -1,17 +1,14 @@
 const { Router, response } = require("express");
 const asyncHandler = require("../utils/async-handler");
-const { User } = require("../models/schemas/user");
+const { User } = require("../models");
 const hashPassword = require("../utils/hash-password");
 const router = Router();
 
 router.get(
-  "/:id",
+  "/:shortId",
   asyncHandler(async (req, res) => {
-    const id = req.params.id;
-    const user = {
-      userId: id,
-      name: `User#${id}`,
-    };
+    const { shortId } = req.params;
+    const user = await User.findOne({ shortId });
 
     res.render("../views/userpage", user);
   })
