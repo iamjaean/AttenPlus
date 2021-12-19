@@ -1,0 +1,87 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+h2 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+}
+label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+}
+.container {
+  margin : 43px 0 0 379px; 
+  width : 682px;
+  height: 836px;
+  background-color: #FFFFFF;
+  border: 2px solid #C8C8C8;
+  border-radius: 10px;
+}
+
+#picture_container {
+    width: 173px;
+    height: 162px;
+    margin-left: 255px;
+    margin-top: 30px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+.input_container {
+    margin-left: 68px;
+    margin-top: 20px;
+
+}
+#create_title {
+  width: 500px;
+  border: none;
+  border-bottom: 2px solid black;
+  outline: none;
+}
+#title_length{
+  margin-left: 500px;
+}
+#create_introduce {
+  width: 500px;
+  height: 70px;
+  border: 2px solid black;
+  border-radius: 10px;
+  outline: none;
+  resize: none;
+}
+#introduce_length{
+  margin-left: 500px;
+}
+#button_container {
+  width: 400px;
+  height: 57px;
+  left: 439px;
+  top: 818px;
+  background: #FF5C5C;
+  border-radius: 17px;
+  margin-left: 141px;
+  text-align: center;
+}
+#create_submit {
+  border: none;
+  margin-top: 15px;
+  background-color: #FF5C5C;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 20px;
+  color: #FFFFFF;
+  cursor : pointer;
+}
