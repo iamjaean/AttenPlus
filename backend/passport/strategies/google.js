@@ -4,7 +4,7 @@ const { User, OAuth } = require("../../models");
 const config = {
   clientID:
     "277030529334-r05cp04ccqu8sgg5e5b463as77j763ip.apps.googleusercontent.com",
-  clientSecret: "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",
+  clientSecret: "",
   callbackURL: "/auth/google/callback",
 };
 
