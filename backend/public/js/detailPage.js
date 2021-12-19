@@ -19,6 +19,7 @@ const attendDay = ["December 12, 2021", "December 13, 2021", "December 15, 2021"
 const absentDay = ["December 14, 2021", "December 17, 2021"];
 //출석 달력 설정
 //로그인된 유저가 해당 챌린지에 참여할 때만 함수를 실행
+//이부분도 ejs로 수정할 것
 detailCalendar &&
   detailCalendar.flatpickr({
     onDayCreate: (dObj, dStr, fp, dayElem) => {
@@ -31,19 +32,19 @@ detailCalendar &&
     inline: true,
   });
 
-fetch("../../public/data/mockData.json")
-  .then((response) => response.json())
-  .then((data) => {
-    //filter로 찾아야함
-    detailPostCategory.innerHTML = `<div>${data[3].category}<div/>`;
-    detailPostImg.innerHTML = `<img src="${data[3].imgUrl}"/>`;
-    creatorName.innerHTML = `<span>${data[3].author}<span/>`;
-    challengeTitle.innerHTML = `<h1>${data[3].author}<h1/>`;
-    reviewIcon.innerHTML = `<img src="../../public/assets/img/img-user-default.png"/>`;
-    // 다른 항목들도 나중에 연결
+// fetch("../../public/data/mockData.json")
+//   .then((response) => response.json())
+//   .then((data) => {
+//     //filter로 찾아야함
+//     detailPostCategory.innerHTML = `<div>${data[3].category}<div/>`;
+//     detailPostImg.innerHTML = `<img src="${data[3].imgUrl}"/>`;
+//     creatorName.innerHTML = `<span>${data[3].author}<span/>`;
+//     challengeTitle.innerHTML = `<h1>${data[3].author}<h1/>`;
+//     reviewIcon.innerHTML = `<img src="../../public/assets/img/img-user-default.png"/>`;
+//     // 다른 항목들도 나중에 연결
 
-    console.log(data);
-  });
+//     console.log(data);
+//   });
 
 registerButton &&
   registerButton.addEventListener("click", () => {
