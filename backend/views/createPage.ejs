@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>createPage</title>
+    <link rel="stylesheet" href="css/style_create.css" />
+  </head>
+
+  <body>
+    <form
+      method="post"
+      enctype="multipart/form-data"
+      action="http://localhost:3000/create"
+    >
+      <div class="container">
+        <div id="picture_container">
+          <input type="file" id="uploaded_file" name="uploaded_file" />
+        </div>
+        <div>
+          <img src="../public/data/uploads/de4db15516fbf29283d4b32488681d53" />
+        </div>
+        <div class="input_container" id="title_default">
+          <h2>제목을 입력해 주세요</h2>
+        </div>
+        <div class="input_container" id="title_container">
+          <input type="text" id="create_title" name="title" />
+          <p id="title_length">0/50</p>
+        </div>
+        <div class="input_container" id="introduce_default">
+          <h2>소개를 등록하세요</h2>
+        </div>
+        <div class="input_container" id="introduce_container">
+          <textarea id="create_introduce" name="description"></textarea>
+          <p id="introduce_length">0/100</p>
+        </div>
+        <div class="input_container" id="5">
+          <h2>어떤 주제와 관련이 있나요?</h2>
+        </div>
+        <div class="input_container" id="type_check_container">
+          <label
+            ><input type="checkbox" name="exercise_check" value="운동" />
+            운동</label
+          >
+          <label
+            ><input type="checkbox" name="life_check" value="생활" />
+            생활</label
+          >
+          <label
+            ><input type="checkbox" name="emotion_check" value="정서" />
+            정서</label
+          >
+          <label
+            ><input type="checkbox" name="competency_check" value="역량" />
+            역량</label
+          >
+          <label
+            ><input type="checkbox" name="hobby_check" value="취미" />
+            취미</label
+          >
+        </div>
+        <div class="input_container" id="daate_container">
+          <h2>시작일을 선택해주세요</h2>
+          <p><input type="date" id="start_date" name="startdate" /></p>
+          <h2>종료일을 선택해주세요</h2>
+          <p><input type="date" id="end_date" name="enddate" /></p>
+        </div>
+        <div id="button_container">
+          <input
+            type="submit"
+            id="create_submit"
+            name="create_submit"
+            value="프로젝트 개설하기"
+          />
+        </div>
+      </div>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src ="js/createPage.js"></script>
+  </body>
+</html>
