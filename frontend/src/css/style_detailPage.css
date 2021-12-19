@@ -1,0 +1,351 @@
+/* body {
+  margin: 0 0 0 0;
+  width: 1440px;
+} */
+/* header {
+  height: 100px;
+
+  top: 0px;
+} */
+.detailPageListAll {
+  width: 1056px;
+  margin: auto;
+}
+
+.divideLayer {
+  height: 0px;
+  top: 30px;
+  background-color: #c8c8c8;
+  border: 1px solid #c8c8c8;
+}
+.headerContent {
+  height: 95px;
+}
+.headerContent ul {
+  list-style: none;
+  padding: 37px 0 0 27px;
+  margin: 0px;
+}
+
+.headerContent ul li {
+  list-style: none;
+  padding: 0 32px 0 0;
+  border: 0;
+  float: left;
+}
+
+.headerContent ul li a {
+  text-decoration-line: none;
+  color: black;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+}
+.challengeTitle {
+  justify-content: center;
+  display: flex;
+}
+.postCategory {
+  margin-top: 40px;
+  width: 98px;
+  height: 47px;
+  background: #efefef;
+  border-radius: 100px;
+  color: #979797;
+}
+
+.postCategory div {
+  text-align: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 47px;
+}
+
+.challengeTitle h1 {
+  margin: 21px 0 0 0;
+}
+.creator {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  margin: 21px 0 0 0;
+}
+
+.detailPostImg {
+  margin-left: 31px;
+  text-align: center;
+  margin-top: 70px;
+  float: left;
+  overflow: hidden;
+  width: 641.04px;
+  height: 432.76px;
+}
+.detailPostImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.registerChallenge {
+  display: inline-block;
+  margin-left: 37px;
+  margin-top: 70px;
+  width: 334px;
+  height: 433px;
+}
+.attendChallenge {
+  display: inline-block;
+  margin-left: 37px;
+  margin-top: 70px;
+  width: 334px;
+  height: 433px;
+}
+.registerChallenge span {
+  padding-top: 44px;
+
+  display: inline-block;
+  top: 44px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+}
+.startDateTxt {
+  margin-top: 26px;
+}
+
+.startDate,
+.endDate {
+  line-height: 56px;
+  margin-top: 5px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 56px;
+}
+
+.registerButton {
+  margin-top: 81px;
+  width: 332px;
+  height: 58px;
+  background: #ff5c5c;
+  border-radius: 7px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  color: #ffffff;
+  border: 0px;
+  padding: 0 0 0 0;
+  cursor: pointer;
+}
+.registerButton:hover {
+  background-color: #ff918f;
+}
+.progressTxt {
+  width: 307.88px;
+  margin-bottom: 28px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.calendar {
+  margin-top: 28px;
+  background-color: transparent;
+  border: transparent;
+  width: 0px;
+  height: 0px;
+  left: 983px;
+  top: 590px;
+}
+.attendButton {
+  margin-top: 20px;
+  cursor: pointer;
+  width: 332px;
+  height: 58px;
+  border: 0px;
+  background: #ff5c5c;
+  border-radius: 7px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  color: #ffffff;
+  border: 0px;
+}
+.attendButton:hover {
+  background-color: #ff918f;
+}
+.divideLayerMiddle {
+  clear: both;
+  height: 0px;
+  border: 1px solid #c8c8c8;
+  background-color: #c8c8c8;
+
+  margin-top: 110px;
+}
+.challengeTxt {
+  float: left;
+  margin: 40px 0 0 30.91px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+
+  color: #000000;
+}
+.storyContent {
+  margin-top: 43px;
+  width: 641.04px;
+  height: 432.76px;
+  background: #c4c4c4;
+  font-size: 12px;
+}
+.reviewWrite {
+  float: right;
+  margin: 40px 311px 43px 0;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+}
+.createCard {
+  margin-right: 36px;
+  float: right;
+  width: 334.14px;
+  height: 164.12px;
+  background: #fffefe;
+  border: 1px solid #bcbcbc;
+  box-sizing: border-box;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  padding-top: 35px;
+}
+.createCardLink {
+  margin-top: 24px;
+  text-decoration: underline;
+  color: #1f9de6;
+}
+.registerDateTitle {
+  justify-content: center;
+  display: flex;
+}
+.reviewCard {
+  float: right;
+  margin: 0 0 25px 0;
+  width: 334.14px;
+  height: 164.12px;
+  background: #fffefe;
+  border: 1px solid #bcbcbc;
+  box-sizing: border-box;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+}
+.reviewIcon {
+  width: 24.83px;
+  height: 24.29px;
+  margin: 19.14px 5.7px 17.66px 24.2px;
+  float: left;
+}
+.reviewIcon img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.reviewWriteUser {
+  height: 21px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  float: left;
+  padding-top: 22px;
+  padding-left: 3px;
+}
+.reviewText {
+  width: 284.83px;
+  height: 82.43px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: justify;
+  color: #000000;
+  clear: both;
+
+  padding-left: 24.29px;
+}
+.reviewListBoard {
+  float: right;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  height: 432.75px;
+  width: 334.14px;
+  overflow-y: scroll;
+  margin: 0 21.68px 0 0;
+}
+.reviewListBoard::-webkit-scrollbar {
+  display: none;
+}
+.attend {
+  position: absolute;
+  z-index: -1;
+  width: 39px;
+  height: 39px;
+  top: -1px;
+  left: -1px;
+  content: " ";
+  display: block;
+  background: #1f9de6;
+}
+
+.dayContainer {
+  pointer-events: none;
+}
+
+.absent {
+  z-index: -1;
+  position: absolute;
+  width: 39px;
+  height: 39px;
+  top: -1px;
+  left: -1px;
+  content: " ";
+  background: #ff6969;
+}
+.detailPageMargin {
+  height: 61.63px;
+  width: 1056px;
+  display: inline-block;
+}
+.flatpickr-day.today {
+  border-radius: 0px;
+}

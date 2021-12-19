@@ -14,6 +14,8 @@ mongoose.connection.on("connected", () => {
   console.log("MongoDB Connected");
 });
 
+app.set("view engine", "ejs");
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(passport.initialize());

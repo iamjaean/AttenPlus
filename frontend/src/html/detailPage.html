@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>작심삼일</title>
+    <link rel="stylesheet" href="../css/style_detailPage.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  </head>
+  <header class="global-header">
+    <div class="logo">
+      <a href="main.html">
+        <h1>작심삼일</h1>
+      </a>
+    </div>
+
+    <div class="header-right">
+      <a href="#" class="upload-btn"> 챌린지 올리기 </a>
+      <!-- NOTE: 로그인 안 한 경우 -->
+      <!-- <a class="login-btn">
+            <i class="icon-profile"></i>
+            <span class="login-btn-text">로그인/회원가입</span>
+        </a> -->
+      <!-- NOTE: 로그인 한 경우 -->
+      <button type="button" class="user-btn">
+        <div class="user-btn-wrapper">
+          <img src="" alt="" class="user-profile-img" />
+          <span class="user-btn-text">username</span>
+        </div>
+      </button>
+
+      <div class="user-menu-modal is-active">
+        <ol class="user-menu-list">
+          <li class="user-menu-item"><a href="#">프로필</a></li>
+          <li class="user-menu-item divider">
+            <div></div>
+          </li>
+          <li class="user-menu-item"><a href="#">로그아웃</a></li>
+        </ol>
+      </div>
+    </div>
+  </header>
+  <body>
+    <div class="detailPageListAll">
+      <div class="headerContent">
+        <ul>
+          <li><a href="">전체보기</a></li>
+          <li><a href="">운동</a></li>
+          <li><a href="">정서</a></li>
+          <li><a href="">생활</a></li>
+          <li><a href="">역량</a></li>
+          <li><a href="">취미</a></li>
+        </ul>
+      </div>
+      <div class="divideLayer"></div>
+      <div class="challengeTitle">
+        <div class="postCategory"><div>생활</div></div>
+      </div>
+      <div class="challengeTitle">
+        <!-- <h1>미라클 모닝! 아침 5시 일어나기</h1> -->
+      </div>
+      <div class="challengeTitle">
+        <div class="creator">
+          <span class="creatorIcon">icon</span>
+          <span class="creatorName">만든사람</span>
+        </div>
+      </div>
+
+      <div class="detailPostImg"><img src="../../public/assets/img/hobbyImg.jpg" alt="챌린지 대표 이미지" /></div>
+      <!-- 사용자가 이 챌린지에 참여하지 않았을 경우 -->
+      <!-- <aside class="registerChallenge">
+        <div class="registerDateTitle">
+          <div>
+            <span class="startDateTxt">시작일</span>
+
+            <div class="startDate">2022-01-01</div>
+            <span>종료일</span>
+            <div class="endDate">2022-01-07</div>
+          </div>
+        </div>
+        <div class="registerDateTitle">
+          <button class="registerButton">이 챌린지 참여하기</button>
+        </div>
+      </aside> -->
+
+      <!-- 사용자가 이 챌린지에 참여하였을 경우 -->
+
+      <aside class="attendChallenge">
+        <div class="challengeTitle">
+          <div class="progressTxt">진행 상황</div>
+        </div>
+        <div class="challengeTitle">
+          <input class="calendar" />
+        </div>
+        <div class="challengeTitle">
+          <button class="attendButton">출석하기</button>
+        </div>
+      </aside>
+
+      <div class="divideLayerMiddle"></div>
+
+      <div class="challengeTxt">
+        챌린지 소개
+        <div class="storyContent">챌린지 소개 텍스트 컨텐츠</div>
+        <!-- 텍스트 내용을 ``로 해야함 -->
+      </div>
+
+      <div class="reviewWrite">후기</div>
+      <!-- 등록된 후기가 없는 경우 -->
+      <div class="createCard">
+        등록된 후기가 없습니다.<br />첫번째 후기를 등록해보세요!
+        <div class="createCardLink"><a href="">후기 쓰기</a></div>
+      </div>
+    </div>
+
+      <!-- 등록된 후기가 있는 경우 -->
+      <!-- 후기 여러개가 있을 경우 예시, 나중에 map 등으로 처리해야함-->
+      <!-- <div class="reviewListBoard">
+        <div class="reviewCard">
+          <span class="reviewIcon">icon</span>
+          <span class="reviewWriteUser">만든사람</span>
+
+          <div class="reviewText">후기 텍스트 컨텐츠 입니다</div>
+        </div>
+
+        <div class="reviewCard">
+          <span class="reviewIcon">icon</span>
+          <span class="reviewWriteUser">만든사람</span>
+
+          <div class="reviewText">후기 텍스트 컨텐츠 입니다</div>
+        </div>
+        <div class="reviewCard">
+          <span class="reviewIcon">icon</span>
+          <span class="reviewWriteUser">만든사람</span>
+
+          <div class="reviewText">후기 텍스트 컨텐츠 입니다</div>
+        </div> -->
+      </div>
+    </div>
+    <div class="detailPageMargin"></div>
+    <div class="line"></div>
+    <footer class="global-footer">
+      <dl class="footer-list">
+        <div class="footer-item">
+          <dt>company</dt>
+          <dd>작심삼일</dd>
+        </div>
+        <div class="footer-item">
+          <dt>E-mail</dt>
+          <dd>
+            <address>
+              <a href="mailto:contact@email.com"> contact@email.com </a>
+            </address>
+          </dd>
+        </div>
+        <div class="footer-item">
+          <dt>copyright</dt>
+          <dd>Copyright © 2021 작심삼일 Co. All Rights Reserved</dd>
+        </div>
+      </dl>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="../js/detailPage.js"></script>
+  </body>
+</html>

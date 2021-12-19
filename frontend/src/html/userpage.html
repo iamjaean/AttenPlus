@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/userpage.css" />
+    <link rel="stylesheet" href="../css/main.css">
+    <title>My Page</title>
+  </head>
+  <body>
+    <header class="global-header">
+        <div class="logo">
+            <a href="main.html">
+                <h1>작심삼일</h1>
+            </a>
+        </div>
+
+        <div class="header-right">
+            <a href="#" class="upload-btn">
+                챌린지 올리기
+            </a>
+            <!-- NOTE: 로그인 안 한 경우 -->
+            <!-- <a class="login-btn">
+                <i class="icon-profile"></i>
+                <span class="login-btn-text">로그인/회원가입</span>
+            </a> -->
+            <!-- NOTE: 로그인 한 경우 -->
+            <button type="button" class="user-btn">
+                <div class="user-btn-wrapper">
+                    <img src="../../public/assets/img/img-user-default.png" alt="" class="user-profile-img">
+                    <span class="user-btn-text">username</span>
+                </div>
+            </button>
+            
+            <div class="user-menu-modal is-active">
+                <ol class="user-menu-list">
+                    <li class="user-menu-item"><a href="#">프로필</a></li>
+                    <li class="user-menu-item divider">
+                        <div></div>
+                    </li>
+                    <li class="user-menu-item"><a href="#">로그아웃</a></li>
+                </ol>
+            </div>
+        </div>
+    </header>
+    <div class="banner">
+      <img src="../../public/assets/img/run.jpg" alt="프로필 사진" />
+      <h1>김철수님의 페이지</h1>
+    </div>
+
+    <div class="tabs">
+      <ul class="tabs_sidebar">
+        <li data-tab-target="#content1" class="tab active"><h3>프로필</h3></li>
+        <li data-tab-target="#content2" class="tab"><h3>참여한 챌린지</h3></li>
+        <li data-tab-target="#content3" class="tab"><h3>만든 챌린지</h3></li>
+      </ul>
+    </div>
+
+    <div class="content active" id="content1" data-tab-content>
+      <div class="profile">
+        <div class="comp">
+          <div class="comp-top">
+            <p class="comp-title"><strong>프로필 사진</strong></p>
+            <button class="update-btn">수정</button>
+          </div>
+          <div class="comp-img">
+            <img src="../../public/assets/img/run.jpg" alt="프로필 사진" />
+          </div>
+          <p class="comp-content"></p>
+        </div>
+        <div class="comp">
+          <div class="comp-top">
+            <p class="comp-title"><strong>이름</strong></p>
+            <button
+              class="update-btn"
+              id="name"
+              onclick="changeContent(this.id)"
+            >
+              수정
+            </button>
+          </div>
+          <p class="comp-content" id="name-content">김철수</p>
+        </div>
+        <div class="comp">
+          <div class="comp-top">
+            <p class="comp-title"><strong>소개</strong></p>
+            <button
+              class="update-btn"
+              id="introduce"
+              onclick="changeContent(this.id)"
+            >
+              수정
+            </button>
+          </div>
+          <p class="comp-content" id="introduce-content">
+            자기소개를 넣어주세요.
+          </p>
+        </div>
+        <div class="comp">
+          <div class="comp-top">
+            <p class="comp-title"><strong>웹사이트</strong></p>
+            <button
+              class="update-btn"
+              id="website"
+              onclick="changeContent(this.id)"
+            >
+              수정
+            </button>
+          </div>
+          <p class="comp-content" id="website-content">내용</p>
+        </div>
+        <div class="comp">
+          <div class="comp-top">
+            <p class="comp-title"><strong>달성한 업적</strong></p>
+          </div>
+          <p class="comp-content">내용</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content" id="content2" data-tab-content>
+      <div class="joinedChallenge card-wrapper">
+      </div>
+    </div>
+
+    <div class="content" id="content3" data-tab-content>
+      <div class="createdChallenge card-wrapper">
+        
+      </div>
+    </div>
+
+    <footer class="global-footer">
+        <dl class="footer-list">
+            <div class="footer-item">
+                <dt>company</dt>
+                <dd>작심삼일</dd>
+            </div>
+            <div class="footer-item">
+                <dt>E-mail</dt>
+                <dd>
+                    <address>
+                        <a href="mailto:contact@email.com">
+                            contact@email.com
+                        </a>
+                    </address>
+                </dd>
+            </div>
+            <div class="footer-item">
+                <dt>copyright</dt>
+                <dd>Copyright © 2021 작심삼일 Co. All Rights Reserved</dd>
+            </div>
+        </dl>
+    </footer>
+
+    <script src="../js/userInfoCorrection.js"></script>
+    <script src="../js/userpageTabs.js"></script>
+  </body>
+</html>
