@@ -5,7 +5,15 @@ const hashPassword = require("../utils/hash-password");
 const router = Router();
 
 router.get("/", (req, res) => {
-  res.send("hello");
+  res.render("sign/login");
+});
+
+router.get("/join", (req, res) => {
+  res.render("sign/join");
+});
+
+router.get("/email", (req, res) => {
+  res.render("sign/email");
 });
 
 //회원가입
@@ -13,6 +21,7 @@ router.post(
   "/join",
   asyncHandler(async (req, res, next) => {
     const { email, userName, password } = req.body;
+    console.log(req.body);
     const hashedPassword = hashPassword(password);
 
     //이메일 중복체크
