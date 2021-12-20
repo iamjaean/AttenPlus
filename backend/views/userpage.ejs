@@ -13,7 +13,7 @@
 
     <div class="banner">
       <img src="/assets/img/run.jpg" alt="프로필 사진" />
-      <h1><%=name %>님의 페이지</h1>
+      <h1><%=author.name %>님의 페이지</h1>
     </div>
 
     <div class="tabs">
@@ -39,43 +39,38 @@
         <div class="comp">
           <div class="comp-top">
             <p class="comp-title"><strong>이름</strong></p>
-            <!-- <button
+            <% if(author.shortId === user.shortId){%>
+            <button
               class="update-btn"
               id="name"
               onclick="changeContent(this.id)"
             >
               수정
-            </button> -->
+            </button>
+            <% } %>
           </div>
-          <p class="comp-content" id="name-content"><%= name %></p>
+          <p class="comp-content" id="name-content"><%= author.name %></p>
         </div>
         <div class="comp">
           <div class="comp-top">
             <p class="comp-title"><strong>소개</strong></p>
-            <!-- <button
+            <% if(author.shortId === user.shortId){%>
+            <button
               class="update-btn"
-              id="introduce"
+              id="intro"
               onclick="changeContent(this.id)"
             >
               수정
-            </button> -->
+            </button>
+            <% } %>
           </div>
-          <p class="comp-content" id="introduce-content">
-            자기소개를 넣어주세요.
-          </p>
+          <p class="comp-content" id="intro-content">자기소개를 넣어주세요.</p>
         </div>
         <div class="comp">
           <div class="comp-top">
             <p class="comp-title"><strong>이메일</strong></p>
-            <!-- <button
-              class="update-btn"
-              id="website"
-              onclick="changeContent(this.id)"
-            >
-              수정
-            </button> -->
           </div>
-          <p class="comp-content" id="website-content"><%=email%></p>
+          <p class="comp-content" id="website-content"><%=author.email%></p>
         </div>
         <div class="comp">
           <div class="comp-top">
@@ -95,7 +90,11 @@
     </div>
 
     <div id="footer"><%- include('footer') %></div>
-
+    <script>
+      const userShortId = "<%= user.shortId%>";
+      const userName = "<%= user.name%>";
+      const userIntro = "<%= user.intro%>";
+    </script>
     <script src="/js/userpageTabs.js"></script>
     <script src="/js/userInfoCorrection.js"></script>
     <script src="/js/userpageMenu.js"></script>
