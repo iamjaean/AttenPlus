@@ -12,8 +12,7 @@ const cookieParser = require("cookie-parser");
 const getUserFromJWT = require("./middlewares/get-user-from-jwt");
 require("./passport")();
 // DB 연결
-// mongoose.connect("mongodb://localhost:27017/simple-board");
-mongoose.connect("mongodb://jae:z456810!@localhost:27017/admin", {dbName: 'test'});
+mongoose.connect("mongodb://localhost:27017/simple-board");
 mongoose.connection.on("connected", () => {
   console.log("MongoDB Connected");
 });
