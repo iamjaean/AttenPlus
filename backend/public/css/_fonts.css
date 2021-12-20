@@ -1,10 +1,10 @@
 @font-face {
-  font-family: 'jaksim';
-  src:  url('../../public/assets/fonts/jaksim.eot');
-  src:  url('../../public/assets/fonts/jaksim.eot#iefix') format('embedded-opentype'),
-    url('../../public/assets/fonts/jaksim.ttf') format('truetype'),
-    url('../../public/assets/fonts/jaksim.woff') format('woff'),
-    url('../../public/assets/fonts/jaksim.svg#jaksim') format('svg');
+  font-family: "jaksim";
+  src: url("../assets/fonts/jaksim.eot");
+  src: url("../assets/fonts/jaksim.eot#iefix") format("embedded-opentype"),
+    url("../assets/fonts/jaksim.ttf") format("truetype"),
+    url("../assets/fonts/jaksim.woff") format("woff"),
+    url("../assets/fonts/jaksim.svg#jaksim") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -12,7 +12,7 @@
 
 i {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'jaksim' !important;
+  font-family: "jaksim" !important;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;

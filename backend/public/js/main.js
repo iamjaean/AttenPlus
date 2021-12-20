@@ -1,5 +1,58 @@
-//슬라이드
+//모든 챌린지 무한스크롤
+fetch('../data/mockData.json') //테스트용 로컬 목데이터가져오기
+    .then((response) => response.json())
+    .then((data) => {
+        let challengeCount = data.length - 8;
+        const newContainer = document.querySelector('.new-challenges .container');
+        const allContainer = document.querySelector('.all-challenges .container');
 
+        loadImages()
+
+        window.addEventListener('scroll', ()=> {
+            if((window.scrollY + window.innerHeight >= document.documentElement.scrollHeight)){
+                loadImages()
+            }
+        })
+
+        function loadImages(numImages = 8) {
+            let j = 1;
+            while( j <= numImages) {
+                if (challengeCount == 0) return;
+                challengeCount -= 1;
+                allContainer.innerHTML += `
+                    <div class="item-box">
+                        <a href = "/detail">
+                            <div class="img-wrapper">
+                                <img src= ${data[challengeCount].imgUrl} alt="">
+                            </div>
+                            <div class="challenge-info">
+                                <div class="detail-info">
+                                    <p class="challenge-category">${data[challengeCount].category}</p>
+                                    <p class="challenge-maker">${data[challengeCount].author}</p>
+                                </div>
+                                <h2 class="challenge-title">${data[challengeCount].title}</h2>
+                            </div>
+                        </a>
+                    </div>
+                `;
+                j++;
+            }
+        }
+    })
+
+//헤더 유저 메뉴 모달창
+const menu = document.querySelector('.user-menu-modal');
+
+function toggleMenuList(){
+if(menu.classList.contains('is-active')){
+    menu.classList.remove('is-active') 
+}else{
+    menu.classList.add('is-active')
+}
+}
+
+
+//슬라이드
 const slides = document.querySelector('.slider-list');
 const slideImg = document.querySelectorAll('.slider-item')
 
@@ -63,58 +116,3 @@ function autoSlide() {
     next.addEventListener('click', () => toNext())
     prev.addEventListener('click', () => toPrev())
 }
-
-// main list
-fetch('../../public/data/mockData.json')
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data)
-        let challengeCount = data.length;
-        const newContainer = document.querySelector('.new-challenges .container');
-        const allContainer = document.querySelector('.all-challenges .container');
-
-        // 신규 챌린지 8개 
-        for(let i = data.length - 1; i >= 0; i--) {
-            if(i >= data.length - 8) {
-                newContainer.innerHTML += innerTag(i)
-                challengeCount -= 1;
-            }
-        }
-
-        //신규 8개 제외한 모든 챌린지 불러오기
-        loadImages()
-
-        window.addEventListener('scroll', ()=> {
-            if((window.scrollY + window.innerHeight >= document.documentElement.scrollHeight)){
-                loadImages()
-            }
-        })
-
-        function loadImages(numImages = 8) {
-            let j = 1;
-            while( j <= numImages) {
-                if (challengeCount == 0) return;
-                challengeCount -= 1;
-                allContainer.innerHTML += innerTag(challengeCount);
-                j++;
-            }
-        }
-
-        //추가될 태그
-        function innerTag(idx) {
-            return (`
-                    <div class="item-box">
-                        <div class="img-wrapper">
-                            <img src= ${data[idx].imgUrl} alt="">
-                        </div>
-                        <div class="challenge-info">
-                            <div class="detail-info">
-                                <p class="challenge-category">${data[idx].category}</p>
-                                <p class="challenge-maker">${data[idx].author}</p>
-                            </div>
-                            <h2 class="challenge-title">${data[idx].title}</h2>
-                        </div>
-                    </div>
-            `)
-        }
-    })
