@@ -1,8 +1,11 @@
 function changeContent(id) {
   let btn = document.getElementById(id);
-
-  if (btn.innerText == "취소") {
-    goBackContent(id);
+  if (btn.innerText == "취소" && id == "name") {
+    goBackName(id);
+    btn.innerText = "수정";
+    return;
+  } else if (btn.innerText == "취소" && id == "intro") {
+    goBackIntro(id);
     btn.innerText = "수정";
     return;
   }
@@ -12,20 +15,24 @@ function changeContent(id) {
   let val = content.innerText;
   let userInput = document.createElement("form");
   userInput.setAttribute("id", `${id}-form`);
+  userInput.action = `/userpage/${userShortId}`;
+  userInput.method = "post";
   let contentParent = content.parentNode;
   contentParent.replaceChild(userInput, content);
 
-  if (id == "introduce") {
+  if (id == "intro") {
     let textInput = document.createElement("textarea");
     textInput.value = val;
+    textInput.name = "introduce";
+    textInput.maxlength = "200";
     textInput.classList.add("textBox");
     userInput.appendChild(textInput);
-  } else if (id == "password") {
-    setPasswordInput(userInput);
   } else {
     let textInput = document.createElement("input");
     textInput.type = "text";
+    textInput.maxlength = "10";
     textInput.value = val;
+    textInput.name = "name";
     textInput.classList.add("inputBox");
     userInput.appendChild(textInput);
   }
@@ -37,12 +44,23 @@ function changeContent(id) {
   userInput.appendChild(submitInput);
 }
 
-function goBackContent(id) {
+function goBackName(id) {
   let comp = document.getElementById(id).parentNode.parentNode;
   let userInput = document.getElementById(`${id}-form`);
   let content = document.createElement("p");
   content.classList.add(`comp-content`);
   content.setAttribute("id", `${id}-content`);
+  content.innerHTML = `${userName}`;
+  comp.replaceChild(content, userInput);
+}
+
+function goBackIntro(id) {
+  let comp = document.getElementById(id).parentNode.parentNode;
+  let userInput = document.getElementById(`${id}-form`);
+  let content = document.createElement("p");
+  content.classList.add(`comp-content`);
+  content.setAttribute("id", `${id}-content`);
+  content.innerHTML = `${userIntro}`;
   comp.replaceChild(content, userInput);
 }
 
