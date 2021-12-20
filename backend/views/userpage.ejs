@@ -9,45 +9,7 @@
     <title>My Page</title>
   </head>
   <body>
-    <header class="global-header">
-      <div class="logo">
-        <a href="main.html">
-          <h1>작심삼일</h1>
-        </a>
-      </div>
-
-      <div class="header-right">
-        <a href="#" class="upload-btn"> 챌린지 올리기 </a>
-        <!-- NOTE: 로그인 안 한 경우 -->
-        <!-- <a class="login-btn">
-                <i class="icon-profile"></i>
-                <span class="login-btn-text">로그인/회원가입</span>
-            </a> -->
-        <!-- NOTE: 로그인 한 경우 -->
-        <button type="button" class="user-btn" onclick="toggleMenuList()">
-          <div class="user-btn-wrapper">
-            <img
-              src="/assets/img/img-user-default.png"
-              alt=""
-              class="user-profile-img"
-            />
-            <span class="user-btn-text"><%= shortId %></span>
-          </div>
-        </button>
-
-        <div class="user-menu-modal">
-          <ol class="user-menu-list">
-            <li class="user-menu-item">
-              <a href="/userpage/<%=shortId%>">프로필</a>
-            </li>
-            <li class="user-menu-item divider">
-              <div></div>
-            </li>
-            <a href="/"></a><li class="user-menu-item">로그아웃</li></a>
-          </ol>
-        </div>
-      </div>
-    </header>
+    <div id="header"><%- include('header') %></div>
 
     <div class="banner">
       <img src="/assets/img/run.jpg" alt="프로필 사진" />
@@ -67,7 +29,7 @@
         <div class="comp">
           <div class="comp-top">
             <p class="comp-title"><strong>프로필 사진</strong></p>
-            <button class="update-btn">수정</button>
+            <!-- <button class="update-btn">수정</button> -->
           </div>
           <div class="comp-img">
             <img src="/assets/img/run.jpg" alt="프로필 사진" />
@@ -77,26 +39,26 @@
         <div class="comp">
           <div class="comp-top">
             <p class="comp-title"><strong>이름</strong></p>
-            <button
+            <!-- <button
               class="update-btn"
               id="name"
               onclick="changeContent(this.id)"
             >
               수정
-            </button>
+            </button> -->
           </div>
           <p class="comp-content" id="name-content"><%= name %></p>
         </div>
         <div class="comp">
           <div class="comp-top">
             <p class="comp-title"><strong>소개</strong></p>
-            <button
+            <!-- <button
               class="update-btn"
               id="introduce"
               onclick="changeContent(this.id)"
             >
               수정
-            </button>
+            </button> -->
           </div>
           <p class="comp-content" id="introduce-content">
             자기소개를 넣어주세요.
@@ -105,13 +67,13 @@
         <div class="comp">
           <div class="comp-top">
             <p class="comp-title"><strong>이메일</strong></p>
-            <button
+            <!-- <button
               class="update-btn"
               id="website"
               onclick="changeContent(this.id)"
             >
               수정
-            </button>
+            </button> -->
           </div>
           <p class="comp-content" id="website-content"><%=email%></p>
         </div>
@@ -132,26 +94,7 @@
       <div class="createdChallenge card-wrapper"></div>
     </div>
 
-    <footer class="global-footer">
-      <dl class="footer-list">
-        <div class="footer-item">
-          <dt>company</dt>
-          <dd>작심삼일</dd>
-        </div>
-        <div class="footer-item">
-          <dt>E-mail</dt>
-          <dd>
-            <address>
-              <a href="mailto:contact@email.com"> contact@email.com </a>
-            </address>
-          </dd>
-        </div>
-        <div class="footer-item">
-          <dt>copyright</dt>
-          <dd>Copyright © 2021 작심삼일 Co. All Rights Reserved</dd>
-        </div>
-      </dl>
-    </footer>
+    <div id="footer"><%- include('footer') %></div>
 
     <script src="/js/userpageTabs.js"></script>
     <script src="/js/userInfoCorrection.js"></script>

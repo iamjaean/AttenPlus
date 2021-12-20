@@ -6,23 +6,23 @@
 header {
   width: 1056px;
   height: 100px;
-  margin:auto;
+  margin: auto;
 }
 .banner {
   width: 1056px;
-  height: 183px;
-  padding: 32px 16px 18px 32px;
+  height: 160px;
+  padding: 16px 16px 16px 16px;
   display: flex;
-  margin:auto;
+  margin: auto;
 }
-.banner img{
+.banner img {
   width: 128px;
   height: 128px;
   overflow: hidden;
   border-radius: 50%;
   text-align: center;
 }
-.banner h1{
+.banner h1 {
   margin-left: 25px;
   position: relative;
   top: 50%;
@@ -35,14 +35,14 @@ header {
   height: 100%;
   border-bottom: 1px solid #ccc;
   overflow: hidden;
-  margin:auto;
+  margin: auto;
 }
 
 .tabs_sidebar {
   display: flex;
   padding-left: 20px;
   width: 1056px;
-  margin:auto;
+  margin: auto;
 }
 .tabs_sidebar li {
   display: inline;
@@ -71,7 +71,7 @@ header {
   text-align: center;
   padding: 18px 0px 18px 0px;
   width: 1056px;
-  margin: auto
+  margin: auto;
 }
 
 [data-tab-content] {
@@ -218,5 +218,3 @@ header {
   cursor: pointer;
   font-weight: 700;
 }
-
-
