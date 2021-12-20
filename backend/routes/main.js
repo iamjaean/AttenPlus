@@ -1,17 +1,42 @@
-const express = require('express');
-const router = express.Router();
-const challenge = require('../models/schemas/challenge');
+const { Router } = require("express");
+const { Challenge } = require("../models");
 
-router.get('/', async (req, res, next) => {
-  try {
-    const challenges = await challenge.find()
-    res.render('main', {data: challenges});
-    // res.json({data: challenges});
+const router = Router();
 
-  } catch (err) {
-    console.error(err);
-    next(err);
+router.get("/", async (req, res, next) => {
+  Challenge.find({}, (err, challenges) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('An error occurred', err);
+    }
+    else {
+        res.render('mainPage_test', { challenges: challenges });
+    }
+  });
+});
+router.get("/:shortId", async(req, res, next) => {
+  const { shortId } = req.params;
+  const challenge = await Challenge.findOne({
+    shortId,
+  });
+  res.render('detailPage_test',{challenge:challenge});
+});
+router.post("/:shortId/comments", async(req, res, next) => {
+  const { shortId } = req.params;
+  const { content } = req.body;
+  const author = "작성자";
+  console.log(content);
+  try{
+    await Challenge.updateOne({shortId}, {
+        $push: { comments: {
+            content,
+            author,
+        }},
+    });
   }
-})
-
+  catch(err){
+    next(err)
+  }
+  res.redirect("/");
+});
 module.exports = router;
