@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const mongoose = require("mongoose");
-const userRouter = require("./routes/users");
+const mainRouter = require('./routes/main');
+// const userRouter = require("./routes/users");
 const userPageRouter = require("./routes/userpage");
 const authRouter = require("./routes/auth");
 const path = require("path");
@@ -11,7 +12,8 @@ const cookieParser = require("cookie-parser");
 const getUserFromJWT = require("./middlewares/get-user-from-jwt");
 require("./passport")();
 // DB 연결
-mongoose.connect("mongodb://localhost:27017/simple-board");
+// mongoose.connect("mongodb://localhost:27017/simple-board");
+mongoose.connect("mongodb://jae:z456810!@localhost:27017/admin", {dbName: 'test'});
 mongoose.connection.on("connected", () => {
   console.log("MongoDB Connected");
 });
@@ -25,11 +27,8 @@ app.use(cookieParser());
 app.use(getUserFromJWT);
 app.use(express.static(path.join(__dirname, "/public")));
 
-app.get("/", (req, res) => {
-  res.send("Hello World!!!!");
-});
-
-app.use("/users", userRouter);
+app.use("/", mainRouter);
+// app.use("/users", userRouter);
 app.use("/auth", authRouter);
 app.use("/userpage", userPageRouter);
 

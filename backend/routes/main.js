@@ -1,11 +1,15 @@
-const { Router } = require("express");
-const { Post } = require("../models");
+const express = require('express');
+const router = express.Router();
+const challenge = require('../models/schemas/challenge');
 
-const router = Router();
-
-router.get("/", async (req, res, next) => {
-  const posts = await Post.find({});
-  res.json(posts);
-});
+router.get('/', async (req, res, next) => {
+  try {
+    const challenges = await challenge.find()
+    res.render('mainPage', {data: challenges});
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+})
 
 module.exports = router;

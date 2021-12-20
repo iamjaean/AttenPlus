@@ -4,37 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="./css/main.css">
     <title>작심삼일</title>
 </head>
 <body>
     <header class="global-header">
         <div class="logo">
-            <a href="main.html">
+            <a href="/">
                 <h1>작심삼일</h1>
             </a>
         </div>
 
         <div class="header-right">
-            <a href="#" class="upload-btn">
+            <a href="/createPage" class="upload-btn">
                 챌린지 올리기
             </a>
+            
             <!-- NOTE: 로그인 안 한 경우 -->
-            <!-- <a class="login-btn">
-                <i class="icon-profile"></i>
-                <span class="login-btn-text">로그인/회원가입</span>
+            <!-- <a class="login-btn" href="/sign">
+            <i class="icon-profile"></i>
+            <span class="login-btn-text">로그인/회원가입</span>
             </a> -->
+
+
             <!-- NOTE: 로그인 한 경우 -->
-            <button type="button" class="user-btn">
+            <button type="button" class="user-btn" onclick="toggleMenuList()">
                 <div class="user-btn-wrapper">
-                    <img src="../../public/assets/img/img-user-default.png" alt="" class="user-profile-img">
-                    <span class="user-btn-text">username</span>
+                    <img src="./assets/img/img-user-default.png" alt="" class="user-profile-img">
+                    <span class="user-btn-text">aslfa</span>
                 </div>
             </button>
-            
+
             <div class="user-menu-modal">
                 <ol class="user-menu-list">
-                    <li class="user-menu-item"><a href="#">프로필</a></li>
+                    <li class="user-menu-item"><a href="/userpage">프로필</a></li>
                     <li class="user-menu-item divider">
                         <div></div>
                     </li>
@@ -95,38 +98,33 @@
             <div class="new-challenges">
                 <span class="main-section-title">신규 챌린지</span>
                 <div class="container">
-                    <!-- NOTE: challenge item layout
-                    <div class="item-box">
-                        <div class="img-wrapper">
-                            <img src="https://www.littlethings.info/wp-content/uploads/2014/04/dummy-image-green-e1398449160839.jpg" alt="">
-                        </div>
-                        <div class="challenge-info">
-                            <div class="detail-info">
-                                <p class="challenge-category">카테고리</p>
-                                <p class="challenge-maker">만든사람</p>
-                            </div>
-                            <h2 class="challenge-title">챌린지 타이틀</h2>
-                        </div>
-                    </div> -->
+                    <% let challengeCount = data.length; %>
+                    <% for(let i = data.length - 1; i >= 0; i--) { %>
+                        <% if(i >= data.length - 8) { %>
+                            <a href="/detail">
+                                <div class="item-box">
+                                    <div class="img-wrapper">
+                                        <img src="<%= data[i].imgUrl%>" alt="">
+                                    </div>
+                                    <div class="challenge-info">
+                                        <div class="detail-info">
+                                            <p class="challenge-category"><%= data[i].category%></p>
+                                            <p class="challenge-maker"><%= data[i].author%></p>
+                                        </div>
+                                        <h2 class="challenge-title"><%= data[i].title%></h2>
+                                    </div>
+                                </div>
+                            </a>
+                            <% challengeCount -= 1; %>
+                        <% } %>
+                    <% } %>
+
                 </div>
             </div>
     
             <div class="all-challenges">
                 <span class="main-section-title">모든 챌린지</span>
                 <div class="container">
-                    <!-- NOTE: challenge item layout -->
-                    <!-- <div class="item-box">
-                        <div class="img-wrapper">
-                            <img src="https://www.littlethings.info/wp-content/uploads/2014/04/dummy-image-green-e1398449160839.jpg" alt="">
-                        </div>
-                        <div class="challenge-info">
-                            <div class="detail-info">
-                                <p class="challenge-category">카테고리</p>
-                                <p class="challenge-maker">만든사람</p>
-                            </div>
-                            <h2 class="challenge-title">챌린지 타이틀</h2>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -154,7 +152,6 @@
             </div>
         </dl>
     </footer>
-
-    <script src="../js/main.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 </html>
