@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge check</title>
+</head>
+  
+<body>
+    <h1>Challenge check</h1>
+    <div>
+        
+        <div>
+            <div>
+                <img src="data:challenge/<%=challenge.img.contentType%>;base64,
+                     <%=challenge.img.data.toString('base64')%>">
+                <div>
+                    <h5>챌린지 명 : <%= challenge.title %></h5>
+                    <h5> 댓글  </h5>
+                    <p>작성자: <%= challenge.comments[0].author %> 내용:<%= challenge.comments[0].content %></p> 
+  
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div>
+        <button type="button" onclick="location.href='/create'">챌린지생성</button>
+    </div>   
+</body>
+  
+</html>
