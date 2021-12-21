@@ -3,7 +3,6 @@ const app = express();
 const port = 3000;
 const mongoose = require("mongoose");
 const mainRouter = require("./routes/main");
-// const userRouter = require("./routes/users");
 const userPageRouter = require("./routes/userpage");
 const authRouter = require("./routes/auth");
 const signRouter = require("./routes/sign");
