@@ -13,7 +13,7 @@ router.get(
       return;
     }
     const shortId = req.user.shortId;
-    res.redirect(`/userpage/${shortId}`);
+    res.redirect(`/user/${shortId}`);
   })
 );
 
@@ -36,10 +36,40 @@ router.post(
 
     console.log(name);
     console.log(intro);
-    await User.findOneAndUpdate({ shortId }, { name: name });
+    await User.findOneAndUpdate({ shortId }, { name: name, introduce: intro });
     const author = await User.find({ shortId });
 
-    res.redirect(`/userpage/${shortId}`);
+    res.redirect(`/user/${shortId}`);
+  })
+);
+
+router.post(
+  "/:shortId/change-password",
+  asyncHandler(async (req, res) => {
+    const { shortId } = req.params;
+    const { currentPassword, newPassword, confirmNewPassword } = req.body;
+    const author = await User.findOne({ shortId });
+
+    if (currentPassword) {
+      if (hashPassword(currentPassword) !== author.password) {
+        console.log("입력하신 비밀번호가 일치하지 않습니다");
+        res.redirect(`/user/${shortId}`);
+        return;
+      } else if (newPassword !== confirmNewPassword) {
+        console.log("변경할 비밀번호 확인이 일치하지 않습니다.");
+        res.redirect(`/user/${shortId}`);
+        return;
+      }
+    }
+
+    await User.findOneAndUpdate(
+      { shortId },
+      {
+        password: hashPassword(newPassword),
+      }
+    );
+
+    res.redirect(`/user/${shortId}`);
   })
 );
 

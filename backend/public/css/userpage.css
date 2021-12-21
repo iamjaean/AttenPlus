@@ -126,6 +126,13 @@ header {
   margin-bottom: 16px;
 }
 
+.comp-password {
+  display: flex;
+  margin-left: 16px;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
 .comp-img {
   width: 128px;
   height: 128px;

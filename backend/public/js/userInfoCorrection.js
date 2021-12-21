@@ -8,25 +8,35 @@ function changeContent(id) {
     goBackIntro(id);
     btn.innerText = "수정";
     return;
+  } else if (btn.innerText == "취소" && id == "password") {
+    goBackPassword(id);
+    btn.innerText = "수정";
+    return;
   }
   btn.innerText = "취소";
 
   let content = document.getElementById(`${id}-content`);
-  let val = content.innerText;
   let userInput = document.createElement("form");
   userInput.setAttribute("id", `${id}-form`);
-  userInput.action = `/userpage/${userShortId}`;
+  userInput.action = `/user/${userShortId}`;
   userInput.method = "post";
+  let val;
+  if (id != "password") {
+    val = content.innerText;
+  }
   let contentParent = content.parentNode;
   contentParent.replaceChild(userInput, content);
 
   if (id == "intro") {
     let textInput = document.createElement("textarea");
     textInput.value = val;
-    textInput.name = "introduce";
+    textInput.name = "intro";
     textInput.maxlength = "200";
     textInput.classList.add("textBox");
     userInput.appendChild(textInput);
+  } else if (id == "password") {
+    userInput.action = `/user/${userShortId}/change-password`;
+    setPasswordInput(userInput);
   } else {
     let textInput = document.createElement("input");
     textInput.type = "text";
@@ -64,22 +74,39 @@ function goBackIntro(id) {
   comp.replaceChild(content, userInput);
 }
 
+function goBackPassword(id) {
+  let comp = document.getElementById(id).parentNode.parentNode;
+  let userInput = document.getElementById(`${id}-form`);
+  let content = document.createElement("p");
+  content.classList.add(`comp-content`);
+  content.setAttribute("id", `${id}-content`);
+  comp.replaceChild(content, userInput);
+}
+
 function setPasswordInput(userInput) {
   let currentPasswordTitle = document.createElement("p");
+  currentPasswordTitle.classList.add("comp-password");
   currentPasswordTitle.innerText = "현재 비밀번호";
   let newPasswordTitle = document.createElement("p");
+  newPasswordTitle.classList.add("comp-password");
   newPasswordTitle.innerText = "변경할 비밀번호";
 
   let currentPassword = document.createElement("input");
-  currentPassword.type = "text";
+  currentPassword.type = "password";
+  currentPassword.name = "currentPassword";
+  currentPassword.innerText = "현재 비밀번호";
   currentPassword.classList.add("inputBox");
 
   let newPassword = document.createElement("input");
-  newPassword.type = "text";
+  newPassword.type = "password";
+  newPassword.name = "newPassword";
+  newPassword.innerText = "변경할 비밀번호";
   newPassword.classList.add("inputBox");
 
   let confirmNewPassword = document.createElement("input");
-  confirmNewPassword.type = "text";
+  confirmNewPassword.type = "password";
+  confirmNewPassword.name = "confirmNewPassword";
+  confirmNewPassword.innerText = "변경할 비밀번호 확인";
   confirmNewPassword.classList.add("inputBox");
 
   userInput.appendChild(currentPasswordTitle);
