@@ -1,24 +1,49 @@
-const mongoose = require('mongoose');
+const { Schema } = require("mongoose");
 const shortId = require("./types/short-id");
-
-const challengeSchema = new mongoose.Schema({
+const CommentSchema = new Schema({
+    content: String,
+    author: String,
+  },
+    {
+      timestamps: true,
+});
+const ChallengeSchema = new Schema(
+  {
     shortId,
-    imgUrl: {
-        type:  String,
-        required: true,
+    img: {
+      data: Buffer,
+      contentType: String,
     },
     title: {
-        type:  String,
-        required: true,
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
     },
     category: {
-        type:  String,
-        required: true,
+      type: String,
+      required: true,
+    },
+    startdate: {
+      type: String,
+      required: true,
+    },
+    enddate: {
+      type: String,
+      required: true,
     },
     author: {
-        type:  String,
-        required: true,
-    }
-})
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      index: true,
+    },
+    comments: [CommentSchema],
+  },
+  {
+    timestamps: true,
+  }
+);
 
-module.exports = mongoose.model('challenge', challengeSchema);
+module.exports = ChallengeSchema;
