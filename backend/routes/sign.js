@@ -2,6 +2,8 @@ const { Router } = require("express");
 const asyncHandler = require("../utils/async-handler");
 const { User } = require("../models");
 const hashPassword = require("../utils/hash-password");
+const fs = require("fs");
+const path = require("path");
 const router = Router();
 
 router.get("/", (req, res) => {
@@ -32,7 +34,12 @@ router.post(
 
     //컬렉션 생성용
     const user = new User({
-      img: {},
+      img: {
+        data: fs.readFileSync(
+          path.join(__dirname, "..", "/public/assets/img/img-user-default.png")
+        ),
+        contentType: "image/png",
+      },
       email,
       name: userName,
       password: hashedPassword,

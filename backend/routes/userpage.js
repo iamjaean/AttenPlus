@@ -3,11 +3,12 @@ const asyncHandler = require("../utils/async-handler");
 const { User } = require("../models");
 const hashPassword = require("../utils/hash-password");
 const multer = require("multer");
+const fs = require("fs");
 const path = require("path");
 const router = Router();
 
 const storage = multer.diskStorage({
-  destination: "public/assets/img/uploads",
+  destination: "./public/assets/img/uploads",
   filename: function (req, file, cb) {
     cb(
       null,
@@ -19,16 +20,16 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage: storage,
   limits: { fileSize: 1000000 },
-  fileFilter: function (req, res, cb) {
+  fileFilter: function (req, file, cb) {
     checkFileType(file, cb);
   },
-}).single("profile");
+});
 
 function checkFileType(file, cb) {
   const filetypes = /jpeg|jpg|png|gif/;
-  const extname = filetypes.test(path.extname(file.originalname).toLowerCase);
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
   const mimetype = filetypes.test(file.mimetype);
-  if (extname && extname) {
+  if (extname && mimetype) {
     return cb(null, true);
   } else {
     cb("Error: 이미지 파일이 아닙니다.");
@@ -61,6 +62,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const { shortId } = req.params;
     const author = await User.findOne({ shortId });
+
     const user = req.user;
 
     res.render("userpage", { author, user });
@@ -78,18 +80,31 @@ router.post(
   })
 );
 
-router.post("/:ShortId/upload", (req, res) => {
-  upload(req, res, (err) => {
-    if (err) {
-      const { shortId } = req.params;
-      const author = User.findOne({ shortId });
-      res.render("userpage", { msg: err, author: author, user: author });
-    } else {
-      console.log(req.file);
-      res.send("test");
-    }
-  });
-});
+router.post(
+  "/:shortId/upload",
+  upload.single("image"),
+  asyncHandler(async (req, res) => {
+    const { shortId } = req.params;
+
+    await User.findOneAndUpdate(
+      { shortId },
+      {
+        img: {
+          data: fs.readFileSync(
+            path.join(
+              __dirname,
+              "..",
+              "/public/assets/img/uploads/",
+              req.file.filename
+            )
+          ),
+          contentType: `image/${path.extname(req.file.originalname)}`,
+        },
+      }
+    );
+    res.redirect(`/user/${shortId}`);
+  })
+);
 
 router.post(
   "/:shortId/change-intro",

@@ -12,7 +12,11 @@
     <div id="header"><%- include('header') %></div>
 
     <div class="banner">
-      <img src="/assets/img/run.jpg" alt="프로필 사진" />
+      <img
+        src="data:<%=author.img.contentType%>;base64,
+                     <%=author.img.data.toString('base64')%>"
+        alt="프로필 사진"
+      />
       <h1><%=author.name %>님의 페이지</h1>
     </div>
 
@@ -40,7 +44,12 @@
             <% } %>
           </div>
           <div class="comp-img">
-            <img src="<%=author.img%>" alt="프로필 사진" required />
+            <img
+              src="data:<%=author.img.contentType%>;base64,
+                     <%=author.img.data.toString('base64')%>"
+              alt="프로필 사진"
+              required
+            />
           </div>
           <%= typeof msg != 'undefined' ? msg : ''%>
           <p class="comp-content" id="image-content"></p>

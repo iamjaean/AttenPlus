@@ -80,7 +80,7 @@ function changeProfileImage(id) {
 
   let imgSelect = document.createElement("input");
   imgSelect.type = "file";
-  imgSelect.name = "profile";
+  imgSelect.name = "image";
   imgSelect.classList.add("uploadBox");
   userInput.appendChild(imgSelect);
 
