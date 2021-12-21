@@ -30,13 +30,13 @@ router.post(
     }
 
     //컬렉션 생성용
-    // const user = await User.create({
-    //   img: {},
-    //   email,
-    //   name: userName,
-    //   password: hashedPassword,
-    //   introduce: "",
-    // });
+    const user = new User({
+      img: {},
+      email,
+      name: userName,
+      password: hashedPassword,
+      introduce: "",
+    });
 
     //DB 접근
     user.save((err) => {
