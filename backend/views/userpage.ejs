@@ -29,12 +29,21 @@
         <div class="comp">
           <div class="comp-top">
             <p class="comp-title"><strong>프로필 사진</strong></p>
-            <!-- <button class="update-btn">수정</button> -->
+            <% if(author.shortId === user.shortId){%>
+            <button
+              class="update-btn"
+              id="image"
+              onclick="changeProfileImage(this.id)"
+            >
+              수정
+            </button>
+            <% } %>
           </div>
           <div class="comp-img">
-            <img src="/assets/img/run.jpg" alt="프로필 사진" />
+            <img src="<%=author.img%>" alt="프로필 사진" required />
           </div>
-          <p class="comp-content"></p>
+          <%= typeof msg != 'undefined' ? msg : ''%>
+          <p class="comp-content" id="image-content"></p>
         </div>
         <div class="comp">
           <div class="comp-top">
