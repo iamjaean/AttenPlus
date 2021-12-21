@@ -31,11 +31,9 @@ app.use(getUserFromJWT);
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.use("/", mainRouter);
-// app.use("/users", userRouter);
 app.use("/auth", authRouter);
 app.use("/sign", signRouter);
-app.use("/userpage", userPageRouter);
-app.use("/sign", signRouter);
+app.use("/user", userPageRouter);
 app.use('/create', createRouter);
 app.use('/detail', detailRouter);
 
