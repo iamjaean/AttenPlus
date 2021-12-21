@@ -2,11 +2,12 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const mongoose = require("mongoose");
-const mainRouter = require('./routes/main');
+const mainRouter = require("./routes/main");
 // const userRouter = require("./routes/users");
 const userPageRouter = require("./routes/userpage");
 const authRouter = require("./routes/auth");
 const path = require("path");
+const signRouter = require("./routes/sign");
 const passport = require("passport");
 const cookieParser = require("cookie-parser");
 const getUserFromJWT = require("./middlewares/get-user-from-jwt");
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.use("/", mainRouter);
 // app.use("/users", userRouter);
 app.use("/auth", authRouter);
+app.use("/sign", signRouter);
 app.use("/userpage", userPageRouter);
 
 app.listen(port, () => {

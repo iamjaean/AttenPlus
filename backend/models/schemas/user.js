@@ -4,6 +4,10 @@ const shortId = require("./types/short-id");
 const UserSchema = new Schema(
   {
     shortId,
+    img: {
+      data: Buffer,
+      contentType: String,
+    },
     email: {
       type: String,
       required: true,
@@ -15,6 +19,9 @@ const UserSchema = new Schema(
     password: {
       type: String,
       required: true,
+    },
+    introduce: {
+      type: String,
     },
   },
   {

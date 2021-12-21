@@ -35,7 +35,7 @@ router.get(
   "/kakao/callback",
   passport.authenticate("kakao", { session: false }),
   (req, res, next) => {
-    console.log(req.user);
+    // console.log(req.user);
     setUserToken(res, req.user);
     res.redirect("/");
   }

@@ -17,28 +17,26 @@ router.get("/email", (req, res) => {
 });
 
 //회원가입
-router.get("/join", (req, res) => {
-  res.render("../views/join/email.ejs");
-});
-
 router.post(
   "/join",
   asyncHandler(async (req, res, next) => {
     const { email, userName, password } = req.body;
-    const hashedPassword = hashPassword(password.toString());
+    const hashedPassword = hashPassword(password);
 
-    // //이메일 중복체크
+    //이메일 중복체크
     const checkEmail = await User.findOne({ email });
     if (checkEmail) {
       return res.send("이미 존재하는 이메일 입니다.");
     }
 
-    //모델생성
-    const user = await User.create({
-      email,
-      name: userName,
-      password: hashedPassword,
-    });
+    //컬렉션 생성용
+    // const user = await User.create({
+    //   img: {},
+    //   email,
+    //   name: userName,
+    //   password: hashedPassword,
+    //   introduce: "",
+    // });
 
     //DB 접근
     user.save((err) => {
