@@ -33,17 +33,19 @@ function changeContent(id) {
     textInput.name = "intro";
     textInput.maxlength = "200";
     textInput.classList.add("textBox");
+    userInput.action = `/user/${userShortId}/change-intro`;
     userInput.appendChild(textInput);
   } else if (id == "password") {
     userInput.action = `/user/${userShortId}/change-password`;
     setPasswordInput(userInput);
-  } else {
+  } else if (id == "name") {
     let textInput = document.createElement("input");
     textInput.type = "text";
     textInput.maxlength = "10";
     textInput.value = val;
     textInput.name = "name";
     textInput.classList.add("inputBox");
+    userInput.action = `/user/${userShortId}/change-name`;
     userInput.appendChild(textInput);
   }
 
@@ -54,23 +56,27 @@ function changeContent(id) {
   userInput.appendChild(submitInput);
 }
 
-function goBackName(id) {
+async function goBackName(id) {
   let comp = document.getElementById(id).parentNode.parentNode;
   let userInput = document.getElementById(`${id}-form`);
   let content = document.createElement("p");
   content.classList.add(`comp-content`);
   content.setAttribute("id", `${id}-content`);
-  content.innerHTML = `${userName}`;
+  const response = await fetch(`/user/${userShortId}/userinfo`);
+  const data = await response.json();
+  content.innerText = data.name;
   comp.replaceChild(content, userInput);
 }
 
-function goBackIntro(id) {
+async function goBackIntro(id) {
   let comp = document.getElementById(id).parentNode.parentNode;
   let userInput = document.getElementById(`${id}-form`);
   let content = document.createElement("p");
   content.classList.add(`comp-content`);
   content.setAttribute("id", `${id}-content`);
-  content.innerHTML = `${userIntro}`;
+  const response = await fetch(`/user/${userShortId}/userinfo`);
+  const data = await response.json();
+  content.innerText = data.introduce;
   comp.replaceChild(content, userInput);
 }
 

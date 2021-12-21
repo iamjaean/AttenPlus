@@ -18,6 +18,15 @@ router.get(
 );
 
 router.get(
+  "/:shortId/userinfo",
+  asyncHandler(async (req, res) => {
+    const { shortId } = req.params;
+    const author = await User.findOne({ shortId });
+    res.json(author);
+  })
+);
+
+router.get(
   "/:shortId",
   asyncHandler(async (req, res) => {
     const { shortId } = req.params;
@@ -29,16 +38,23 @@ router.get(
 );
 
 router.post(
-  "/:shortId",
+  "/:shortId/change-name",
   asyncHandler(async (req, res) => {
     const { shortId } = req.params;
-    const { name, intro } = req.body;
+    const { name } = req.body;
+    await User.findOneAndUpdate({ shortId }, { name: name });
 
-    console.log(name);
+    res.redirect(`/user/${shortId}`);
+  })
+);
+
+router.post(
+  "/:shortId/change-intro",
+  asyncHandler(async (req, res) => {
+    const { shortId } = req.params;
+    const { intro } = req.body;
     console.log(intro);
-    await User.findOneAndUpdate({ shortId }, { name: name, introduce: intro });
-    const author = await User.find({ shortId });
-
+    await User.findOneAndUpdate({ shortId }, { introduce: intro });
     res.redirect(`/user/${shortId}`);
   })
 );
