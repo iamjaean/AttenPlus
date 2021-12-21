@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { Challenge } = require("../models");
+const { Challenge ,User, attendanceCheck } = require("../models");
 
 const router = Router();
 
@@ -7,15 +7,24 @@ router.get("/:shortId", async(req, res, next) => {
     const { shortId } = req.params;
     const challenge = await Challenge.findOne({
       shortId,
+    }).populate("author");
+    const user =  await User.findOne({
+      shortId: req.user.shortId,
     });
-    res.render('detailPage_test',{challenge:challenge});
+    const attendance = await attendanceCheck.find({user: user }).populate('user');
+    // const joinflag = 1;
+    // const serchjoinuser = await Challenge.find({joinusers: user}).populate('joinusers');
+    // console.log(serchjoinuser.joinusers)
+      res.render('detailPage_test',{challenge:challenge, attendance: attendance, user:user});
   });
 
 
-
+//댓글 추가
 router.post("/:shortId/comments", async (req, res, next) => {
     const { shortId } = req.params;
     const { content } = req.body;
+    s
+    console.log(req.user);
     try{
       await Challenge.updateOne({shortId}, {
           $push: { comments: {
@@ -29,19 +38,51 @@ router.post("/:shortId/comments", async (req, res, next) => {
     res.redirect(`/detail/${shortId}`);
 });
 
+
+//출석체크
 router.post("/:shortId/attendance", async (req, res, next) => {
     const { shortId } = req.params;
-    const { content } = req.body;
-    try{
-      await Challenge.updateOne({shortId}, {
-          $push: { comments: {
-              content,
-          }},
-      });
+    const user =  await User.findOne({
+      shortId: req.user.shortId,
+    });
+    const challenge = await Challenge.findOne({shortId,});
+    function getTodayDate() {
+      var date = new Date();
+      var year = date.getFullYear();
+      var month = ("0" + (1 + date.getMonth())).slice(-2);
+      var day = ("0" + date.getDate()).slice(-2);
+      return year + "-" + month + "-" + day;
     }
-    catch(err){
-      next(err)
+    const attendanceDate = getTodayDate();
+    try {
+      await attendanceCheck.create(
+        {
+          user,
+          challenge,
+          attendanceDate,
+        }
+      );
+      res.redirect(`/detail/${shortId}`);
+    } catch (err) {
+      next(err);
     }
-    res.redirect(`/detail/${shortId}`);
+});
+
+//참석하기
+router.post("/:shortId/join", async (req, res, next) => {
+  const { shortId } = req.params;
+  const user =  await User.findOne({
+    shortId: req.user.shortId,
+  });
+  try{
+    await Challenge.updateOne({shortId}, {
+        $push: { joinusers: user },
+    });
+  }
+  catch(err){
+    next(err)
+  }
+  
+  res.redirect(`/detail/${shortId}`);
 });
 module.exports = router;
