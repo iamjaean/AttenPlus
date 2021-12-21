@@ -10,7 +10,6 @@ const signRouter = require("./routes/sign");
 const createRouter = require('./routes/create');
 const detailRouter = require('./routes/detail');
 const path = require("path");
-const signRouter = require("./routes/sign");
 const passport = require("passport");
 const cookieParser = require("cookie-parser");
 const getUserFromJWT = require("./middlewares/get-user-from-jwt");
