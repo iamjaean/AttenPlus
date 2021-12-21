@@ -10,7 +10,6 @@
 <body>
     <h1>Challenge check</h1>
     <div>
-        
         <div>
             <div>
                 <img src="data:challenge/<%=challenge.img.contentType%>;base64,
@@ -18,13 +17,44 @@
                 <div>
                     <h5>챌린지 명 : <%= challenge.title %></h5>
                     <h5> 댓글  </h5>
-                    <p>작성자: <%= challenge.comments[0].author %> 내용:<%= challenge.comments[0].content %></p> 
-  
+                    <p>접속자: <%= user.name %> </p> 
+                    <p>작성자: <%= challenge.author.name %> </p> 
+                    <p>참가하는 유저 수 : <%= challenge.joinusers.length %> </p>
+                    <p>출석: <%= attendance %> </p>
+                    
                 </div>
             </div>
         </div>
     </div>
-    
+    <div>
+        
+        <form
+            method="post"
+            enctype="multipart/form-data"
+            action= <%= challenge.shortId+"/join" %>
+        >
+        <input
+            type="submit"
+            id="create_submit"
+            name="create_submit"
+            value="참석하기"
+          />
+        </form>
+
+        <form
+            method="post"
+            enctype="multipart/form-data"
+            action= <%= challenge.shortId+"/attendance" %>
+        >
+        <input
+            type="submit"
+            id="create_submit"
+            name="attendancedate"
+            value= "출석check"
+          />
+        </form>
+    </div>
+    <div></div>
 </body>
   
 </html>
