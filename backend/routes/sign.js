@@ -16,21 +16,13 @@ router.get("/email", (req, res) => {
   res.render("sign/email");
 });
 
-//회원가입
-router.get("/join", (req, res) => {
-  res.render("../views/join/email.ejs");
-});
-
 router.post(
   "/join",
   asyncHandler(async (req, res, next) => {
     const { email, userName, password } = req.body;
-<<<<<<< HEAD:backend/routes/sign.js
+
     console.log(req.body);
     const hashedPassword = hashPassword(password);
-=======
-    const hashedPassword = hashPassword(password);
->>>>>>> feature/userPage:backend/routes/users.js
 
     // //이메일 중복체크
     const checkEmail = await User.findOne({ email });
