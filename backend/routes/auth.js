@@ -4,8 +4,6 @@ const { setUserToken } = require("../utils/jwt");
 
 const router = Router();
 
-// router.get("/",)
-
 router.post(
   "/",
   passport.authenticate("local", { session: false }),
@@ -24,7 +22,7 @@ router.get(
   "/google/callback",
   passport.authenticate("google", { session: false }),
   (req, res, next) => {
-    // setUserToken(res, req.user);
+    setUserToken(res, req.user);
     res.redirect("/");
   }
 );
