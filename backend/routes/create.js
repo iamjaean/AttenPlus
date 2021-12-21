@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { Challenge } = require("../models");
+const { Challenge, User, JoinChallenge, CreateChallenge, attendenceCheck } = require("../models");
 const multer = require("multer");
 var fs = require("fs");
 var path = require("path");
@@ -71,11 +71,11 @@ router.post("/", upload.single("uploaded_file"), async (req, res, next) => {
 
 router.get("/:shortId", async (req, res, next) => {
   const { shortId } = req.params;
-  const challenge = await Challenge.findOne({
+  const post = await Challenge.findOne({
     shortId,
   });
 
-  res.send(challenge);
+  res.send(post);
 });
 
 router.post("/:shortId", async (req, res, next) => {
