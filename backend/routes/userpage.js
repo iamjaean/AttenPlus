@@ -2,8 +2,38 @@ const { Router, response } = require("express");
 const asyncHandler = require("../utils/async-handler");
 const { User } = require("../models");
 const hashPassword = require("../utils/hash-password");
-const ejs = require("ejs");
+const multer = require("multer");
+const path = require("path");
 const router = Router();
+
+const storage = multer.diskStorage({
+  destination: "public/assets/img/uploads",
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 1000000 },
+  fileFilter: function (req, res, cb) {
+    checkFileType(file, cb);
+  },
+}).single("profile");
+
+function checkFileType(file, cb) {
+  const filetypes = /jpeg|jpg|png|gif/;
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase);
+  const mimetype = filetypes.test(file.mimetype);
+  if (extname && extname) {
+    return cb(null, true);
+  } else {
+    cb("Error: 이미지 파일이 아닙니다.");
+  }
+}
 
 router.get(
   "/",
@@ -33,7 +63,7 @@ router.get(
     const author = await User.findOne({ shortId });
     const user = req.user;
 
-    res.render("../views/userpage", { author, user });
+    res.render("userpage", { author, user });
   })
 );
 
@@ -48,12 +78,24 @@ router.post(
   })
 );
 
+router.post("/:ShortId/upload", (req, res) => {
+  upload(req, res, (err) => {
+    if (err) {
+      const { shortId } = req.params;
+      const author = User.findOne({ shortId });
+      res.render("userpage", { msg: err, author: author, user: author });
+    } else {
+      console.log(req.file);
+      res.send("test");
+    }
+  });
+});
+
 router.post(
   "/:shortId/change-intro",
   asyncHandler(async (req, res) => {
     const { shortId } = req.params;
     const { intro } = req.body;
-    console.log(intro);
     await User.findOneAndUpdate({ shortId }, { introduce: intro });
     res.redirect(`/user/${shortId}`);
   })
