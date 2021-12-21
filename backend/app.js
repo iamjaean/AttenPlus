@@ -6,6 +6,7 @@ const mainRouter = require("./routes/main");
 // const userRouter = require("./routes/users");
 const userPageRouter = require("./routes/userpage");
 const authRouter = require("./routes/auth");
+const signRouter = require("./routes/sign");
 const path = require("path");
 const signRouter = require("./routes/sign");
 const passport = require("passport");
@@ -32,6 +33,7 @@ app.use("/", mainRouter);
 app.use("/auth", authRouter);
 app.use("/sign", signRouter);
 app.use("/userpage", userPageRouter);
+app.use("/sign", signRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
