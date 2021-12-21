@@ -16,15 +16,12 @@
                      <%=challenge.img.data.toString('base64')%>">
                 <div>
                     <h5>챌린지 명 : <%= challenge.title %></h5>
-                    <h5> 댓글: <%= challenge.comments %> </h5>
+                    <h5> 댓글  </h5>
                     <p>접속자: <%= user.name %> </p> 
                     <p>작성자: <%= challenge.author.name %> </p> 
                     <p>참가하는 유저 수 : <%= challenge.joinusers.length %> </p>
-                    <p>출석:  <%=attendance.map(v=>v.attendanceDate)%>
-                         </p>
-       
+                    <p>출석: <%= attendance %> </p>
                     
-
                 </div>
             </div>
         </div>
