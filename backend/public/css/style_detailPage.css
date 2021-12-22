@@ -223,6 +223,7 @@
   line-height: 28px;
 }
 .createCard {
+  margin-right: 36px;
   float: right;
   width: 334.14px;
   height: 164.12px;
@@ -309,7 +310,7 @@
   height: 432.75px;
   width: 334.14px;
   overflow-y: scroll;
-  margin: 0 22.68px 0 0;
+  margin: 0 21.68px 0 0;
 }
 .reviewListBoard::-webkit-scrollbar {
   display: none;
@@ -347,20 +348,4 @@
 }
 .flatpickr-day.today {
   border-radius: 0px;
-}
-.registerForbiddenButton {
-  margin-top: 81px;
-  width: 332px;
-  height: 58px;
-  background: #acacac;
-  border-radius: 7px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 23px;
-  color: #ffffff;
-  border: 0px;
-  padding: 0 0 0 0;
-  pointer-events: none;
 }
