@@ -62,8 +62,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const { shortId } = req.params;
     const author = await User.findOne({ shortId });
-
-    const user = req.user;
+    const user = await User.findOne({ shortId: req.user.shortId });
 
     res.render("userpage", { author, user });
   })
