@@ -20,7 +20,7 @@ router.get(
 router.get(
   "/:shortId/create",
   asyncHandler(async (req, res) => {
-    console.log(req.user);
+  
     const { shortId } = req.params;
     const author = await User.findOne({
       shortId: req.user.shortId,
@@ -58,21 +58,5 @@ router.get(
     });
   })
 );
-
-// router.get(
-//   "/:shortId",
-//   asyncHandler(async (req, res) => {
-//     console.log(req.user);
-//     const { shortId } = req.params;
-//     const author = await User.findOne({
-//       shortId: req.user.shortId,
-//     });
-//     const createchallenges = Challenge.find({ author: author}).sort({createdAt: -1}).populate('author');
-//     const joinchallenges = Challenge.find({ joinusers: author}).sort({createdAt: -1}).populate('joinusers');
-//     // res.render('userPage_test', { createchallenges: createchallenges, joinchallenges:joinchallenges });
-//     res.render('userPage_test', { createchallenges: createchallenges });
-//   })
-// );
-
 
 module.exports = router;
