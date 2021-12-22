@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const port = 80;
 const mongoose = require("mongoose");
 const mainRouter = require("./routes/main");
 const userPageRouter = require("./routes/userpage");
@@ -20,7 +19,7 @@ mongoose.connect(
 mongoose.connection.on("connected", () => {
   console.log("MongoDB Connected");
 });
-
+app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 
 app.use(express.json());
@@ -37,6 +36,4 @@ app.use("/user", userPageRouter);
 app.use("/create", createRouter);
 app.use("/detail", detailRouter);
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+module.exports = app;
