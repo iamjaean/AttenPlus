@@ -125,11 +125,15 @@ router.post(
 
     if (currentPassword) {
       if (hashPassword(currentPassword) !== author.password) {
-        console.log("입력하신 비밀번호가 일치하지 않습니다");
+        res.send(
+          "<script>alert('입력하신 비밀번호가 일치하지 않습니다.');history.back();</script>"
+        );
         res.redirect(`/user/${shortId}`);
         return;
       } else if (newPassword !== confirmNewPassword) {
-        console.log("변경할 비밀번호 확인이 일치하지 않습니다.");
+        res.send(
+          "<script>alert('변경할 비밀번호 확인이 일치하지 않습니다.');history.back();</script>"
+        );
         res.redirect(`/user/${shortId}`);
         return;
       }
@@ -142,6 +146,9 @@ router.post(
       }
     );
 
+    res.send(
+      "<script>alert('비밀번호가 변경되었습니다.');history.back();</script>"
+    );
     res.redirect(`/user/${shortId}`);
   })
 );
