@@ -11,8 +11,13 @@ router.get("/:shortId", async(req, res, next) => {
     const user =  await User.findOne({
       shortId: req.user.shortId,
     });
-    const attendance = await attendanceCheck.find({user: user }).populate('user').populate('challenge');
-      res.render('detailPage_test',{ challenge:challenge, attendance: attendance, user:user });
+    const attendance = await attendanceCheck.find({
+      $and: [
+        {user: user },
+        { challenge: challenge}
+     ]
+    }).populate('user').populate('challenge');
+      res.render('detailPage_test',{ challenge: challenge, attendance: attendance, user:user });
   });
 
 
