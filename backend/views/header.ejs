@@ -1,57 +1,61 @@
 <header class="global-header">
-    <div class="logo">
-        <a href="/">
-            <h1>작심삼일</h1>
-        </a>
+  <div class="logo">
+    <a href="/">
+      <h1>작심삼일</h1>
+    </a>
+  </div>
+
+  <div class="header-right">
+    <a href="/createPage" class="upload-btn"> 챌린지 올리기 </a>
+    <%if(!user){%>
+    <!-- NOTE: 로그인 안 한 경우 -->
+    <a class="login-btn" href="/sign">
+      <i class="icon-profile"></i>
+      <span class="login-btn-text">로그인/회원가입</span>
+    </a>
+
+    <%}else{%>
+    <!-- NOTE: 로그인 한 경우 -->
+    <button type="button" class="user-btn" onclick="toggleMenuList()">
+      <div class="user-btn-wrapper">
+        <img
+          src="data:<%=user.img.contentType%>;base64,
+        <%=user.img.data.toString('base64')%>"
+          alt=""
+          class="user-profile-img"
+        />
+        <span class="user-btn-text"><%=user.name%></span>
+      </div>
+    </button>
+
+    <div class="user-menu-modal">
+      <ol class="user-menu-list">
+        <a href="/user"><li class="user-menu-item">프로필</li></a>
+        <li class="user-menu-item divider">
+          <div></div>
+        </li>
+        <a href="/sign/logout"><li class="user-menu-item">로그아웃</li></a>
+      </ol>
     </div>
-
-    <div class="header-right">
-        <a href="/createPage" class="upload-btn">
-            챌린지 올리기
-        </a>
-        
-        <!-- NOTE: 로그인 안 한 경우 -->
-        <!-- <a class="login-btn" href="/sign">
-        <i class="icon-profile"></i>
-        <span class="login-btn-text">로그인/회원가입</span>
-        </a> -->
-
-
-        <!-- NOTE: 로그인 한 경우 -->
-        <button type="button" class="user-btn" onclick="toggleMenuList()">
-            <div class="user-btn-wrapper">
-                <img src="./assets/img/img-user-default.png" alt="" class="user-profile-img">
-                <span class="user-btn-text">aslfa</span>
-            </div>
-        </button>
-
-        <div class="user-menu-modal">
-            <ol class="user-menu-list">
-                <li class="user-menu-item"><a href="/userpage">프로필</a></li>
-                <li class="user-menu-item divider">
-                    <div></div>
-                </li>
-                <li class="user-menu-item"><a href="#">로그아웃</a></li>
-            </ol>
-        </div>
-    </div>
+    <%}%>
+  </div>
 </header>
 <nav class="global-nav">
-    <div class="nav-wrapper">
-        <ul class="nav-list">
-            <li class="nav-item"><a href="#">
-                <i class="icon-home"></i>홈
-            </a></li>
-            <li class="nav-item"><a href="#">운동</a></li>
-            <li class="nav-item"><a href="#">정서</a></li>
-            <li class="nav-item"><a href="#">생활</a></li>
-            <li class="nav-item"><a href="#">역량</a></li>
-            <li class="nav-item"><a href="#">취미</a></li>
-        </ul>
-        <button type="button" class="search-wrapper">
-            <input type="text" placeholder="검색어를 입력해주세요.">
-            <i class="icon-search"></i>
-        </button>
-    </div>
-    <div class="line"></div>
+  <div class="nav-wrapper">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="#"> <i class="icon-home"></i>홈 </a>
+      </li>
+      <li class="nav-item"><a href="#">운동</a></li>
+      <li class="nav-item"><a href="#">정서</a></li>
+      <li class="nav-item"><a href="#">생활</a></li>
+      <li class="nav-item"><a href="#">역량</a></li>
+      <li class="nav-item"><a href="#">취미</a></li>
+    </ul>
+    <button type="button" class="search-wrapper">
+      <input type="text" placeholder="검색어를 입력해주세요." />
+      <i class="icon-search"></i>
+    </button>
+  </div>
+  <div class="line"></div>
 </nav>
