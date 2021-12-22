@@ -163,7 +163,6 @@ router.get(
     });
     const challenges = Challenge.find({ author: author })
       .sort({ updatedAt: -1 })
-      .populate("author")
       .skip((_page - 1) * _limit)
       .limit(_limit);
     challenges.find({}, (err, challenges) => {
@@ -186,9 +185,8 @@ router.get(
     const user = await User.findOne({
       shortId: req.user.shortId,
     });
-    const challenges = Challenge.find({ joinusers: user })
+    const challenges = Challenge.find({ joinusers: { $in: user } })
       .sort({ updatedAt: -1 })
-      .populate("joinusers")
       .skip((_page - 1) * _limit)
       .limit(_limit);
     challenges.find({}, (err, challenges) => {
