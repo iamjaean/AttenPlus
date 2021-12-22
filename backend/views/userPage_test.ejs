@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Challenge upload</title>
+    <title>create Challenge</title>
 </head>
   
 <body>
-    <h1>Challenge upload</h1>
+    <h1>create Challenge </h1>
     <div>
         <% challenges.forEach(function(challenge) { %>
         <div>
@@ -17,16 +17,15 @@
                      <%=challenge.img.data.toString('base64')%>">
                 <div>
                     <h5>챌린지 명 : <%= challenge.title %></h5>
-                    <h5>작성자 명 : <%= challenge.author %></h5>
   
                 </div>
             </div>
         </div>
         <% }) %>
     </div>
-    <div>
-        <button type="button" onclick="location.href='/create'">챌린지생성</button>
-    </div>   
+    
+    
 </body>
   
 </html>
+
