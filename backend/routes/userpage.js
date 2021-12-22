@@ -1,6 +1,6 @@
 const { Router, response } = require("express");
 const asyncHandler = require("../utils/async-handler");
-const { User } = require("../models");
+const { Challenge, User } = require("../models");
 const hashPassword = require("../utils/hash-password");
 const multer = require("multer");
 const fs = require("fs");
@@ -53,7 +53,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const { shortId } = req.params;
     const author = await User.findOne({ shortId });
-    res.json(author);
+    res.json({ name: author.name, introduce: author.introduce });
   })
 );
 
@@ -149,6 +149,56 @@ router.post(
       "<script>alert('비밀번호가 변경되었습니다.');history.back();</script>"
     );
     res.redirect(`/user/${shortId}`);
+  })
+);
+
+router.get(
+  "/:shortId/created",
+  asyncHandler(async (req, res) => {
+    const _page = req.query._page;
+    const _limit = req.query._limit;
+    const { shortId } = req.params;
+    const author = await User.findOne({
+      shortId: req.user.shortId,
+    });
+    const challenges = Challenge.find({ author: author })
+      .sort({ updatedAt: -1 })
+      .populate("author")
+      .skip((_page - 1) * _limit)
+      .limit(_limit);
+    challenges.find({}, (err, challenges) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send("An error occurred", err);
+      } else {
+        res.json(challenges);
+      }
+    });
+  })
+);
+
+router.get(
+  "/:shortId/joined",
+  asyncHandler(async (req, res) => {
+    const _page = req.query._page;
+    const _limit = req.query._limit;
+    const { shortId } = req.params;
+    const user = await User.findOne({
+      shortId: req.user.shortId,
+    });
+    const challenges = Challenge.find({ joinusers: user })
+      .sort({ updatedAt: -1 })
+      .populate("joinusers")
+      .skip((_page - 1) * _limit)
+      .limit(_limit);
+    challenges.find({}, (err, challenges) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send("An error occurred", err);
+      } else {
+        res.json(challenges);
+      }
+    });
   })
 );
 
