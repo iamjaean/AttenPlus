@@ -3,19 +3,16 @@ const { Challenge ,User, attendanceCheck } = require("../models");
 
 const router = Router();
 
-router.get("/:shortId", async(req, res, next) => {
-    const { shortId } = req.params;
+router.get("/:shortId", async(req, res, next) => {  
+  const { shortId } = req.params;
     const challenge = await Challenge.findOne({
       shortId,
     }).populate("author");
     const user =  await User.findOne({
       shortId: req.user.shortId,
     });
-    const attendance = await attendanceCheck.find({user: user }).populate('user');
-    // const joinflag = 1;
-    // const serchjoinuser = await Challenge.find({joinusers: user}).populate('joinusers');
-    // console.log(serchjoinuser.joinusers)
-      res.render('detailPage_test',{challenge:challenge, attendance: attendance, user:user});
+    const attendance = await attendanceCheck.find({user: user }).populate('user').populate('challenge');
+      res.render('detailPage_test',{ challenge:challenge, attendance: attendance, user:user });
   });
 
 
@@ -23,8 +20,7 @@ router.get("/:shortId", async(req, res, next) => {
 router.post("/:shortId/comments", async (req, res, next) => {
     const { shortId } = req.params;
     const { content } = req.body;
-    s
-    console.log(req.user);
+    
     try{
       await Challenge.updateOne({shortId}, {
           $push: { comments: {
