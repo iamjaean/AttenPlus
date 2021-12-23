@@ -7,39 +7,13 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="/css/email.css" />
     <script src="/js/email.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <script src="/js/main.js"></script>
 </head>
 <body>
     <%-include('../header.ejs') %>
 
-    <div class="container">
-      <div class="user_login_wrapper">
-        <h1>이메일로 가입하기</h1>
-        <form action="/sign/join" method="post">
-          <div class="login_form_wrapper">
-            <div class="social_login_wrapper">
-              <div class="formLabel">이름</div>
-              <span class="input_wrapper">
-                <input
-                  type="text"
-                  name="userName"
-                  id="userName"
-                  required
-                  placeholder="사용하실 이름을 입력해주세요."
-                />
-              </span>
-            </div>
-            <div class="social_login_wrapper">
-              <div class="formLabel">이메일 주소</div>
-              <span class="input_wrapper">
-                <input
-                  type="text"
-                  name="email"
-                  id="userEmail"
-                  required
-                  placeholder="이메일 주소를 입력해주세요."
-                />
-              </span>
-            </div>
+    <div class="login_container">
 
         <div class="user_login_wrapper">
             <h1>이메일로 가입하기</h1>
