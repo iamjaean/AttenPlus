@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 1000000 },
+  limits: { fileSize: 10000000 },
   fileFilter: function (req, file, cb) {
     checkFileType(file, cb);
   },
@@ -101,6 +101,11 @@ router.post(
   upload.single("image"),
   asyncHandler(async (req, res) => {
     const { shortId } = req.params;
+
+    if (typeof req.file == "undefined") {
+      res.redirect(`/user/${shortId}`);
+      return;
+    }
 
     await User.findOneAndUpdate(
       { shortId },

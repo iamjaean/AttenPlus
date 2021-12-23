@@ -108,9 +108,6 @@ async function getCreatedChallenges() {
   const response = await fetch(
     `http://localhost:3000/user/${authorShortId}/created?_limit=${limit}&_page=${pageCreated}`
   );
-
-  console.log(limit);
-  console.log(pageCreated);
   const data = await response.json();
   return data;
 }

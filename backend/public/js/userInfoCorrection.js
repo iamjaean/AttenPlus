@@ -85,8 +85,25 @@ function changeProfileImage(id) {
   let imgSelect = document.createElement("input");
   imgSelect.type = "file";
   imgSelect.name = "image";
-  imgSelect.classList.add("uploadBox");
-  userInput.appendChild(imgSelect);
+  imgSelect.style.display = "none";
+
+  let imgName = document.createElement("input");
+  imgName.classList.add("inputBox2");
+  imgName.placeholder = "파일 이름";
+  userInput.appendChild(imgName);
+
+  let imgLabel = document.createElement("label");
+  imgLabel.innerText = "파일 업로드";
+  imgLabel.appendChild(imgSelect);
+  imgLabel.classList.add("uploadBox");
+
+  userInput.appendChild(imgLabel);
+
+  imgSelect.addEventListener("change", (e) => {
+    e.preventDefault();
+    const file = e.target.files[0];
+    imgName.value = file.name;
+  });
 
   let submitInput = document.createElement("input");
   submitInput.type = "submit";
