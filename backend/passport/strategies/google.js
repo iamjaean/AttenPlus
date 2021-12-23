@@ -6,7 +6,7 @@ require("dotenv").config();
 const config = {
   clientID: process.env.GOOGLE_clientID,
   clientSecret: process.env.GOOGLE_secret,
-  callbackURL: "/auth/google/callback",
+  callbackURL: process.env.GOOGLE_CALLBACK,
 };
 
 async function findOrCreateUser({ name, email }) {
