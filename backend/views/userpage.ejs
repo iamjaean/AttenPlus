@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/userpage.css" />
+    <link rel="stylesheet" href="/css/loader.css" />
     <link rel="stylesheet" href="/css/main.css" />
     <title>My Page</title>
   </head>
@@ -12,7 +13,11 @@
     <div id="header"><%- include('header') %></div>
 
     <div class="banner">
-      <img src="/assets/img/run.jpg" alt="프로필 사진" />
+      <img
+        src="data:<%=author.img.contentType%>;base64,
+                     <%=author.img.data.toString('base64')%>"
+        alt="프로필 사진"
+      />
       <h1><%=author.name %>님의 페이지</h1>
     </div>
 
@@ -29,12 +34,26 @@
         <div class="comp">
           <div class="comp-top">
             <p class="comp-title"><strong>프로필 사진</strong></p>
-            <!-- <button class="update-btn">수정</button> -->
+            <% if(author.shortId === user.shortId){%>
+            <button
+              class="update-btn"
+              id="image"
+              onclick="changeProfileImage(this.id)"
+            >
+              수정
+            </button>
+            <% } %>
           </div>
           <div class="comp-img">
-            <img src="/assets/img/run.jpg" alt="프로필 사진" />
+            <img
+              src="data:<%=author.img.contentType%>;base64,
+                     <%=author.img.data.toString('base64')%>"
+              alt="프로필 사진"
+              required
+            />
           </div>
-          <p class="comp-content"></p>
+          <%= typeof msg != 'undefined' ? msg : ''%>
+          <p class="comp-content" id="image-content"></p>
         </div>
         <div class="comp">
           <div class="comp-top">
@@ -64,7 +83,7 @@
             </button>
             <% } %>
           </div>
-          <p class="comp-content" id="intro-content">자기소개를 넣어주세요.</p>
+          <p class="comp-content" id="intro-content"><%=author.introduce%></p>
         </div>
         <div class="comp">
           <div class="comp-top">
@@ -72,12 +91,27 @@
           </div>
           <p class="comp-content" id="website-content"><%=author.email%></p>
         </div>
+        <% if(author.shortId === user.shortId){%>
         <div class="comp">
+          <div class="comp-top">
+            <p class="comp-title"><strong>비밀번호</strong></p>
+            <button
+              class="update-btn"
+              id="password"
+              onclick="changeContent(this.id)"
+            >
+              수정
+            </button>
+          </div>
+          <p class="comp-content" id="password-content"></p>
+        </div>
+        <% } %>
+        <!-- <div class="comp">
           <div class="comp-top">
             <p class="comp-title"><strong>달성한 업적</strong></p>
           </div>
           <p class="comp-content">내용</p>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -89,8 +123,11 @@
       <div class="createdChallenge card-wrapper"></div>
     </div>
 
+    <div id="loader-wrapper"></div>
+
     <div id="footer"><%- include('footer') %></div>
     <script>
+      const authorShortId = "<%= author.shortId%>";
       const userShortId = "<%= user.shortId%>";
       const userName = "<%= user.name%>";
       const userIntro = "<%= user.intro%>";

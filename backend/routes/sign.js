@@ -45,7 +45,12 @@ router.post(
 
     //컬렉션 생성용
     const user = new User({
-      img: {},
+      img: {
+        data: fs.readFileSync(
+          path.join(__dirname, "..", "/public/assets/img/img-user-default.png")
+        ),
+        contentType: "image/png",
+      },
       email,
       name: userName,
       password: hashedPassword,
