@@ -19,7 +19,11 @@ router.get("/:shortId", async (req, res, next) => {
     })
     .populate("user")
     .populate("challenge");
-  res.render("detailPage", { challenge: challenge, attendance: attendance, user: user });
+  res.render("detailPage", {
+    challenge: challenge,
+    attendance: attendance,
+    user: user,
+  });
 });
 
 router.post("/:shortId/comments", async (req, res, next) => {
@@ -78,7 +82,7 @@ router.post("/:shortId/attendance", async (req, res, next) => {
   const challenge = await Challenge.findOne({ shortId });
   function getTodayDate() {
     var date = new Date();
-    s;
+
     var year = date.getFullYear();
     var month = ("0" + (1 + date.getMonth())).slice(-2);
     var day = ("0" + date.getDate()).slice(-2);
