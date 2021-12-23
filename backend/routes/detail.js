@@ -19,7 +19,7 @@ router.get("/:shortId", async (req, res, next) => {
     })
     .populate("user")
     .populate("challenge");
-  res.render("detailPage_test", { challenge: challenge, attendance: attendance, user: user });
+  res.render("detailPage", { challenge: challenge, attendance: attendance, user: user });
 });
 
 router.post("/:shortId/comments", async (req, res, next) => {
