@@ -16,12 +16,11 @@
                      <%=challenge.img.data.toString('base64')%>">
                 <div>
                     <h5>챌린지 명 : <%= challenge.title %></h5>
-                    <h5> 댓글: <%= challenge.comments %> </h5>
                     <p>접속자: <%= user.name %> </p> 
                     <p>작성자: <%= challenge.author.name %> </p> 
                     <p>참가하는 유저 수 : <%= challenge.joinusers.length %> </p>
                     <p>출석: <%= attendance %> </p>
-                    
+                    <h5> 댓글 : <%= challenge.comments %> </h5>
                 </div>
             </div>
         </div>
@@ -51,6 +50,30 @@
             id="create_submit"
             name="attendancedate"
             value= "출석check"
+          />
+        </form>
+        <form
+            method="post"
+            action= <%= challenge.shortId+"/comments" %>
+        >
+        <textarea name="content" ></textarea>
+        <input
+            type="submit"
+            id="comment_submit"
+            name="submit"
+            value="댓글"
+          />
+        </form>
+        <form
+            method="post"
+            action= <%= challenge.shortId+"/comments/edit" %>
+        >
+        <textarea name="content" ></textarea>
+        <input
+            type="submit"
+            id="comment_update_submit"
+            name="submit"
+            value="댓글"
           />
         </form>
     </div>
