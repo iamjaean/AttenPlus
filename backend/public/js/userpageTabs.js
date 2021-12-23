@@ -50,53 +50,19 @@ tabs.forEach((tab) => {
 async function getJoinedChallenges() {
   pageJoined++;
   const response = await fetch(
-    `http://localhost:3000/user/${authorShortId}/joined?_limit=${limit}&_page=${pageJoined}`
+    `http://elice-kdt-sw-1st-vm04.koreacentral.cloudapp.azure.com/user/${authorShortId}/joined?_limit=${limit}&_page=${pageJoined}`
   );
 
   const data = await response.json();
   return data;
 }
 
-// 이미지 렌더링을 위한 helper function
-
-function Uint8ToString(u8array) {
-  var unitLength = 0x8000; // 16 bit을 unit length로 설정
-  var c = [];
-  // uint8array를 unitLength의 크기로 잘라 string으로 변환한뒤 합쳐준다.
-  for (var i = 0; i < u8array.length; i += unitLength) {
-    c.push(
-      String.fromCharCode.apply(null, u8array.subarray(i, i + unitLength))
-    );
-  }
-  return c.join("");
-}
-
 // 참여한 챌린지들을 페이지에 렌더
 
 async function showJoinedChallenges() {
   const challenges = await getJoinedChallenges();
-
   challenges.forEach((challenge) => {
-    const imgBuffer = new Uint8Array(challenge.img.data.data);
-    const base64String = window.btoa(Uint8ToString(imgBuffer));
-    joinedChallenges.innerHTML += `
-                    <article class="card">
-                      <div class="user-img-wrapper">
-                        <a href="">
-                            <img
-              src="data:image/${challenge.img.contentType};base64,${base64String}"
-              alt="참여한 챌린지"/>
-                        </a>
-                      </div>
-                      <div>
-                        <div class="detail-info">
-                                <p class="challenge-category">${challenge.category}</p>
-                                <p class="challenge-maker">${challenge.author.name}</p>
-                        </div>
-                        <a href="" class="challenge-title">${challenge.title}</a>
-                      </div>
-                    </article>
-    `;
+    joinedChallenges.innerHTML += challengeHTML(challenge);
   });
   wrapper.innerHTML = "";
 }
@@ -106,7 +72,7 @@ async function showJoinedChallenges() {
 async function getCreatedChallenges() {
   pageCreated++;
   const response = await fetch(
-    `http://localhost:3000/user/${authorShortId}/created?_limit=${limit}&_page=${pageCreated}`
+    `http://elice-kdt-sw-1st-vm04.koreacentral.cloudapp.azure.com/user/${authorShortId}/created?_limit=${limit}&_page=${pageCreated}`
   );
   const data = await response.json();
   return data;
@@ -117,13 +83,19 @@ async function getCreatedChallenges() {
 async function showCreatedChallenges() {
   const challenges = await getCreatedChallenges();
   challenges.forEach((challenge) => {
-    createdChallenges.innerHTML += `
+    createdChallenges.innerHTML += challengeHTML(challenge);
+  });
+  wrapper.innerHTML = "";
+}
+
+// challenge에 따른 HTML 반환
+
+function challengeHTML(challenge) {
+  return `
                     <article class="card">
                       <div class="user-img-wrapper">
-                        <a href="">
-                            <img
-              src="data:image/${challenge.img.contentType};base64,${challenge.img.data}"
-              alt="생성된 챌린지"/>
+                        <a href="${challenge.url}">
+                            <img src="data:image/${challenge.img.contentType};base64,${challenge.img.data}" alt="생성된 챌린지"/>
                         </a>
                       </div>
                       <div>
@@ -131,12 +103,10 @@ async function showCreatedChallenges() {
                                 <p class="challenge-category">${challenge.category}</p>
                                 <p class="challenge-maker">${challenge.name}</p>
                         </div>
-                        <a href="" class="challenge-title">${challenge.title}</a>
+                        <a href="${challenge.url}" class="challenge-title">${challenge.title}</a>
                       </div>
                     </article>
     `;
-  });
-  wrapper.innerHTML = "";
 }
 
 // infinite scroll 기능구현을 위한 eventlistener

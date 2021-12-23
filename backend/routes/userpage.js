@@ -202,9 +202,9 @@ router.get(
         const createdChallenges = [];
 
         challenges.forEach((challenge) => {
-          var b64 = Buffer.from(challenge.img.data).toString("base64");
-
-          createdChallenge = {
+          let b64 = Buffer.from(challenge.img.data).toString("base64");
+          let challengeUrl = `http://elice-kdt-sw-1st-vm04.koreacentral.cloudapp.azure.com/detail/${challenge.shortId}`;
+          const createdChallenge = {
             name: challenge.author.name,
             title: challenge.title,
             category: challenge.category,
@@ -212,6 +212,7 @@ router.get(
               contentType: challenge.img.contentType,
               data: b64,
             },
+            url: challengeUrl,
           };
 
           createdChallenges.push(createdChallenge);
@@ -248,9 +249,9 @@ router.get(
         const joinedChallenges = [];
 
         challenges.forEach((challenge) => {
-          var b64 = Buffer.from(challenge.img.data).toString("base64");
-
-          joinedChallenge = {
+          let b64 = Buffer.from(challenge.img.data).toString("base64");
+          let challengeUrl = `http://elice-kdt-sw-1st-vm04.koreacentral.cloudapp.azure.com/detail/${challenge.shortId}`;
+          const joinedChallenge = {
             name: challenge.author.name,
             title: challenge.title,
             category: challenge.category,
@@ -258,6 +259,7 @@ router.get(
               contentType: challenge.img.contentType,
               data: b64,
             },
+            url: challengeUrl,
           };
 
           joinedChallenges.push(joinedChallenge);
