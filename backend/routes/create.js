@@ -1,10 +1,5 @@
 const { Router } = require("express");
-const {
-  Challenge,
-  User,
-  JoinChallenge,
-  attendenceCheck,
-} = require("../models/index");
+const { Challenge, User, JoinChallenge, attendenceCheck } = require("../models/index");
 const multer = require("multer");
 var fs = require("fs");
 var path = require("path");
@@ -22,37 +17,18 @@ const upload = multer({ storage: storage });
 const router = Router();
 
 router.get("/", async (req, res, next) => {
-  
   res.render("createPage");
 });
 
 router.post("/", upload.single("uploaded_file"), async (req, res, next) => {
-  const {
-    title,
-    description,
-    exercise_check,
-    life_check,
-    emotion_check,
-    competency_check,
-    hobby_check,
-    startdate,
-    enddate,
-  } = req.body;
+  const { title, description, exercise_check, life_check, emotion_check, competency_check, hobby_check, startdate, enddate } = req.body;
 
-  const category_arr = [
-    exercise_check,
-    life_check,
-    emotion_check,
-    competency_check,
-    hobby_check,
-  ];
+  const category_arr = [exercise_check, life_check, emotion_check, competency_check, hobby_check];
   const author = await User.findOne({
     shortId: req.user.shortId,
   });
   const img = {
-    data: fs.readFileSync(
-      path.join(__dirname + "/data/uploads/" + req.file.filename)
-    ),
+    data: fs.readFileSync(path.join(__dirname + "/data/uploads/" + req.file.filename)),
     contentType: `image/${path.extname(req.file.originalname)}`,
   };
 

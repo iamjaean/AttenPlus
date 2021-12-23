@@ -14,16 +14,37 @@ const attendButton = document.querySelector(".attendButton");
 const reviewUser = document.querySelector(".reviewUser");
 const reviewIcon = document.querySelector(".reviewIcon");
 const createCardLink = document.querySelector(".createCardLink");
-//서버에서 정보 받아와야함
-const attendDay = ["December 12, 2021", "December 13, 2021", "December 15, 2021", "December 16, 2021"];
-const absentDay = ["December 14, 2021", "December 17, 2021"];
+const detailPageModal = document.querySelector(".detailPageModal");
+// "November 12, 2021", "December 13, 2021", "December 15, 2021" 이러한 형식으로.
 
-//출석 달력 설정
-//로그인된 유저가 해당 챌린지에 참여할 때만 함수를 실행
-//이부분도 ejs로 수정할 것
+const attendDay = [];
+const absentDay = [];
+const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const allPlanDay = findAllDates(thisStartDate, thisEndDate);
+
+function findAllDates(startDate, lastDate) {
+  var result = [];
+  var nowDate = new Date(startDate);
+  while (nowDate <= new Date(lastDate)) {
+    let beforeConvertTime = nowDate.toISOString().split("T")[0];
+    result.push(month[Number(beforeConvertTime.slice(5, 7)) - 1] + " " + String(Number(beforeConvertTime.slice(8))) + ", " + beforeConvertTime.slice(0, 4));
+    if (thisAttendDate.split(",").includes(beforeConvertTime) && getTodayDate() >= beforeConvertTime) {
+      attendDay.push(month[Number(beforeConvertTime.slice(5, 7)) - 1] + " " + String(Number(beforeConvertTime.slice(8))) + ", " + beforeConvertTime.slice(0, 4));
+    } else if (!thisAttendDate.split(",").includes(beforeConvertTime) && getTodayDate() > beforeConvertTime) {
+      absentDay.push(month[Number(beforeConvertTime.slice(5, 7)) - 1] + " " + String(Number(beforeConvertTime.slice(8))) + ", " + beforeConvertTime.slice(0, 4));
+    }
+
+    nowDate.setDate(nowDate.getDate() + 1);
+  }
+  return result;
+}
+
 detailCalendar &&
   detailCalendar.flatpickr({
     onDayCreate: (dObj, dStr, fp, dayElem) => {
+      if (allPlanDay.includes(dayElem.ariaLabel)) {
+        dayElem.style["font-weight"] = "800";
+      }
       if (attendDay.includes(dayElem.ariaLabel)) {
         dayElem.innerHTML += "<span class='attend'></span>";
       } else if (absentDay.includes(dayElem.ariaLabel)) {
@@ -32,20 +53,27 @@ detailCalendar &&
     },
     inline: true,
   });
+if (allPlanDay.length === attendDay.length) {
+  document.querySelector(".registerForbiddenButton").innerHTML = "모든 챌린지를 완료했습니다";
+}
+if (thisEndDate <= getTodayDate() && allPlanDay.length !== attendDay.length && document.querySelector(".registerForbiddenButton")) {
+  document.querySelector(".registerForbiddenButton").innerHTML = "챌린지를 모두 완료하지 못했습니다";
+  document.querySelector(".registerForbiddenButton").style["font-size"] = "18px";
+}
 
-// fetch("../../public/data/mockData.json")
-//   .then((response) => response.json())
-//   .then((data) => {
-//     //filter로 찾아야함
-//     detailPostCategory.innerHTML = `<div>${data[3].category}<div/>`;
-//     detailPostImg.innerHTML = `<img src="${data[3].imgUrl}"/>`;
-//     creatorName.innerHTML = `<span>${data[3].author}<span/>`;
-//     challengeTitle.innerHTML = `<h1>${data[3].author}<h1/>`;
-//     reviewIcon.innerHTML = `<img src="../../public/assets/img/img-user-default.png"/>`;
-//     // 다른 항목들도 나중에 연결
+if (allPlanDay.length === attendDay.length) {
+  detailPageModal.style.display = "block";
+  document.querySelector("body").style.overflow = "hidden";
+}
 
-//     console.log(data);
-//   });
+detailPageModal.addEventListener("click", (event) => {
+  if (event.target === detailPageModal) {
+    detailPageModal.style.display = "none";
+    if (detailPageModal.style.display !== "block") {
+      document.querySelector("body").style.overflow = "auto";
+    }
+  }
+});
 function getTodayDate() {
   var date = new Date();
   var year = date.getFullYear();
@@ -53,38 +81,31 @@ function getTodayDate() {
   var day = ("0" + date.getDate()).slice(-2);
   return year + "-" + month + "-" + day;
 }
-function attendThisChallenge() {
-  fetch(`/detail/${thisPageInfo}/comments`, {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ content: getTodayDate() }),
-  }).then((res) => {
-    if (res.ok) {
-      window.alert("신청되었습니다");
-      window.location.reload();
-    } else {
-      alert("오류가 발생했습니다.");
-    }
-  });
-}
 
-registerButton &&
-  registerButton.addEventListener("click", () => {
-    //요청을 보내 정상적으로 처리되었는지 확인되었을때 alert를 쓰기
-    window.confirm("해당 챌린지에 참여하시겠습니까?") ? attendThisChallenge() : "";
-  });
-attendButton &&
-  attendButton.addEventListener("click", () => {
-    //요청을 보내 정상적으로 처리되었는지 확인되었을때 alert를 쓰기
-    window.confirm("해당 챌린지에 출석하시겠습니까?") ? attendThisChallenge() : "";
-  });
+//이부분 삭제해야 하는데, 버튼 누른 후 성공 여부 확인 방법?
+
 createCardLink.addEventListener("click", (e) => {
   e.preventDefault();
   //요청을 보내 정상적으로 처리되었는지 확인되었을때 alert를 쓰기
-  document.querySelector(".createCard").innerHTML = ` <form class="reviewForm">
-    <textarea cols="40" rows="4" style="resize: none; border: 0px;margin-top:-20px;border-radius: 10px;"></textarea>
-  </form>
-  <div class="addCardLink"><button type="button" onclick="location.href='/create'">후기 쓰기</button></div>`;
+  document.querySelector(".createCard").innerHTML = ` 
+  
+
+
+  <form class="reviewForm"  method="post"
+  action=${challenge.shortId}+"/comments">
+    <textarea cols="40" rows="4" style="resize: none; border: 0px;margin-top:-20px;border-radius: 10px;"  name="content"></textarea>
+    <input
+    type="submit"
+    id="comment_submit"
+    name="submit"
+    value="댓글"
+  />
+  
+  
+    </form>
+  `;
 });
+
+{
+  /* <div class="addCardLink"><button type="button" onclick="location.href='/'">후기 쓰기</button></div> */
+}
