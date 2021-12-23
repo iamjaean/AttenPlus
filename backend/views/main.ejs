@@ -1,85 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/main.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
     <title>작심삼일</title>
-</head>
-<body>
-    <div id="header">
-        <%- include('header') %>
-    </div>
+  </head>
+  <body>
+    <div id="header"><%- include('header') %></div>
 
     <main class="main">
-        <div class="slider">
-            <ol class="slider-list">
-                <li class="slider-item">
-                    <div><img src="https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3269&q=80" alt=""></div>
-                </li>
-                <li class="slider-item">
-                    <div><img src="https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80" alt=""></div>
-                </li>
-                <li class="slider-item">
-                    <div><img src="https://images.unsplash.com/photo-1603455778956-d71832eafa4e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3271&q=80" alt=""></div>
-                </li>
-                <li class="slider-item">
-                    <div><img src="https://images.unsplash.com/photo-1553729784-e91953dec042?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80" alt=""></div>
-                </li>
-            </ol>
-            <div class="slider-btns">
-                <div class="prev slider-btn">
-                    <i class="icon-chevron"></i>
-                </div>
-                <div class="next slider-btn">
-                    <i class="icon-chevron"></i>
-                </div>
+      <div class="slider">
+        <ol class="slider-list">
+          <% let temp = challenges; const hotChallenges =
+          temp.sort(function(a,b){return b.joinusers.length -
+          a.joinusers.length}).slice(0,4);
+          hotChallenges.forEach(function(challenge) { %>
+          <li class="slider-item">
+            <div>
+              <a href="/detail/<%= challenge.shortId%>">
+                <img
+                  src="data:challenge/<%=challenge.img.contentType%>;base64,
+                <%=challenge.img.data.toString('base64')%>
+"
+                />
+              </a>
             </div>
+          </li>
+          <% }) %>
+        </ol>
+        <div class="slider-btns">
+          <div class="prev slider-btn">
+            <i class="icon-chevron"></i>
+          </div>
+          <div class="next slider-btn">
+            <i class="icon-chevron"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="challenges-wrapper">
+        <div class="new-challenges">
+          <span class="main-section-title">신규 챌린지</span>
+          <div class="container">
+            <% const newChallenge = 8 %> <% for (let i = 0; i < newChallenge ;
+            i++) { %>
+            <a href="/detail/<%= challenges[i].shortId%>">
+              <div class="item-box">
+                <div class="img-wrapper">
+                  <img
+                    src="data:<%=challenges[i].img.contentType%>;base64,
+                  <%=challenges[i].img.data.toString('base64')%>
+"
+                  />
+                </div>
+                <div class="challenge-info">
+                  <div class="detail-info">
+                    <p class="challenge-category">
+                      <%= challenges[i].category%>
+                    </p>
+                    <p class="challenge-maker"><%= challenges[i].author%></p>
+                  </div>
+                  <h2 class="challenge-title"><%= challenges[i].title%></h2>
+                </div>
+              </div>
+            </a>
+            <% } %>
+          </div>
         </div>
 
-        <div class="challenges-wrapper">
-            <div class="new-challenges">
-                <span class="main-section-title">신규 챌린지</span>
-                <div class="container">
-                    <% let challengeCount = data.length; %>
-                    <% for(let i = data.length - 1; i >= 0; i--) { %>
-                        <% if(i >= data.length - 8) { %>
-                            <a href="/detail">
-                                <div class="item-box">
-                                    <div class="img-wrapper">
-                                        <img src="<%= data[i].imgUrl%>" alt="">
-                                    </div>
-                                    <div class="challenge-info">
-                                        <div class="detail-info">
-                                            <p class="challenge-category"><%= data[i].category%></p>
-                                            <p class="challenge-maker"><%= data[i].author%></p>
-                                        </div>
-                                        <h2 class="challenge-title"><%= data[i].title%></h2>
-                                    </div>
-                                </div>
-                            </a>
-                            <% challengeCount -= 1; %>
-                        <% } %>
-                    <% } %>
-
-                </div>
-            </div>
-    
-            <div class="all-challenges">
-                <span class="main-section-title">모든 챌린지</span>
-                <div class="container">
-                </div>
-            </div>
+        <div class="all-challenges">
+          <span class="main-section-title">모든 챌린지</span>
+          <div class="container"></div>
         </div>
+      </div>
     </main>
     <div class="line"></div>
 
-    <div id="footer">
-        <%- include('footer') %>
-    </div>
+    <div id="footer"><%- include('footer') %></div>
+    <script>
+      const dataSet = <%-JSON.stringify(challenges)%>;
+      let curChallenge = 8;
+      const allContainer = document.querySelector(".all-challenges .container");
+      loadImages();
 
+      window.addEventListener("scroll", () => {
+        if (
+          window.scrollY + window.innerHeight >=
+          document.documentElement.scrollHeight
+        ) {
+          loadImages();
+        }
+      });
+
+      function loadImages() {
+        let j = 1;
+        while (j <= 8) {
+          if (curChallenge == dataSet.length) return;
+          allContainer.innerHTML += `
+                      <div class="item-box">
+                        <a href = "/detail/${dataSet[curChallenge].shortId}">
+                          <div class="img-wrapper">
+                            <img loading="lazy" src= "data:${dataSet[curChallenge].img.contentType};base64,${toBase64(dataSet[curChallenge].img.data.data)}">
+                          </div>
+                          <div class="challenge-info">
+                            <div class="detail-info">
+                              <p class="challenge-category">${dataSet[curChallenge].category}</p>
+                              <p class="challenge-maker">${dataSet[curChallenge].author}</p>
+                            </div>
+                            <h2 class="challenge-title">${dataSet[curChallenge].title}</h2>
+                          </div>
+                        </a>
+                      </div>
+                  `;
+          curChallenge += 1;
+          j+= 1;
+        }
+      }
+
+      function toBase64(arr){
+        return btoa(arr.reduce((data, byte) => data + String.fromCharCode(byte), ''));
+      }
+    </script>
     <script src="./js/mainpageSlide.js"></script>
-    <script src="./js/userpageMenu.js"></script>
-</body>
+  </body>
 </html>
