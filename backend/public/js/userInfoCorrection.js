@@ -1,3 +1,5 @@
+// image가 아닌 유저 정보 변경에 대한 페이지 렌더
+
 function changeContent(id) {
   let btn = document.getElementById(id);
   if (btn.innerText == "취소" && id == "name") {
@@ -59,6 +61,8 @@ function changeContent(id) {
   userInput.appendChild(submitInput);
 }
 
+// 프로필 이미지 변경 컴포넌트 렌더
+
 function changeProfileImage(id) {
   let btn = document.getElementById(id);
   if (btn.innerText == "취소") {
@@ -90,6 +94,8 @@ function changeProfileImage(id) {
   submitInput.classList.add("submitBox");
   userInput.appendChild(submitInput);
 }
+
+// goBack--- : 변경하려다 취소버튼을 누를 시 페이지를 되돌리는 함수들.
 
 async function goBackName(id) {
   let comp = document.getElementById(id).parentNode.parentNode;
@@ -132,6 +138,8 @@ function goBackPassword(id) {
   content.setAttribute("id", `${id}-content`);
   comp.replaceChild(content, userInput);
 }
+
+// password 변경 컴포넌트들 렌더
 
 function setPasswordInput(userInput) {
   let currentPasswordTitle = document.createElement("label");
