@@ -20,8 +20,11 @@
                     <p>접속자: <%= user.name %> </p> 
                     <p>작성자: <%= challenge.author.name %> </p> 
                     <p>참가하는 유저 수 : <%= challenge.joinusers.length %> </p>
-                    <p>출석: <%= attendance %> </p>
+                    <p>출석:  <%=attendance.map(v=>v.attendanceDate)%>
+                         </p>
+       
                     
+
                 </div>
             </div>
         </div>
@@ -56,5 +59,4 @@
     </div>
     <div></div>
 </body>
-  
 </html>
