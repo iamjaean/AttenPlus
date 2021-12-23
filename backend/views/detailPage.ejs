@@ -128,16 +128,33 @@
     
       <!-- comment부분이 확정된 이후에 수정 -->
       <div class="reviewListBoard">
-        <div class="createCard">
+        <!-- <div class="createCard">
           후기를 등록해보세요!
-          <div class="createCardLink"><a href="">후기 쓰기</a></div>
+          <div class="createCardLink"><a href="">후기 쓰기</a></div> -->
+          <form
+          method="post"
+          action= <%= challenge.shortId+"/comments" %>
+      >
+      <textarea name="content" ></textarea>
+      <input
+          type="submit"
+          id="comment_submit"
+          name="submit"
+          value="댓글"
+        />
+      </form>
+
+
         </div>
+
+
+
         <% if(challenge.comments !=="") { %>
         <% for(let q=0; q<challenge.comments.length; q++) { %>
           <div class="reviewCard">
             <span class="reviewIcon">icon</span>
-            <span class="reviewWriteUser"><% challenge.comments[q].author %></span>
-            <div class="reviewText"><% challenge.comments[q].content %></div>
+            <span class="reviewWriteUser"><%= challenge.comments[q].author.name %></span>
+            <div class="reviewText"><%= challenge.comments[q].content %></div>
           </div>
         <% } %>
       </div>
@@ -156,6 +173,7 @@
   </body>
  <!-- footer영역 -->
   <script>
+    var challenge = `<%= challenge %>`
     var thisAttendDate = `<%= attendance.map(v=>v.attendanceDate) %>`
   var thisPageInfo= `<%= challenge.shortId %>`;
   var thisStartDate= `<%= challenge.startdate %>`;
