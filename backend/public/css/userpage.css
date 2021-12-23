@@ -1,3 +1,5 @@
+/*상단부*/
+
 * {
   padding: 0;
   margin: 0;
@@ -15,12 +17,16 @@ header {
   display: flex;
   margin: auto;
 }
+
+/*배너*/
+
 .banner img {
   width: 128px;
   height: 128px;
   overflow: hidden;
   border-radius: 50%;
   text-align: center;
+  object-fit: cover;
 }
 .banner h1 {
   margin-left: 25px;
@@ -29,6 +35,8 @@ header {
   height: 91px;
   transform: translateY(-30%);
 }
+
+/* tab과 그 메뉴들 */
 
 .tabs {
   width: 100%;
@@ -64,6 +72,8 @@ header {
 .tabs_sidebar li:hover {
   color: black;
 }
+
+/* 프로필 페이지에 들어가는 컴포넌트들 정의*/
 
 .content {
   display: flex;
@@ -183,12 +193,15 @@ header {
   color: white;
   border-radius: 4px;
   font-size: 16px;
+  font-weight: 700;
 }
 
 .uploadBox {
   display: block;
   margin: 16px;
 }
+
+/* 챌린지들 표시할 각각의 카드들 정의*/
 
 .card-wrapper {
   display: flex;
@@ -224,7 +237,7 @@ header {
 }
 
 .card div a {
-  font-size: 20px;
+  font-size: 16px;
   text-decoration: none;
   color: rgb(61, 61, 61);
   cursor: pointer;

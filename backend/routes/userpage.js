@@ -7,6 +7,8 @@ const fs = require("fs");
 const path = require("path");
 const router = Router();
 
+//image upload를 위한 multer 기본 설정
+
 const storage = multer.diskStorage({
   destination: "./public/assets/img/uploads",
   filename: function (req, file, cb) {
@@ -25,6 +27,8 @@ const upload = multer({
   },
 });
 
+//upload된 파일이 이미지 파일인지 확인.
+
 function checkFileType(file, cb) {
   const filetypes = /jpeg|jpg|png|gif/;
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
@@ -35,6 +39,8 @@ function checkFileType(file, cb) {
     cb("Error: 이미지 파일이 아닙니다.");
   }
 }
+
+// user 페이지 접속시 shortId에 따라 맞는 페이지로 라우팅.
 
 router.get(
   "/",
@@ -48,6 +54,8 @@ router.get(
   })
 );
 
+// 접속 유저에 대한 기본 정보
+
 router.get(
   "/:shortId/userinfo",
   asyncHandler(async (req, res) => {
@@ -56,6 +64,8 @@ router.get(
     res.json({ name: author.name, introduce: author.introduce });
   })
 );
+
+// user 페이지 기본 라우팅
 
 router.get(
   "/:shortId",
@@ -68,6 +78,8 @@ router.get(
   })
 );
 
+// 이름 변경
+
 router.post(
   "/:shortId/change-name",
   asyncHandler(async (req, res) => {
@@ -78,6 +90,8 @@ router.post(
     res.redirect(`/user/${shortId}`);
   })
 );
+
+// image 업로드
 
 router.post(
   "/:shortId/upload",
@@ -105,6 +119,8 @@ router.post(
   })
 );
 
+// user 소개 변경
+
 router.post(
   "/:shortId/change-intro",
   asyncHandler(async (req, res) => {
@@ -114,6 +130,8 @@ router.post(
     res.redirect(`/user/${shortId}`);
   })
 );
+
+// user 비밀번호 변경
 
 router.post(
   "/:shortId/change-password",
@@ -152,6 +170,8 @@ router.post(
   })
 );
 
+// user가 생성한 챌린지들 데이터 제공
+
 router.get(
   "/:shortId/created",
   asyncHandler(async (req, res) => {
@@ -159,10 +179,11 @@ router.get(
     const _limit = req.query._limit;
     const { shortId } = req.params;
     const author = await User.findOne({
-      shortId: req.user.shortId,
+      shortId,
     });
     const challenges = Challenge.find({ author: author })
       .sort({ updatedAt: -1 })
+      .populate("author", "name")
       .skip((_page - 1) * _limit)
       .limit(_limit);
     challenges.find({}, (err, challenges) => {
@@ -176,6 +197,8 @@ router.get(
   })
 );
 
+// 유저가 참여한 챌린지들 데이터 제공
+
 router.get(
   "/:shortId/joined",
   asyncHandler(async (req, res) => {
@@ -183,10 +206,11 @@ router.get(
     const _limit = req.query._limit;
     const { shortId } = req.params;
     const user = await User.findOne({
-      shortId: req.user.shortId,
+      shortId,
     });
     const challenges = Challenge.find({ joinusers: { $in: user } })
       .sort({ updatedAt: -1 })
+      .populate("user", "name")
       .skip((_page - 1) * _limit)
       .limit(_limit);
     challenges.find({}, (err, challenges) => {
