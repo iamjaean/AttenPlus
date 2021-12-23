@@ -42,28 +42,27 @@ router.post("/:shortId/comments", async (req, res, next) => {
   res.redirect(`/detail/${shortId}`);
 });
 
-router.post("/:shortId/comments/edit", async (req, res, next) => {
-  const { shortId } = req.params;
-  const { content } = req.body;
-  const author = await User.findOne({
-    shortId: req.user.shortId,
-  });
-  console.log(req.body);
-  try{
-    await Challenge.updateOne({shortId}, {
-         comments: {
-            content,
-        },
-    });
-    res.redirect(`/detail/${shortId}`);
-  }
-  catch(err){
-    next(err)
-  }
-  
-  console.log(challengeid);
-  res.redirect(`/`);
-});
+// router.post("/:shortId/comments/edit", async (req, res, next) => {
+//   const { shortId } = req.params;
+//   const { content } = req.body;
+//   const author = await User.findOne({
+//     shortId: req.user.shortId,
+//   });
+//   // const challenge = await Challenge.find({}).populate("comments.author");
+//   // console.log(challenge[0].comments[0]);
+//   try{
+//     await Challenge.findOneAndUpdate({
+//       shortId: shortId,
+//       comments : {$eleMatch: {author: author}},  
+//     }, { 
+//         $set: {"comments.$.content": content},
+//     }).populate("comments.author");
+//   }
+//   catch(err){
+//     next(err)
+//   }
+//   res.redirect(`/detail/${shortId}`);
+// });
 
 
 //출석체크
@@ -74,7 +73,7 @@ router.post("/:shortId/attendance", async (req, res, next) => {
     });
     const challenge = await Challenge.findOne({shortId,});
     function getTodayDate() {
-      var date = new Date();
+      var date = new Date();s
       var year = date.getFullYear();
       var month = ("0" + (1 + date.getMonth())).slice(-2);
       var day = ("0" + date.getDate()).slice(-2);
