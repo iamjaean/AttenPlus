@@ -7,7 +7,9 @@ router.get("/:shortId", async (req, res, next) => {
   const { shortId } = req.params;
   const challenge = await Challenge.findOne({
     shortId,
-  }).populate("author");
+  })
+    .populate("author")
+    .populate("comments.author");
   const user = await User.findOne({
     shortId: req.user.shortId,
   });
@@ -20,11 +22,13 @@ router.get("/:shortId", async (req, res, next) => {
   res.render("detailPage", { challenge: challenge, attendance: attendance, user: user });
 });
 
-//댓글 추가
 router.post("/:shortId/comments", async (req, res, next) => {
   const { shortId } = req.params;
   const { content } = req.body;
-
+  const author = await User.findOne({
+    shortId: req.user.shortId,
+  });
+  console.log(req.body);
   try {
     await Challenge.updateOne(
       { shortId },
@@ -32,6 +36,7 @@ router.post("/:shortId/comments", async (req, res, next) => {
         $push: {
           comments: {
             content,
+            author,
           },
         },
       }
@@ -40,6 +45,31 @@ router.post("/:shortId/comments", async (req, res, next) => {
     next(err);
   }
   res.redirect(`/detail/${shortId}`);
+});
+
+router.post("/:shortId/comments/edit", async (req, res, next) => {
+  const { shortId } = req.params;
+  const { content } = req.body;
+  const author = await User.findOne({
+    shortId: req.user.shortId,
+  });
+  console.log(req.body);
+  try {
+    await Challenge.updateOne(
+      { shortId },
+      {
+        comments: {
+          content,
+        },
+      }
+    );
+    res.redirect(`/detail/${shortId}`);
+  } catch (err) {
+    next(err);
+  }
+
+  console.log(challengeid);
+  res.redirect(`/`);
 });
 
 //출석체크

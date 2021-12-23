@@ -87,8 +87,25 @@ function getTodayDate() {
 createCardLink.addEventListener("click", (e) => {
   e.preventDefault();
   //요청을 보내 정상적으로 처리되었는지 확인되었을때 alert를 쓰기
-  document.querySelector(".createCard").innerHTML = ` <form class="reviewForm">
-    <textarea cols="40" rows="4" style="resize: none; border: 0px;margin-top:-20px;border-radius: 10px;"></textarea>
-  </form>
-  <div class="addCardLink"><button type="button" onclick="location.href='/create'">후기 쓰기</button></div>`;
+  document.querySelector(".createCard").innerHTML = ` 
+  
+
+
+  <form class="reviewForm"  method="post"
+  action=${challenge.shortId}+"/comments">
+    <textarea cols="40" rows="4" style="resize: none; border: 0px;margin-top:-20px;border-radius: 10px;"  name="content"></textarea>
+    <input
+    type="submit"
+    id="comment_submit"
+    name="submit"
+    value="댓글"
+  />
+  
+  
+    </form>
+  `;
 });
+
+{
+  /* <div class="addCardLink"><button type="button" onclick="location.href='/'">후기 쓰기</button></div> */
+}
