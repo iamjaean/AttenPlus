@@ -15,7 +15,8 @@ const getUserFromJWT = require("./middlewares/get-user-from-jwt");
 require("./passport")();
 // DB 연결
 mongoose.connect(
-  `mongodb+srv://kdt04:${process.env.mongoDB_PASSWORD}@cluster0.2lymz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+  // `mongodb+srv://kdt04:${process.env.mongoDB_PASSWORD}@cluster0.2lymz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+  "mongodb://localhost:27017/simple-board"
 );
 mongoose.connection.on("connected", () => {
   console.log("MongoDB Connected");
