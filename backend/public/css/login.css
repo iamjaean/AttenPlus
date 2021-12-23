@@ -203,7 +203,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .container {
+  .login_container {
     width: 400px;
     padding: 72px 0px 0px;
     margin: 0px auto 12px;

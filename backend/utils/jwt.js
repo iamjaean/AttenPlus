@@ -1,8 +1,6 @@
 const jwt = require("jsonwebtoken");
-
-const secret = "secretKey";
-
-exports.secret = secret;
+require("dotenv").config();
+const secret = process.env.jwtSecretKey;
 
 exports.setUserToken = (res, user) => {
   const token = jwt.sign(user, secret);

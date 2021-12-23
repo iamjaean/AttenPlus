@@ -1,3 +1,5 @@
+/*상단부*/
+
 * {
   padding: 0;
   margin: 0;
@@ -15,12 +17,16 @@ header {
   display: flex;
   margin: auto;
 }
+
+/*배너*/
+
 .banner img {
   width: 128px;
   height: 128px;
   overflow: hidden;
   border-radius: 50%;
   text-align: center;
+  object-fit: cover;
 }
 .banner h1 {
   margin-left: 25px;
@@ -29,6 +35,8 @@ header {
   height: 91px;
   transform: translateY(-30%);
 }
+
+/* tab과 그 메뉴들 */
 
 .tabs {
   width: 100%;
@@ -65,11 +73,13 @@ header {
   color: black;
 }
 
+/* 프로필 페이지에 들어가는 컴포넌트들 정의*/
+
 .content {
   display: flex;
   justify-content: center;
   text-align: center;
-  padding: 18px 0px 18px 0px;
+  padding: 36px 0px 36px 0px;
   width: 1056px;
   margin: auto;
 }
@@ -126,6 +136,13 @@ header {
   margin-bottom: 16px;
 }
 
+.comp-password {
+  display: flex;
+  margin-left: 16px;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
 .comp-img {
   width: 128px;
   height: 128px;
@@ -147,7 +164,19 @@ header {
   margin: 16px;
   padding-left: 14px;
   max-height: 44px;
-  border: 1px solid rgb(184, 184, 184);
+  border: 1px solid rgba(184, 184, 184, 0.5);
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.inputBox2 {
+  display: block;
+  width: 70%;
+  height: 24px;
+  margin: 32px 16px 0px 16px;
+  padding-left: 14px;
+  max-height: 44px;
+  border: 1px solid rgba(184, 184, 184, 0.5);
   border-radius: 4px;
   font-size: 16px;
 }
@@ -160,7 +189,7 @@ header {
   max-height: 200px;
   margin: 16px;
   padding-left: 14px;
-  border: 1px solid rgb(184, 184, 184);
+  border: 1px solid rgba(184, 184, 184, 0.5);
   border-radius: 4px;
   font-size: 16px;
 }
@@ -168,15 +197,26 @@ header {
 .submitBox {
   display: block;
   height: 40px;
+  line-height: 40px;
   width: 120px;
-  margin: 16px;
+  margin: 16px 16px 16px 16px;
   text-align: center;
   max-height: 44px;
   background-color: rgb(56, 56, 56);
   color: white;
   border-radius: 4px;
   font-size: 16px;
+  font-weight: 700;
+  border: 0;
+  outline: 0;
 }
+
+#image-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* 챌린지들 표시할 각각의 카드들 정의*/
 
 .card-wrapper {
   display: flex;
@@ -197,10 +237,33 @@ header {
 .card img {
   display: block;
   align-self: center;
-  width: 246px;
+  width: 240px;
   height: 184px;
   cursor: pointer;
+  position: absolute;
   overflow: hidden;
+}
+
+.user-img-wrapper {
+  width: 246px;
+  height: 184px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.user-img-wrapper img {
+  display: block;
+  align-self: center;
+  width: 240px;
+  height: 184px;
+  cursor: pointer;
+  position: absolute;
+  overflow: hidden;
+}
+
+.user-img-wrapper img:hover {
+  transform: scale(1.07);
+  transition: transform 0.2s ease-in;
 }
 
 .category-tag {
@@ -212,7 +275,7 @@ header {
 }
 
 .card div a {
-  font-size: 20px;
+  font-size: 16px;
   text-decoration: none;
   color: rgb(61, 61, 61);
   cursor: pointer;
