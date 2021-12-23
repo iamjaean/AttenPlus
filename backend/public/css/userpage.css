@@ -169,6 +169,18 @@ header {
   font-size: 16px;
 }
 
+.inputBox2 {
+  display: block;
+  width: 70%;
+  height: 24px;
+  margin: 32px 16px 0px 16px;
+  padding-left: 14px;
+  max-height: 44px;
+  border: 1px solid rgb(184, 184, 184);
+  border-radius: 4px;
+  font-size: 16px;
+}
+
 .textBox {
   display: block;
   width: 70%;
@@ -186,7 +198,7 @@ header {
   display: block;
   height: 40px;
   width: 120px;
-  margin: 16px;
+  margin: 16px 16px 16px 16px;
   text-align: center;
   max-height: 44px;
   background-color: rgb(56, 56, 56);
@@ -194,11 +206,30 @@ header {
   border-radius: 4px;
   font-size: 16px;
   font-weight: 700;
+  border: 0;
+  outline: 0;
 }
 
 .uploadBox {
   display: block;
-  margin: 16px;
+  height: 40px;
+  line-height: 40px;
+  width: 120px;
+  margin: 16px 16px 16px 16px;
+  text-align: center;
+  max-height: 44px;
+  background-color: rgb(56, 56, 56);
+  color: white;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 700;
+  border: 0;
+  outline: 0;
+}
+
+#image-form {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 /* 챌린지들 표시할 각각의 카드들 정의*/
