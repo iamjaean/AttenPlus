@@ -1,9 +1,11 @@
 const KakaoStrategy = require("passport-kakao").Strategy;
 const { User, OAuth } = require("../../models");
 require("dotenv").config();
+const generateRandomPassword = require("../../utils/generate-random-password");
+const hashPassword = require("../../utils/hash-password");
 const config = {
   clientID: process.env.KAKAO_clientID,
-  callbackURL: "/auth/kakao/callback",
+  callbackURL: process.env.KAKAO_CALLBACK,
 };
 
 async function findOrCreateUser({ name, email, imgURL }) {
@@ -18,7 +20,7 @@ async function findOrCreateUser({ name, email, imgURL }) {
   const created = await User.create({
     name,
     email,
-    password: "KAKAO_OAUTH",
+    password: hashPassword(generateRandomPassword()),
     img: imgURL,
   });
   return created;
