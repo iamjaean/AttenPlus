@@ -7,36 +7,62 @@ router.get("/:shortId", async(req, res, next) => {
   const { shortId } = req.params;
     const challenge = await Challenge.findOne({
       shortId,
-    }).populate("author");
+    }).populate("author").populate("comments.author");
     const user =  await User.findOne({
       shortId: req.user.shortId,
     });
     const attendance = await attendanceCheck.find({
       $and: [
-        {user: user },
-        { challenge: challenge}
+        { user: user },
+        { challenge: challenge }
      ]
     }).populate('user').populate('challenge');
       res.render('detailPage_test',{ challenge: challenge, attendance: attendance, user:user });
   });
 
 
-//댓글 추가
 router.post("/:shortId/comments", async (req, res, next) => {
-    const { shortId } = req.params;
-    const { content } = req.body;
-    
-    try{
-      await Challenge.updateOne({shortId}, {
-          $push: { comments: {
-              content,
-          }},
-      });
-    }
-    catch(err){
-      next(err)
-    }
+  const { shortId } = req.params;
+  const { content } = req.body;
+  const author = await User.findOne({
+    shortId: req.user.shortId,
+  });
+  console.log(req.body);
+  try{
+    await Challenge.updateOne({shortId}, {
+        $push: { comments: {
+            content,
+            author,
+        }},
+    });
+  }
+  catch(err){
+    next(err)
+  }
+  res.redirect(`/detail/${shortId}`);
+});
+
+router.post("/:shortId/comments/edit", async (req, res, next) => {
+  const { shortId } = req.params;
+  const { content } = req.body;
+  const author = await User.findOne({
+    shortId: req.user.shortId,
+  });
+  console.log(req.body);
+  try{
+    await Challenge.updateOne({shortId}, {
+         comments: {
+            content,
+        },
+    });
     res.redirect(`/detail/${shortId}`);
+  }
+  catch(err){
+    next(err)
+  }
+  
+  console.log(challengeid);
+  res.redirect(`/`);
 });
 
 
@@ -64,6 +90,7 @@ router.post("/:shortId/attendance", async (req, res, next) => {
         }
       );
       res.redirect(`/detail/${shortId}`);
+      
     } catch (err) {
       next(err);
     }
