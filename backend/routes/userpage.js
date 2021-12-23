@@ -61,7 +61,10 @@ router.get(
   asyncHandler(async (req, res) => {
     const { shortId } = req.params;
     const author = await User.findOne({ shortId });
-    res.json({ name: author.name, introduce: author.introduce });
+    res.json({
+      name: author.name,
+      introduce: author.introduce,
+    });
   })
 );
 
@@ -191,7 +194,25 @@ router.get(
         console.log(err);
         res.status(500).send("An error occurred", err);
       } else {
-        res.json(challenges);
+        const createdChallenges = [];
+
+        challenges.forEach((challenge) => {
+          var b64 = Buffer.from(challenge.img.data).toString("base64");
+
+          createdChallenge = {
+            name: challenge.author.name,
+            title: challenge.title,
+            category: challenge.category,
+            img: {
+              contentType: challenge.img.contentType,
+              data: b64,
+            },
+          };
+
+          createdChallenges.push(createdChallenge);
+        });
+
+        res.json(createdChallenges);
       }
     });
   })
@@ -213,12 +234,31 @@ router.get(
       .populate("user", "name")
       .skip((_page - 1) * _limit)
       .limit(_limit);
+
     challenges.find({}, (err, challenges) => {
       if (err) {
         console.log(err);
         res.status(500).send("An error occurred", err);
       } else {
-        res.json(challenges);
+        const joinedChallenges = [];
+
+        challenges.forEach((challenge) => {
+          var b64 = Buffer.from(challenge.img.data).toString("base64");
+
+          joinedChallenge = {
+            name: challenge.author.name,
+            title: challenge.title,
+            category: challenge.category,
+            img: {
+              contentType: challenge.img.contentType,
+              data: b64,
+            },
+          };
+
+          joinedChallenges.push(joinedChallenge);
+        });
+
+        res.json(joinedChallenges);
       }
     });
   })
