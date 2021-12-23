@@ -44,7 +44,7 @@
         <div class="new-challenges">
           <span class="main-section-title">신규 챌린지</span>
           <div class="container">
-            <% const newChallenge = 8 %> <% for (let i = 0; i < newChallenge ;
+            <% const newChallenge = 1 %> <% for (let i = 0; i < newChallenge ;
             i++) { %>
             <a href="/detail/<%= challenges[i].shortId%>">
               <div class="item-box">
@@ -81,7 +81,7 @@
     <div id="footer"><%- include('footer') %></div>
     <script>
       const dataSet = <%-JSON.stringify(challenges)%>;
-      let curChallenge = 8;
+      let curChallenge = 1;
       const allContainer = document.querySelector(".all-challenges .container");
       loadImages();
 

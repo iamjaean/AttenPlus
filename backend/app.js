@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 app.use("/", mainRouter);
 app.use("/auth", authRouter);
-app.use("/sign", loginRequired, signRouter);
+app.use("/sign", signRouter);
 app.use("/user", loginRequired, userPageRouter);
 app.use("/create", loginRequired, createRouter);
 app.use("/detail", loginRequired, detailRouter);
