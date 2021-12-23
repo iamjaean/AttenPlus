@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <!-- 헤더css 미적용 -->
+    <!-- <link rel="stylesheet" href="/css/"> -->
+    <script src="/js/pwreset.js"></script>
+</head>
+<body>
+        <%-include('../header.ejs') %>
+    <div class="container">
+
+        <div class="user_login_wrapper">
+            <h1>비밀번호 찾기</h1>
+           
+           
+            <form action="/sign/pwreset" method="post">
+                <div class="login_form_wrapper">
+                    
+                        <div class="social_login_wrapper">
+                            <span class="input_wrapper">
+                                <input type="text" name="email" id="email" required placeholder="이메일 주소 입력">
+                            </span>
+                        </div>
+                      
+                </div>
+
+                <button class="login_submit_btn">
+                    임시 비밀번호 받기
+                </button>
+            </form>
+
+            <div class="signIn_wrapper">
+                이미 계정이 있으신가요? 
+
+                <span>
+                    <a href='/sign/'>기존 계정으로 로그인하기</a>
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <%-include('../footer.ejs') %>
+
+</body>
+</html>
