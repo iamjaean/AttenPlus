@@ -2,8 +2,8 @@ const { Router } = require("express");
 const asyncHandler = require("../utils/async-handler");
 const { User } = require("../models");
 const hashPassword = require("../utils/hash-password");
-const fs = require("fs");
-const path = require("path");
+const generateRandomPassword = require("../utils/generate-random-password");
+const sendMail = require("../utils/send-mail");
 const router = Router();
 
 router.get("/", (req, res) => {
@@ -18,6 +18,17 @@ router.get("/email", (req, res) => {
   res.render("sign/email");
 });
 
+router.get("/pwreset", (req, res) => {
+  res.render("sign/pwreset");
+});
+
+router.get("/loginFailed", (req, res) => {
+  res.send(
+    `<script>alert('등록되지 않은 회원 이거나, 비밀번호를 잘못 입력하셨습니다.');location.href='/sign';</script>`
+  );
+});
+
+//회원가입
 router.post(
   "/join",
   asyncHandler(async (req, res, next) => {
@@ -29,7 +40,9 @@ router.post(
     //이메일 중복체크
     const checkEmail = await User.findOne({ email });
     if (checkEmail) {
-      return res.send("이미 존재하는 이메일 입니다.");
+      return res.send(
+        `<script>alert('이미 존재하는 이메일 입니다.');location.href='/sign';</script>`
+      );
     }
 
     //컬렉션 생성용
@@ -49,21 +62,48 @@ router.post(
     //DB 접근
     user.save((err) => {
       if (err) {
-        return res.send("일시적인 오류가 발생했습니다.");
+        return res.status(500).send("일시적인 오류가 발생했습니다.");
       } else {
-        return res.status(200).send(user);
+        return res.redirect("/");
       }
     });
+  })
+);
+
+//비밀번호 재설정
+router.post(
+  "/pwreset",
+  asyncHandler(async (req, res) => {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) {
+      res.send(
+        `<script>alert('가입되지 않은 이메일 입니다.');location.href='/sign/pwreset';</script>`
+      );
+    }
+
+    const password = generateRandomPassword();
+
+    await User.updateOne(
+      { email },
+      {
+        password: hashPassword(password),
+      }
+    );
+    await sendMail(
+      email,
+      "임시 비밀번호가 발급되었습니다.",
+      `임시 비밀번호는: ${password} 입니다.`
+    );
+    res.send(
+      `<script>alert('임시 비밀번호가 전송되었습니다.');location.href='/sign';</script>`
+    );
   })
 );
 
 router.get("/logout", (req, res, next) => {
   res.cookie("token", null, { maxAge: 0 });
   res.redirect("/");
-});
-
-router.get("/reset-password", (req, res, next) => {
-  res.send("reset-password 페이지입니다.");
 });
 
 module.exports = router;

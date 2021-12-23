@@ -1,8 +1,12 @@
 window.onload = function () {
   let inputEmail = document.getElementById("email");
   let inputPwd = document.getElementById("password");
+  let subBtn = document.getElementsByClassName("login_submit_btn")[0];
+  let form = document.getElementById("loginForm");
+
   inputEmail.addEventListener("input", checkUserEmail);
   inputPwd.addEventListener("input", checkUserPwd);
+  subBtn.addEventListener("click", checkAll);
 
   function checkUserEmail() {
     let spanTag = this.parentElement;
@@ -61,5 +65,19 @@ window.onload = function () {
 
       spanTag.parentElement.insertBefore(warning, spanTag.nextElementSibling);
     }
+  }
+
+  function checkAll(e) {
+    e.preventDefault();
+    if (
+      !/^\S+@\S+\.\S+$/.test(inputEmail.value) ||
+      !/^.{6,20}$/.test(inputPwd.value)
+    ) {
+      alert(`아이디 또는 비밀번호가 잘못 입력 되었습니다.
+아이디와 비밀번호를 정확히 입력해주세요.`);
+      return;
+    }
+
+    form.submit();
   }
 };

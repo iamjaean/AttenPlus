@@ -12,7 +12,7 @@ const local = new LocalStrategy(config, async (email, password, done) => {
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      throw new Error("회원을 찾을 수 없습니다.");
+      return done(null, false);
     }
 
     if (
@@ -21,7 +21,7 @@ const local = new LocalStrategy(config, async (email, password, done) => {
         Buffer.from(hashPassword(password))
       )
     ) {
-      throw new Error("비밀번호가 일치하지 않습니다.");
+      return done(null, false, { message: "asdasdsad" });
     }
 
     done(null, {

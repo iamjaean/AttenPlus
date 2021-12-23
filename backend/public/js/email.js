@@ -5,11 +5,14 @@ window.onload = function () {
   let inputEmail = document.getElementById("userEmail");
   let inputPwd = document.getElementById("userPwd");
   let inputConfirm = document.getElementById("pwdConfirm");
+  let subBtn = document.getElementsByClassName("login_submit_btn")[0];
+  let form = document.getElementById("registerForm");
 
   inputName.addEventListener("input", checkUserName);
   inputEmail.addEventListener("input", checkUserEmail);
   inputPwd.addEventListener("input", checkUserPwd);
   inputConfirm.addEventListener("input", checkPwdConfirm);
+  subBtn.addEventListener("click", checkAll);
 
   function checkUserName() {
     let spanTag = this.parentElement;
@@ -129,5 +132,22 @@ window.onload = function () {
 
       spanTag.parentElement.appendChild(warning);
     }
+  }
+
+  function checkAll(e) {
+    e.preventDefault();
+    if (
+      document
+        .getElementsByClassName("input_wrapper")[0]
+        .classList.contains("isValid") ||
+      !/^\S+@\S+\.\S+$/.test(inputEmail.value) ||
+      !/^.{6,20}$/.test(inputPwd.value) ||
+      inputPwd.value != inputConfirm.value
+    ) {
+      alert(`회원가입 양식을 정확히 작성해 주세요`);
+      return;
+    }
+
+    form.submit();
   }
 };
