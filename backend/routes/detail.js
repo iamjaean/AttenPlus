@@ -19,7 +19,11 @@ router.get("/:shortId", async (req, res, next) => {
     })
     .populate("user")
     .populate("challenge");
-  res.render("detailPage", { challenge: challenge, attendance: attendance, user: user });
+  res.render("detailPage", {
+    challenge: challenge,
+    attendance: attendance,
+    user: user,
+  });
 });
 
 //댓글 생성
@@ -87,6 +91,7 @@ router.post("/:shortId/attendance", async (req, res, next) => {
   const challenge = await Challenge.findOne({ shortId });
   function getTodayDate() {
     var date = new Date();
+
     var year = date.getFullYear();
     var month = ("0" + (1 + date.getMonth())).slice(-2);
     var day = ("0" + date.getDate()).slice(-2);
