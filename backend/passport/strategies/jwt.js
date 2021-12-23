@@ -1,13 +1,12 @@
 const JwtStrategy = require("passport-jwt").Strategy;
-const { secret } = require("../../utils/jwt");
-
+require("dotenv").config();
 const cookieExtractor = (req) => {
   const { token } = req.cookies;
   return token;
 };
 
 const opts = {
-  secretOrKey: secret,
+  secretOrKey: process.env.jwtSecretKey,
   jwtFromRequest: cookieExtractor,
 };
 
