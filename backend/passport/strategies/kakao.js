@@ -5,7 +5,7 @@ const generateRandomPassword = require("../../utils/generate-random-password");
 const hashPassword = require("../../utils/hash-password");
 const config = {
   clientID: process.env.KAKAO_clientID,
-  callbackURL: "/auth/kakao/callback",
+  callbackURL: process.env.KAKAO_CALLBACK,
 };
 
 async function findOrCreateUser({ name, email, imgURL }) {
