@@ -164,7 +164,7 @@ header {
   margin: 16px;
   padding-left: 14px;
   max-height: 44px;
-  border: 1px solid rgb(184, 184, 184);
+  border: 1px solid rgba(184, 184, 184, 0.5);
   border-radius: 4px;
   font-size: 16px;
 }
@@ -176,7 +176,7 @@ header {
   margin: 32px 16px 0px 16px;
   padding-left: 14px;
   max-height: 44px;
-  border: 1px solid rgb(184, 184, 184);
+  border: 1px solid rgba(184, 184, 184, 0.5);
   border-radius: 4px;
   font-size: 16px;
 }
@@ -189,28 +189,12 @@ header {
   max-height: 200px;
   margin: 16px;
   padding-left: 14px;
-  border: 1px solid rgb(184, 184, 184);
+  border: 1px solid rgba(184, 184, 184, 0.5);
   border-radius: 4px;
   font-size: 16px;
 }
 
 .submitBox {
-  display: block;
-  height: 40px;
-  width: 120px;
-  margin: 16px 16px 16px 16px;
-  text-align: center;
-  max-height: 44px;
-  background-color: rgb(56, 56, 56);
-  color: white;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 700;
-  border: 0;
-  outline: 0;
-}
-
-.uploadBox {
   display: block;
   height: 40px;
   line-height: 40px;

@@ -95,7 +95,7 @@ function changeProfileImage(id) {
   let imgLabel = document.createElement("label");
   imgLabel.innerText = "파일 업로드";
   imgLabel.appendChild(imgSelect);
-  imgLabel.classList.add("uploadBox");
+  imgLabel.classList.add("submitBox");
 
   userInput.appendChild(imgLabel);
 
