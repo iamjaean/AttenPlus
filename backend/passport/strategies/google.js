@@ -1,5 +1,7 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const { User, OAuth } = require("../../models");
+const generateRandomPassword = require("../../utils/generate-random-password");
+const hashPassword = require("../../utils/hash-password");
 require("dotenv").config();
 const config = {
   clientID: process.env.GOOGLE_clientID,
@@ -19,7 +21,7 @@ async function findOrCreateUser({ name, email }) {
   const created = await User.create({
     name,
     email,
-    password: "GOOGLE_OAUTH",
+    password: hashPassword(generateRandomPassword()),
   });
 
   return created;
