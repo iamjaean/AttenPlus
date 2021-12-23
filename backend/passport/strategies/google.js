@@ -1,10 +1,12 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const { User, OAuth } = require("../../models");
+const generateRandomPassword = require("../../utils/generate-random-password");
+const hashPassword = require("../../utils/hash-password");
 require("dotenv").config();
 const config = {
   clientID: process.env.GOOGLE_clientID,
   clientSecret: process.env.GOOGLE_secret,
-  callbackURL: "/auth/google/callback",
+  callbackURL: process.env.GOOGLE_CALLBACK,
 };
 
 async function findOrCreateUser({ name, email }) {
@@ -19,7 +21,7 @@ async function findOrCreateUser({ name, email }) {
   const created = await User.create({
     name,
     email,
-    password: "GOOGLE_OAUTH",
+    password: hashPassword(generateRandomPassword()),
   });
 
   return created;

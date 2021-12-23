@@ -1,5 +1,10 @@
 const { Router } = require("express");
-const { Challenge, User, JoinChallenge,  attendenceCheck } = require("../models/index");
+const {
+  Challenge,
+  User,
+  JoinChallenge,
+  attendenceCheck,
+} = require("../models/index");
 const multer = require("multer");
 var fs = require("fs");
 var path = require("path");
@@ -20,7 +25,6 @@ router.get("/", async (req, res, next) => {
   
   res.render("createPage");
 });
-
 
 router.post("/", upload.single("uploaded_file"), async (req, res, next) => {
   const {
@@ -49,7 +53,7 @@ router.post("/", upload.single("uploaded_file"), async (req, res, next) => {
     data: fs.readFileSync(
       path.join(__dirname + "/data/uploads/" + req.file.filename)
     ),
-    contentType: "image/png",
+    contentType: `image/${path.extname(req.file.originalname)}`,
   };
 
   let category = "";
@@ -111,4 +115,3 @@ router.post("/", upload.single("uploaded_file"), async (req, res, next) => {
 //   res.send("OK");
 // });
 module.exports = router;
-

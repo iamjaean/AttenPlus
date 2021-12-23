@@ -1,16 +1,18 @@
 const { Schema } = require("mongoose");
 const shortId = require("./types/short-id");
-const CommentSchema = new Schema({
+const CommentSchema = new Schema(
+  {
     content: String,
     author: {
       type: Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
       index: true,
     },
   },
-    {
-      timestamps: true,
-});
+  {
+    timestamps: true,
+  }
+);
 const ChallengeSchema = new Schema(
   {
     shortId,
@@ -40,14 +42,16 @@ const ChallengeSchema = new Schema(
     },
     author: {
       type: Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
       index: true,
     },
-    joinusers: [{
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-      index: true, 
-    }],
+    joinusers: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        index: true,
+      },
+    ],
     comments: [CommentSchema],
   },
   {
