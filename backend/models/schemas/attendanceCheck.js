@@ -1,6 +1,6 @@
 const { Schema } = require("mongoose");
 
-const attendenceCheckSchema = new Schema(
+const attendanceCheckSchema = new Schema(
   {
     user: {
         type: Schema.Types.ObjectId,
@@ -16,4 +16,4 @@ const attendenceCheckSchema = new Schema(
   },
 );
 
-module.exports = attendenceCheckSchema;
+module.exports = attendanceCheckSchema;

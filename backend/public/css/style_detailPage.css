@@ -7,6 +7,10 @@
 
   top: 0px;
 } */
+
+body {
+  color: #495464;
+}
 .detailPageListAll {
   width: 1056px;
   margin: auto;
@@ -129,6 +133,30 @@
   font-size: 48px;
   line-height: 56px;
 }
+#create_submit {
+  margin-top: 22px;
+  width: 332px;
+  height: 58px;
+  background: #ff5c5c;
+  border-radius: 7px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  color: #ffffff;
+  border: 0px;
+  padding: 0 0 0 0;
+  cursor: pointer;
+}
+
+#create_submit:hover {
+  background-color: #ff918f;
+}
+
+.challengeTitle form {
+  height: 0px;
+}
 
 .registerButton {
   margin-top: 81px;
@@ -168,6 +196,23 @@
   left: 983px;
   top: 590px;
 }
+.registerForbiddenButton {
+  margin-top: 20px;
+  pointer-events: none;
+  width: 332px;
+  height: 58px;
+  border: 0px;
+  background: #bbbfca;
+  border-radius: 7px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  color: #ffffff;
+  border: 0px;
+}
+
 .attendButton {
   margin-top: 20px;
   cursor: pointer;
@@ -210,7 +255,7 @@
   margin-top: 43px;
   width: 641.04px;
   height: 432.76px;
-  background: #c4c4c4;
+  background: #f4f4f2;
   font-size: 12px;
 }
 .reviewWrite {
@@ -223,7 +268,7 @@
   line-height: 28px;
 }
 .createCard {
-  margin-right: 36px;
+  margin-bottom: 25px;
   float: right;
   width: 334.14px;
   height: 164.12px;
@@ -324,7 +369,7 @@
   left: -1px;
   content: " ";
   display: block;
-  background: #1f9de6;
+  background: #5584ac;
 }
 
 .dayContainer {
@@ -339,7 +384,7 @@
   top: -1px;
   left: -1px;
   content: " ";
-  background: #ff6969;
+  background: #ffb085;
 }
 .detailPageMargin {
   height: 61.63px;
@@ -348,4 +393,30 @@
 }
 .flatpickr-day.today {
   border-radius: 0px;
+}
+
+.detailPageModal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.detailPageModalBody {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 200px;
+  padding-top: 76px;
+  font-size: 22px;
+  vertical-align: middle;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  transform: translateX(-50%) translateY(-50%);
 }
