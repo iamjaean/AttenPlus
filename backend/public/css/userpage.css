@@ -5,10 +5,16 @@
   margin: 0;
   font-family: "NanumSquare", sans-serif;
 }
+
 header {
   width: 1056px;
   height: 100px;
   margin: auto;
+}
+
+div.crossing-line {
+  border-bottom: 1px solid #f3f3f3;
+  width: 100%;
 }
 
 .banner {
@@ -42,7 +48,7 @@ header {
 .tabs {
   width: 100%;
   height: 100%;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 2px solid #f3f3f3;
   overflow: hidden;
   margin: auto;
 }
@@ -114,7 +120,7 @@ header {
 .comp-top {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .comp-title {
@@ -189,7 +195,7 @@ header {
   height: 200px;
   max-height: 200px;
   margin: 16px;
-  padding-left: 14px;
+  padding: 12px;
   border: 1px solid rgba(184, 184, 184, 0.5);
   border-radius: 4px;
   font-size: 16px;
@@ -210,6 +216,15 @@ header {
   font-weight: 700;
   border: 0;
   outline: 0;
+}
+
+label.submitBox {
+  background-color: rgba(163, 163, 163, 0.85);
+  margin-right: 0px;
+}
+
+.submitBox:hover {
+  background-color: rgba(184, 184, 184, 0.7);
 }
 
 #image-form {
