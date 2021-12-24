@@ -2,17 +2,22 @@ const { Schema } = require("mongoose");
 const shortId = require("./types/short-id");
 const CommentSchema = new Schema(
   {
-    content: String,
+    content: {
+      type: String,
+    },
     author: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       index: true,
     },
+    isDeleted:{
+      type: Boolean,
+      default: false,
+    }
   },
-  {
-    timestamps: true,
-  }
-);
+    {
+      timestamps: true,
+});
 const ChallengeSchema = new Schema(
   {
     shortId,
@@ -42,16 +47,14 @@ const ChallengeSchema = new Schema(
     },
     author: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       index: true,
     },
-    joinusers: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-        index: true,
-      },
-    ],
+    joinusers: [{
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      index: true, 
+    }],
     comments: [CommentSchema],
   },
   {
