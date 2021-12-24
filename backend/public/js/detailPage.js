@@ -56,7 +56,8 @@ detailCalendar &&
 if (allPlanDay.length === attendDay.length) {
   document.querySelector(".registerForbiddenButton").innerHTML = "모든 챌린지를 완료했습니다";
 }
-if (thisEndDate <= getTodayDate() && allPlanDay.length !== attendDay.length && document.querySelector(".registerForbiddenButton")) {
+
+if (thisEndDate <= getTodayDate() && attendDay != "" && allPlanDay.length !== attendDay.length && document.querySelector(".registerForbiddenButton")) {
   document.querySelector(".registerForbiddenButton").innerHTML = "챌린지를 모두 완료하지 못했습니다";
   document.querySelector(".registerForbiddenButton").style["font-size"] = "18px";
 }
