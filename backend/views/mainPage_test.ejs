@@ -12,16 +12,17 @@
       <% challenges.forEach(function(challenge) { %>
       <div>
         <div>
+          <div>
+            <img
+              src="data:challenge/<%=challenge.img.contentType%>;base64,
+                     <%=challenge.img.data.toString('base64')%>"
+            />
             <div>
-                <img src="data:challenge/<%=challenge.img.contentType%>;base64,
-                     <%=challenge.img.data.toString('base64')%>">
-                <div>
-                    <h5>챌린지 명 : <%= challenge.title %></h5>
-                    <h5>작성자 명 : <%= challenge.author.name %></h5>
-                    <h5>참가 인원 : <%= challenge.joinusers.length %></h5>
-  
-                </div>
+              <h5>챌린지 명 : <%= challenge.title %></h5>
+              <h5>작성자 명 : <%= challenge.author.name %></h5>
+              <h5>참가 인원 : <%= challenge.joinusers.length %></h5>
             </div>
+          </div>
         </div>
       </div>
       <% }) %>
