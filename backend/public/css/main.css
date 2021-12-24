@@ -359,6 +359,11 @@ body {
   font-weight: 700;
 }
 
+.challenge-join-users {
+  font-size: 12px;
+  color: #fa6461;
+}
+
 /* footer */
 .global-footer {
   width: 1056px;
