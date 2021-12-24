@@ -1,13 +1,13 @@
 <header class="global-header">
+  <% user = (typeof user != "undefined" ? user : false) %>
   <div class="logo">
     <a href="/">
-      <h1>작심삼일</h1>
+      <h1>Atten+</h1>
     </a>
   </div>
-
   <div class="header-right">
     <a href="/create" class="upload-btn"> 챌린지 올리기 </a>
-    <%if(!user){%>
+    <% if (!user) { %>
     <!-- NOTE: 로그인 안 한 경우 -->
     <a class="login-btn" href="/sign">
       <i class="icon-profile"></i>

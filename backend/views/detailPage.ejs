@@ -5,12 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>작심삼일</title>
+    <link
+    href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Monoton&family=Nanum+Gothic:wght@400;700;800&display=swap"
+    rel="stylesheet"
+  />
     <link rel="stylesheet"  href="/css/style_detailPage.css" />
     <link rel="stylesheet"  href="/css/main.css" />
     <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
   </head>
   <!-- header부분은 수정하지 않음, 카테고리 list도 추후 수정 -->
   <body>
+    <%- include('header') %>
     <%   function getTodayDate() { %>
     <%    var date = new Date(); %>
     <%    var year = date.getFullYear(); %>
@@ -45,7 +54,6 @@
         <aside class="registerChallenge">
               <div class="registerDateTitle">
                 <div>
-                  <!-- 나중에 YYYY-MM-DD 형식으로 변환할 것 -->
                   <span class="startDateTxt">시작일</span>
                   <div class="startDate"><%= challenge.startdate %></div>
                   <span>종료일</span>
@@ -54,7 +62,7 @@
               </div>
               <div class="registerDateTitle">
                 
-                  <% if((challenge.startdate)<getTodayDate()) { %>
+                  <% if((challenge.startdate) < getTodayDate()) { %>
                   <button class="registerForbiddenButton">챌린지 신청 기간이 지났습니다</button>
                 
 
@@ -84,7 +92,7 @@
             <input class="calendar" />
           </div>
           <div class="challengeTitle">  
-            <%if((challenge.startdate)>getTodayDate()){ %>
+            <%if((challenge.startdate) > getTodayDate()){ %>
               <button class="registerForbiddenButton"><%= Number(challenge.startdate.slice(5,7))%>월 <%=Number(challenge.startdate.slice(8,10))%>일 부터 시작합니다!</button>        
               <%} else if((challenge.enddate)<getTodayDate()){ %>
             
@@ -107,6 +115,7 @@
           />
         </form>
         <% } %>
+     
           </div>
         </aside>
           <% } %>
@@ -147,15 +156,47 @@
 
         </div>
 
+       
+
+
+
 
 
         <% if(challenge.comments !=="") { %>
         <% for(let q=0; q<challenge.comments.length; q++) { %>
+          <% if( !challenge.comments[q].isDeleted ) {%>
           <div class="reviewCard">
             <span class="reviewIcon">icon</span>
             <span class="reviewWriteUser"><%= challenge.comments[q].author.name %></span>
             <div class="reviewText"><%= challenge.comments[q].content %></div>
-          </div>
+    
+              <button class="changeReviewText" onclick="reviewFun(`<%= challenge.comments[q].content %>`,`<%= challenge.comments[q].author.name %>`,`<%= q %>`,`<%= challenge.comments[q].isDeleted %>`)">수정하기</button>
+              <form
+            method="post"
+            action= <%= challenge.shortId+"/comments/edit" %>
+        >
+        <input type="hidden" name="comment_index" value= <%= q %>>
+        <textarea name="content" ></textarea>
+        <input
+            type="submit"
+            id="comment_update_submit"
+            name="submit"
+            value="댓글수정"
+          />
+        </form>
+        <form
+            method="post"
+            action= <%= challenge.shortId+"/comments/delete" %>
+        >
+        <input type="hidden" name="comment_index" value= <%= q %> >
+        <input
+            type="submit"
+            id="comment_update_submit"
+            name="submit"
+            value="삭제"
+          />
+        </form>
+        <% } %>
         <% } %>
       </div>
     <% } %>
@@ -173,13 +214,21 @@
   </body>
  <!-- footer영역 -->
   <script>
-    var challenge = `<%= challenge %>`
-    var thisAttendDate = `<%= attendance.map(v=>v.attendanceDate) %>`
+
+  var thisAttendDate = `<%= attendance.map(v=>v.attendanceDate) %>`
   var thisPageInfo= `<%= challenge.shortId %>`;
   var thisStartDate= `<%= challenge.startdate %>`;
   var thisEndDate= `<%= challenge.enddate %>`;
   </script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="/js/detailPage.js"></script>
+    <script>
+function reviewFun(thisContent,thisAuthor,thisIndex,isdel){
+  console.log(isdel)
+alert(`이 게시물은 ${thisIndex} 번 째 게시물이고, ${thisAuthor===`<%= user.name %>`? "수정할 수 있습니다": "작성자가 달라서 수정이 불가능합니다"}`)
+}
+
+
+    </script>
 
     </html>

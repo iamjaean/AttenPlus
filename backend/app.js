@@ -10,6 +10,7 @@ const detailRouter = require("./routes/detail");
 const path = require("path");
 const passport = require("passport");
 const cookieParser = require("cookie-parser");
+const loginRequired = require("./middlewares/login-required");
 const getUserFromJWT = require("./middlewares/get-user-from-jwt");
 require("./passport")();
 // DB 연결
@@ -32,8 +33,8 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.use("/", mainRouter);
 app.use("/auth", authRouter);
 app.use("/sign", signRouter);
-app.use("/user", userPageRouter);
-app.use("/create", createRouter);
-app.use("/detail", detailRouter);
+app.use("/user", loginRequired, userPageRouter);
+app.use("/create", loginRequired, createRouter);
+app.use("/detail", loginRequired, detailRouter);
 
 module.exports = app;

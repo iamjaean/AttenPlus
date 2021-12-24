@@ -2,11 +2,17 @@ const { Schema } = require("mongoose");
 const shortId = require("./types/short-id");
 const CommentSchema = new Schema(
   {
-    content: String,
+    content: {
+      type: String,
+    },
     author: {
       type: Schema.Types.ObjectId,
       ref: "User",
       index: true,
+    },
+    isDeleted: {
+      type: Boolean,
+      default: false,
     },
   },
   {

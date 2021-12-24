@@ -21,7 +21,7 @@ const local = new LocalStrategy(config, async (email, password, done) => {
         Buffer.from(hashPassword(password))
       )
     ) {
-      return done(null, false, { message: "asdasdsad" });
+      return done(null, false);
     }
 
     done(null, {
