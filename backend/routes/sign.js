@@ -7,9 +7,6 @@ const path = require("path");
 const generateRandomPassword = require("../utils/generate-random-password");
 const sendMail = require("../utils/send-mail");
 const router = Router();
-const fs = require("fs");
-const path = require("path");
-
 router.get("/", (req, res) => {
   res.render("sign/login");
 });
