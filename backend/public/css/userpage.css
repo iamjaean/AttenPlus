@@ -284,6 +284,7 @@ header {
 
 .card-title {
   min-height: 50px;
+  text-align: left;
 }
 
 .card-joinusers {
