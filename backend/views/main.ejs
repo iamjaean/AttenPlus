@@ -60,7 +60,9 @@
                     <p class="challenge-category">
                       <%= challenges[i].category%>
                     </p>
-                    <p class="challenge-maker"><%= challenges[i].author%></p>
+                    <p class="challenge-maker">
+                      <%= challenges[i].author.name%>
+                    </p>
                   </div>
                   <h2 class="challenge-title"><%= challenges[i].title%></h2>
                 </div>
@@ -107,7 +109,7 @@
                           <div class="challenge-info">
                             <div class="detail-info">
                               <p class="challenge-category">${dataSet[curChallenge].category}</p>
-                              <p class="challenge-maker">${dataSet[curChallenge].author}</p>
+                              <p class="challenge-maker">${dataSet[curChallenge].author.name}</p>
                             </div>
                             <h2 class="challenge-title">${dataSet[curChallenge].title}</h2>
                           </div>

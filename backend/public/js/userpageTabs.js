@@ -103,9 +103,12 @@ function challengeHTML(challenge) {
                       <div>
                         <div class="detail-info">
                                 <p class="challenge-category">${challenge.category}</p>
-                                <p class="challenge-maker">${challenge.name}</p>
+                                <p class="challenge-maker">${challenge.name}</p>     
                         </div>
-                        <a href="${challenge.url}" class="challenge-title">${challenge.title}</a>
+                        <div class="card-title">
+                                <a href="${challenge.url}" class="challenge-title">${challenge.title}</a>
+                        </div>
+                        <p class="card-joinusers">${challenge.numJoined}명 참여</p>
                       </div>
                     </article>
     `;

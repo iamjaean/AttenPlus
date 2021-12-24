@@ -281,3 +281,14 @@ header {
   cursor: pointer;
   font-weight: 700;
 }
+
+.card-title {
+  min-height: 50px;
+}
+
+.card-joinusers {
+  font-size: 12px;
+  text-decoration: none;
+  text-align: left;
+  color: rgb(253, 95, 130);
+}

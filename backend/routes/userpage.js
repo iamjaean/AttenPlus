@@ -214,6 +214,7 @@ router.get(
               data: b64,
             },
             url: challengeUrl,
+            numJoined: challenge.joinusers.length,
           };
 
           createdChallenges.push(createdChallenge);
@@ -262,6 +263,7 @@ router.get(
               data: b64,
             },
             url: challengeUrl,
+            numJoined: challenge.joinusers.length,
           };
 
           joinedChallenges.push(joinedChallenge);
