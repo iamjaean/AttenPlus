@@ -203,8 +203,7 @@ router.get(
 
         challenges.forEach((challenge) => {
           let b64 = Buffer.from(challenge.img.data).toString("base64");
-          // let challengeUrl = `http://elice-kdt-sw-1st-vm04.koreacentral.cloudapp.azure.com/detail/${challenge.shortId}`;
-          let challengeUrl = `http://localhost:3000/detail/${challenge.shortId}`;
+          let challengeUrl = `http://elice-kdt-sw-1st-vm04.koreacentral.cloudapp.azure.com/detail/${challenge.shortId}`;
           const createdChallenge = {
             name: challenge.author.name,
             title: challenge.title,
@@ -252,8 +251,7 @@ router.get(
 
         challenges.forEach((challenge) => {
           let b64 = Buffer.from(challenge.img.data).toString("base64");
-          // let challengeUrl = `http://elice-kdt-sw-1st-vm04.koreacentral.cloudapp.azure.com/detail/${challenge.shortId}`;
-          let challengeUrl = `http://localhost:3000/detail/${challenge.shortId}`;
+          let challengeUrl = `http://elice-kdt-sw-1st-vm04.koreacentral.cloudapp.azure.com/detail/${challenge.shortId}`;
           const joinedChallenge = {
             name: challenge.author.name,
             title: challenge.title,

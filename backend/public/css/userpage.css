@@ -11,6 +11,11 @@ header {
   margin: auto;
 }
 
+header h1 {
+  font-size: 48px;
+  font-family: "Fugaz One", cursive, sans-serif;
+}
+
 .banner {
   width: 1056px;
   height: 160px;
@@ -293,4 +298,5 @@ header {
   text-decoration: none;
   text-align: left;
   color: rgb(253, 95, 130);
+  font-weight: 700;
 }
