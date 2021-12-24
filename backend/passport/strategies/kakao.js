@@ -3,6 +3,8 @@ const { User, OAuth } = require("../../models");
 require("dotenv").config();
 const generateRandomPassword = require("../../utils/generate-random-password");
 const hashPassword = require("../../utils/hash-password");
+const path = require("path");
+const fs = require("fs");
 const config = {
   clientID: process.env.KAKAO_clientID,
   callbackURL: process.env.KAKAO_CALLBACK,
@@ -21,7 +23,12 @@ async function findOrCreateUser({ name, email, imgURL }) {
     name,
     email,
     password: hashPassword(generateRandomPassword()),
-    img: imgURL,
+    img: {
+      data: fs.readFileSync(
+        path.join(__dirname, "..", "../public/assets/img/img-user-default.png")
+      ),
+      contentType: "image/png",
+    },
   });
   return created;
 }

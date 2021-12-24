@@ -2,6 +2,8 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const { User, OAuth } = require("../../models");
 const generateRandomPassword = require("../../utils/generate-random-password");
 const hashPassword = require("../../utils/hash-password");
+const path = require("path");
+const fs = require("fs");
 require("dotenv").config();
 const config = {
   clientID: process.env.GOOGLE_clientID,
@@ -22,6 +24,12 @@ async function findOrCreateUser({ name, email }) {
     name,
     email,
     password: hashPassword(generateRandomPassword()),
+    img: {
+      data: fs.readFileSync(
+        path.join(__dirname, "..", "../public/assets/img/img-user-default.png")
+      ),
+      contentType: "image/png",
+    },
   });
 
   return created;
