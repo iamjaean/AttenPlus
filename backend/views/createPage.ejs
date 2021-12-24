@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>createPage</title>
     <link
-    href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
-    rel="stylesheet"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Monoton&family=Nanum+Gothic:wght@400;700;800&display=swap"
-    rel="stylesheet"
-  />
+      rel="icon"
+      type="image/png"
+      href="data:image/x-icon;base64,<%- include('favicon')%>"
+    />
+    <link
+      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Monoton&family=Nanum+Gothic:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/style_create.css" />
     <link rel="stylesheet" href="./css/main.css" />
   </head>
@@ -19,62 +24,68 @@
   <body>
     <div><%- include('header') %></div>
     <div>
-    <form
-      method="post"
-      enctype="multipart/form-data"
-      action="/create"
-    >
-      <div class="create_container">
-        <img id="img"/>
-        <div id="picture_container">
-          <label for = "uploaded_file ">프로필 사진 업로드</label>
-          <input type="file" id="uploaded_file" name="uploaded_file" required/>
-          
+      <form method="post" enctype="multipart/form-data" action="/create">
+        <div class="create_container">
+          <img id="img" />
+          <div id="picture_container">
+            <label for="uploaded_file ">프로필 사진 업로드</label>
+            <input
+              type="file"
+              id="uploaded_file"
+              name="uploaded_file"
+              required
+            />
+          </div>
+
+          <div class="input_container" id="title_default">
+            <h2>제목을 입력해 주세요</h2>
+          </div>
+          <div class="input_container" id="title_container">
+            <input type="text" id="create_title" name="title" required />
+            <p id="title_length">0/50</p>
+          </div>
+          <div class="input_container" id="introduce_default">
+            <h2>소개를 등록하세요</h2>
+          </div>
+          <div class="input_container" id="introduce_container">
+            <textarea
+              id="create_introduce"
+              name="description"
+              required
+            ></textarea>
+            <p id="introduce_length">0/100</p>
+          </div>
+          <div class="input_container" id="5">
+            <h2>어떤 주제와 관련이 있나요?</h2>
+          </div>
+          <div class="input_container" id="type_check_container">
+            <select name="category" id="category" required>
+              <option value="운동">운동</option>
+              <option value="생활">생활</option>
+              <option value="정서">정서</option>
+              <option value="역량">역량</option>
+              <option value="취미">취미</option>
+            </select>
+          </div>
+          <div class="input_container" id="daate_container">
+            <h2>시작일을 선택해주세요</h2>
+            <p>
+              <input type="date" id="start_date" name="startdate" required />
+            </p>
+            <h2>종료일을 선택해주세요</h2>
+            <p><input type="date" id="end_date" name="enddate" required /></p>
+          </div>
+          <div id="button_container">
+            <input
+              type="submit"
+              id="create_submit"
+              name="create_submit"
+              value="프로젝트 개설하기"
+            />
+          </div>
         </div>
-        
-        <div class="input_container" id="title_default">
-          <h2>제목을 입력해 주세요</h2>
-        </div>
-        <div class="input_container" id="title_container">
-          <input type="text" id="create_title" name="title" required/>
-          <p id="title_length">0/50</p>
-        </div>
-        <div class="input_container" id="introduce_default">
-          <h2>소개를 등록하세요</h2>
-        </div>
-        <div class="input_container" id="introduce_container">
-          <textarea id="create_introduce" name="description" required></textarea>
-          <p id="introduce_length">0/100</p>
-        </div>
-        <div class="input_container" id="5">
-          <h2>어떤 주제와 관련이 있나요?</h2>
-        </div>
-        <div class="input_container" id="type_check_container">          
-          <select name="category" id="category" required>
-            <option value="운동">운동</option>
-            <option value="생활">생활</option>
-            <option value="정서">정서</option>
-            <option value="역량">역량</option>
-            <option value="취미">취미</option>
-          </select>
-        </div>
-        <div class="input_container" id="daate_container">
-          <h2>시작일을 선택해주세요</h2>
-          <p><input type="date" id="start_date" name="startdate" required/></p>
-          <h2>종료일을 선택해주세요</h2>
-          <p><input type="date" id="end_date" name="enddate" required/></p>
-        </div>
-        <div id="button_container">
-          <input
-            type="submit"
-            id="create_submit"
-            name="create_submit"
-            value="프로젝트 개설하기"
-          />
-        </div>
-      </div>
-    </form>
-  </div>
+      </form>
+    </div>
     <div><%- include('footer') %></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
@@ -89,15 +100,15 @@
         $("#introduce_length").html(content.length + "/100");
       });
       document.getElementById("uploaded_file").onchange = function () {
-          var reader = new FileReader();
+        var reader = new FileReader();
 
-          reader.onload = function (e) {
-              // get loaded data and render thumbnail.
-              document.getElementById("img").src = e.target.result;
-          };
+        reader.onload = function (e) {
+          // get loaded data and render thumbnail.
+          document.getElementById("img").src = e.target.result;
+        };
 
-          // read the image file as a data URL.
-          reader.readAsDataURL(this.files[0]);
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
       };
     </script>
   </body>
