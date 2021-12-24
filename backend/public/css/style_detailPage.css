@@ -37,7 +37,7 @@
 .headerContent ul li a {
   text-decoration-line: none;
   color: black;
-  font-family: Roboto;
+
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
@@ -57,7 +57,7 @@
 
 .postCategory div {
   text-align: center;
-  font-family: Roboto;
+
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
@@ -68,14 +68,17 @@
   margin: 21px 0 0 0;
 }
 .creator {
-  font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
   line-height: 21px;
   margin: 21px 0 0 0;
 }
-
+.creatorName {
+  padding-top: 8px;
+  float: right;
+  padding-left: 6px;
+}
 .detailPostImg {
   margin-left: 31px;
   text-align: center;
@@ -109,7 +112,7 @@
 
   display: inline-block;
   top: 44px;
-  font-family: Roboto;
+
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
@@ -123,7 +126,7 @@
 .endDate {
   line-height: 56px;
   margin-top: 5px;
-  font-family: Roboto;
+
   font-style: normal;
   font-weight: 400;
   font-size: 48px;
@@ -135,7 +138,7 @@
   height: 58px;
   background: #ff5c5c;
   border-radius: 7px;
-  font-family: Roboto;
+
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
@@ -160,7 +163,7 @@
   height: 58px;
   background: #ff5c5c;
   border-radius: 7px;
-  font-family: Roboto;
+
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
@@ -176,7 +179,7 @@
 .progressTxt {
   width: 307.88px;
   margin-bottom: 28px;
-  font-family: Roboto;
+
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
@@ -200,7 +203,7 @@
   border: 0px;
   background: #bbbfca;
   border-radius: 7px;
-  font-family: Roboto;
+
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
@@ -217,7 +220,7 @@
   border: 0px;
   background: #ff5c5c;
   border-radius: 7px;
-  font-family: Roboto;
+
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
@@ -239,7 +242,7 @@
 .challengeTxt {
   float: left;
   margin: 40px 0 0 30.91px;
-  font-family: Roboto;
+
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
@@ -252,20 +255,27 @@
   width: 641.04px;
   height: 432.76px;
   background: #f4f4f2;
-  font-size: 12px;
+  font-size: 13px;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
+
+.storyContent::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
 .reviewWrite {
   float: right;
   margin: 40px 311px 43px 0;
-  font-family: Roboto;
+
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
   line-height: 28px;
 }
 .createCard {
-  margin-bottom: 25px;
-  float: right;
+  margin-bottom: 20px;
   width: 334.14px;
   height: 164.12px;
   background: #fffefe;
@@ -273,13 +283,28 @@
   box-sizing: border-box;
   box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
-  font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 21px;
   text-align: center;
-  padding-top: 35px;
+  padding-top: 15px;
+}
+
+.createCard textarea::placeholder {
+  color: #bcbcbc;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+}
+.postReviewButton {
+  width: 100px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #1f9de6;
+
+  font-weight: bold;
 }
 .createCardLink {
   margin-top: 24px;
@@ -291,8 +316,8 @@
   display: flex;
 }
 .reviewCard {
-  float: right;
-  margin: 0 0 25px 0;
+  float: left;
+  margin: 0 0 20px 0;
   width: 334.14px;
   height: 164.12px;
   background: #fffefe;
@@ -300,7 +325,6 @@
   box-sizing: border-box;
   box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
-  font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -321,37 +345,46 @@
 
 .reviewWriteUser {
   height: 21px;
-  font-family: Roboto;
+
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
   line-height: 21px;
   float: left;
   padding-top: 22px;
-  padding-left: 3px;
+  padding-left: 8px;
 }
 .reviewText {
-  width: 284.83px;
+  width: 307.82px;
   height: 82.43px;
-  font-family: Roboto;
+
   font-style: normal;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 13px;
   line-height: 21px;
   text-align: justify;
   color: #000000;
   clear: both;
 
   padding-left: 24.29px;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
+
+.reviewText::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
 .reviewListBoard {
   float: right;
   -ms-overflow-style: none;
   scrollbar-width: none;
   height: 432.75px;
-  width: 334.14px;
+  width: 335.14px;
   overflow-y: scroll;
   margin: 0 21.68px 0 0;
+  justify-content: center;
 }
 .reviewListBoard::-webkit-scrollbar {
   display: none;
@@ -392,6 +425,7 @@
 }
 
 .detailPageModal {
+  z-index: 9998;
   position: absolute;
   top: 0;
   left: 0;
@@ -407,7 +441,7 @@
   left: 50%;
   width: 500px;
   height: 200px;
-  padding-top: 76px;
+  padding-top: 89px;
   font-size: 22px;
   vertical-align: middle;
   text-align: center;
@@ -415,4 +449,57 @@
   border-radius: 10px;
   box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
   transform: translateX(-50%) translateY(-50%);
+}
+.reviewUpdateText {
+  width: 282px;
+  height: 68.43px;
+  border: none;
+  resize: none;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.reviewUpdateText::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+.reviewUpdateButton {
+  top: 10px;
+  width: 130px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #1f9de6;
+  font-weight: bold;
+  float: right;
+  top: 10px;
+  padding-right: 2px;
+}
+.reviewDeleteButton {
+  padding-top: 27px;
+  padding-right: 24px;
+  width: 50px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ff64c4;
+  font-weight: bold;
+}
+
+.changeReviewText {
+  width: 70px;
+  height: 20.99px;
+  padding-top: 27px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #1f9de6;
+  font-weight: bold;
+  float: right;
+  top: 10px;
+}
+.deleteReviewForm {
+  width: 50px;
+  float: right;
 }
