@@ -5,15 +5,20 @@ const router = Router();
 
 router.get("/", async (req, res, next) => {
    const challenges = Challenge.find({}).sort({createdAt: -1}).populate('author').populate('joinusers');
-   challenges.find({}, (err, challenges) => {
-      if (err) {
-        console.log(err);
-        res.status(500).send('An error occurred', err);
-      }
-      else {
-          res.render('mainPage_test', { challenges: challenges });
-      }
-   });
+   try{
+      challenges.find({}, (err, challenges) => {
+         if (err) {
+         console.log(err);
+         res.status(500).send('An error occurred', err);
+         }
+         else {
+            res.render('mainPage_test', { challenges: challenges });
+         }
+      });
+   }
+   catch(err){
+      next(err);
+   }
 });
 
 module.exports = router;
