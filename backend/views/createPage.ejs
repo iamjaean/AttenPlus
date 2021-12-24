@@ -4,16 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>createPage</title>
+    <link
+    href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Monoton&family=Nanum+Gothic:wght@400;700;800&display=swap"
+    rel="stylesheet"
+  />
     <link rel="stylesheet" href="css/style_create.css" />
+    <link rel="stylesheet" href="./css/main.css" />
   </head>
 
   <body>
+    <div><%- include('header') %></div>
+    <div>
     <form
       method="post"
       enctype="multipart/form-data"
       action="http://localhost:3000/create"
     >
-      <div class="container">
+      <div class="create_container">
         <img id="img"/>
         <div id="picture_container">
           <label for = "uploaded_file ">프로필 사진 업로드</label>
@@ -63,6 +74,8 @@
         </div>
       </div>
     </form>
+  </div>
+    <div><%- include('footer') %></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
       const create_title = document.getElementById("create_title");

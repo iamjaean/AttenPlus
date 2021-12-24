@@ -4,10 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+    href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Monoton&family=Nanum+Gothic:wght@400;700;800&display=swap"
+    rel="stylesheet"
+  />
     <link rel="stylesheet" href="./css/main.css" />
-    <title>작심삼일</title>
+    <title>Atten+</title>
+    
   </head>
   <body>
+    
     <div id="header"><%- include('header') %></div>
 
     <main class="main">
@@ -44,7 +54,7 @@
         <div class="new-challenges">
           <span class="main-section-title">신규 챌린지</span>
           <div class="container">
-            <% const newChallenge = 8 %> <% for (let i = 0; i < newChallenge ;
+            <% const newChallenge = 2 %> <% for (let i = 0; i < newChallenge ;
             i++) { %>
             <a href="/detail/<%= challenges[i].shortId%>">
               <div class="item-box">
@@ -84,9 +94,10 @@
     <div class="line"></div>
 
     <div id="footer"><%- include('footer') %></div>
+    <script src="/js/userpageMenu.js"></script>
     <script>
       const dataSet = <%-JSON.stringify(challenges)%>;
-      let curChallenge = 8;
+      let curChallenge = 2;
       const allContainer = document.querySelector(".all-challenges .container");
       loadImages();
 
