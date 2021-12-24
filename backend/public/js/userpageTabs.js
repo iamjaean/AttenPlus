@@ -51,6 +51,7 @@ async function getJoinedChallenges() {
   pageJoined++;
   const response = await fetch(
     `http://elice-kdt-sw-1st-vm04.koreacentral.cloudapp.azure.com/user/${authorShortId}/joined?_limit=${limit}&_page=${pageJoined}`
+    // `http://localhost:3000/user/${authorShortId}/joined?_limit=${limit}&_page=${pageJoined}`
   );
 
   const data = await response.json();
@@ -73,6 +74,7 @@ async function getCreatedChallenges() {
   pageCreated++;
   const response = await fetch(
     `http://elice-kdt-sw-1st-vm04.koreacentral.cloudapp.azure.com/user/${authorShortId}/created?_limit=${limit}&_page=${pageCreated}`
+    // `http://localhost:3000/user/${authorShortId}/created?_limit=${limit}&_page=${pageCreated}`
   );
   const data = await response.json();
   return data;
@@ -101,9 +103,12 @@ function challengeHTML(challenge) {
                       <div>
                         <div class="detail-info">
                                 <p class="challenge-category">${challenge.category}</p>
-                                <p class="challenge-maker">${challenge.name}</p>
+                                <p class="challenge-maker">${challenge.name}</p>     
                         </div>
-                        <a href="${challenge.url}" class="challenge-title">${challenge.title}</a>
+                        <div class="card-title">
+                                <a href="${challenge.url}" class="challenge-title">${challenge.title}</a>
+                        </div>
+                        <p class="card-joinusers">${challenge.numJoined}명 참여</p>
                       </div>
                     </article>
     `;

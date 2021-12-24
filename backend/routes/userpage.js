@@ -213,6 +213,7 @@ router.get(
               data: b64,
             },
             url: challengeUrl,
+            numJoined: challenge.joinusers.length,
           };
 
           createdChallenges.push(createdChallenge);
@@ -237,7 +238,7 @@ router.get(
     });
     const challenges = Challenge.find({ joinusers: { $in: user } })
       .sort({ updatedAt: -1 })
-      .populate("user", "name")
+      .populate("author", "name")
       .skip((_page - 1) * _limit)
       .limit(_limit);
 
@@ -260,6 +261,7 @@ router.get(
               data: b64,
             },
             url: challengeUrl,
+            numJoined: challenge.joinusers.length,
           };
 
           joinedChallenges.push(joinedChallenge);
