@@ -285,7 +285,6 @@ header {
 
 .card-title {
   min-height: 50px;
-  text-align: left;
 }
 
 .card-joinusers {
@@ -293,5 +292,4 @@ header {
   text-decoration: none;
   text-align: left;
   color: rgb(253, 95, 130);
-  font-weight: 700;
 }
