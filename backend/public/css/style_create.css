@@ -1,33 +1,14 @@
-body {
-  
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+a {
+  color: #00b7ff;
 }
 
-a {
-  color: #00B7FF;
-}
-h2 {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 24px;
-}
-label {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 15px;
-}
-.container {
-  margin : 43px 0 0 0px; 
-  width : 682px;
+.create_container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 682px;
   height: 936px;
-  background-color: #FFFFFF;
-  border: 2px solid #C8C8C8;
+  background-color: #ffffff;
+  border: 2px solid #c8c8c8;
   border-radius: 10px;
 }
 
@@ -36,13 +17,13 @@ label {
   height: 162px;
   margin-left: 255px;
   margin-top: 30px;
-  background: #FFFFFF;
+  background: #ffffff;
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 15px;
 }
-#picture_container label{
-  display: inline-block; 
+#picture_container label {
+  display: inline-block;
   width: 120px;
   text-align: center;
   margin: 40px 0 0 30px;
@@ -73,7 +54,7 @@ label {
   border: 1px solid black;
   box-sizing: border-box;
   border-radius: 15px;
-}
+} */
 .input_container {
   margin-left: 68px;
   margin-top: 30px;
@@ -84,7 +65,7 @@ label {
   border-bottom: 2px solid black;
   outline: none;
 }
-#title_length{
+#title_length {
   margin-left: 475px;
 }
 #create_introduce {
@@ -95,7 +76,7 @@ label {
   outline: none;
   resize: none;
 }
-#introduce_length{
+#introduce_length {
   margin-left: 470px;
 }
 select {
@@ -116,6 +97,7 @@ select {
   border: none;
   margin-top: 15px;
   background-color: #ff5c5c;
+
   font-size: 20px;
   line-height: 20px;
   color: #ffffff;

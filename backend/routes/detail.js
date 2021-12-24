@@ -17,7 +17,7 @@ router.get("/:shortId", async(req, res, next) => {
         { challenge: challenge }
      ]
     }).populate('user').populate('challenge');
-      res.render('detailPage_test',{ challenge: challenge, attendance: attendance, user:user });
+      res.render('detailPage',{ challenge: challenge, attendance: attendance, user:user });
   });
 
 //댓글 생성

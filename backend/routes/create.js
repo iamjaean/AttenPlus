@@ -1,5 +1,10 @@
 const { Router } = require("express");
-const { Challenge, User, JoinChallenge,  attendenceCheck } = require("../models/index");
+const {
+  Challenge,
+  User,
+  JoinChallenge,
+  attendenceCheck,
+} = require("../models/index");
 const multer = require("multer");
 var fs = require("fs");
 var path = require("path");
@@ -17,18 +22,15 @@ const upload = multer({ storage: storage });
 const router = Router();
 
 router.get("/", async (req, res, next) => {
-  
-  res.render("createPage");
+  const user = await User.findOne({
+    shortId: req.user.shortId,
+  });
+
+  res.render("createPage", { user: user });
 });
 
 router.post("/", upload.single("uploaded_file"), async (req, res, next) => {
-  const {
-    title,
-    description,
-    category,
-    startdate,
-    enddate,
-  } = req.body;
+  const { title, description, category, startdate, enddate } = req.body;
 
   const author = await User.findOne({
     shortId: req.user.shortId,
@@ -57,4 +59,3 @@ router.post("/", upload.single("uploaded_file"), async (req, res, next) => {
 });
 
 module.exports = router;
-
