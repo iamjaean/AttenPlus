@@ -25,7 +25,7 @@ async function findOrCreateUser({ name, email, imgURL }) {
     password: hashPassword(generateRandomPassword()),
     img: {
       data: fs.readFileSync(
-        path.join(__dirname, "../", "../public/assets/img/img-user-default.png")
+        path.join(__dirname, "..", "../public/assets/img/img-user-default.png")
       ),
       contentType: "image/png",
     },
