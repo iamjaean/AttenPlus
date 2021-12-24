@@ -20,7 +20,6 @@ router.get("/:shortId", async(req, res, next) => {
       res.render('detailPage_test',{ challenge: challenge, attendance: attendance, user:user });
   });
 
-
 //댓글 생성
 router.post("/:shortId/comments", async (req, res, next) => {
   const { shortId } = req.params;
@@ -42,7 +41,7 @@ router.post("/:shortId/comments", async (req, res, next) => {
   res.redirect(`/detail/${shortId}`);
 });
 
-//index로 수정하고 저장하는 version
+//댓글 수정
 router.post("/:shortId/comments/edit", async (req, res, next) => {
   const { shortId } = req.params;
   const { comment_index, content } = req.body;
@@ -58,7 +57,7 @@ router.post("/:shortId/comments/edit", async (req, res, next) => {
   }
 });
 
-//index로 삭제하고 저장하는 version
+//댓글 삭제
 router.post("/:shortId/comments/delete", async (req, res, next) => {
   const { shortId } = req.params;
   const { comment_index } = req.body;
@@ -84,7 +83,7 @@ router.post("/:shortId/attendance", async (req, res, next) => {
     });
     const challenge = await Challenge.findOne({shortId,});
     function getTodayDate() {
-      var date = new Date();s
+      var date = new Date();
       var year = date.getFullYear();
       var month = ("0" + (1 + date.getMonth())).slice(-2);
       var day = ("0" + date.getDate()).slice(-2);
