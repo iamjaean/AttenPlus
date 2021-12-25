@@ -24,7 +24,9 @@ router.get("/pwreset", (req, res) => {
 });
 
 router.get("/loginFailed", (req, res) => {
-  res.send(`<script>alert('등록되지 않은 회원 이거나, 비밀번호를 잘못 입력하셨습니다.');location.href='/sign';</script>`);
+  res.send(
+    `<script>alert('등록되지 않은 회원 이거나, 비밀번호를 잘못 입력하셨습니다.');location.href='/sign';</script>`
+  );
 });
 
 //회원가입
@@ -39,13 +41,17 @@ router.post(
     //이메일 중복체크
     const checkEmail = await User.findOne({ email });
     if (checkEmail) {
-      return res.send(`<script>alert('이미 존재하는 이메일 입니다.');location.href='/sign';</script>`);
+      return res.send(
+        `<script>alert('이미 존재하는 이메일 입니다.');location.href='/sign';</script>`
+      );
     }
 
     //컬렉션 생성용
     const user = new User({
       img: {
-        data: fs.readFileSync(path.join(__dirname, "..", "/public/assets/img/img-user-default.png")),
+        data: fs.readFileSync(
+          path.join(__dirname, "..", "/public/assets/img/img-user-default.png")
+        ),
         contentType: "image/png",
       },
       email,
@@ -72,7 +78,9 @@ router.post(
     const { email } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
-      res.send(`<script>alert('가입되지 않은 이메일 입니다.');location.href='/sign/pwreset';</script>`);
+      res.send(
+        `<script>alert('가입되지 않은 이메일 입니다.');location.href='/sign/pwreset';</script>`
+      );
     }
 
     const password = generateRandomPassword();
@@ -83,8 +91,14 @@ router.post(
         password: hashPassword(password),
       }
     );
-    await sendMail(email, "임시 비밀번호가 발급되었습니다.", `임시 비밀번호는: ${password} 입니다.`);
-    res.send(`<script>alert('임시 비밀번호가 전송되었습니다.');location.href='/sign';</script>`);
+    await sendMail(
+      email,
+      "임시 비밀번호가 발급되었습니다.",
+      `임시 비밀번호는: ${password} 입니다.`
+    );
+    res.send(
+      `<script>alert('임시 비밀번호가 전송되었습니다.');location.href='/sign';</script>`
+    );
   })
 );
 

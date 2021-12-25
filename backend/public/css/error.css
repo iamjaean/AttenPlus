@@ -1,0 +1,68 @@
+.error_404 {
+  font-size: 11rem;
+  font-family: "Fugaz One";
+}
+
+.error_sub {
+  font-size: 1.2rem;
+  color: rgb(39, 163, 255);
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.btn_box {
+  margin-top: 20px;
+}
+
+.error_main {
+  width: 23%;
+  cursor: pointer;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  height: 35px;
+  white-space: nowrap;
+  border-radius: 4px;
+  margin: 0px;
+  border: 0px;
+  outline: none;
+  font-weight: bold;
+  box-sizing: border-box;
+  padding: 0px 24px;
+  background-color: rgb(255, 87, 87);
+  color: rgb(255, 255, 255);
+}
+
+.error_prev {
+  width: 23%;
+  cursor: pointer;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  height: 35px;
+  white-space: nowrap;
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 4px;
+  margin: 0px;
+  outline: none;
+  font-weight: bold;
+  box-sizing: border-box;
+  padding: 0px 24px;
+  color: black;
+}
+
+@media only screen and (min-width: 768px) {
+  .error_container {
+    text-align: center;
+    width: 400px;
+    padding: 72px 0px 0px;
+    margin: 0px auto 12px;
+    cursor: default;
+    font-family: "NanumSquare";
+  }
+}
