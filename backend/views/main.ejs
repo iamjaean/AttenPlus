@@ -31,15 +31,21 @@
           a.joinusers.length}).slice(0,4);
           hotChallenges.forEach(function(challenge) { %>
           <li class="slider-item">
-            <div>
-              <a href="/detail/<%= challenge.shortId%>">
+            <a href="/detail/<%= challenge.shortId%>">
+              <div class="slider-card">
+                <div class="slider-card-info">
+                  <p><%= challenge.title %></p>
+                  <p class="card-info-join">
+                    현재 <%= challenge.joinusers.length %>명 참여 중
+                  </p>
+                </div>
                 <img
                   src="data:challenge/<%=challenge.img.contentType%>;base64,
-                <%=challenge.img.data.toString('base64')%>
+            <%=challenge.img.data.toString('base64')%>
 "
                 />
-              </a>
-            </div>
+              </div>
+            </a>
           </li>
           <% }) %>
         </ol>
@@ -78,18 +84,9 @@
                     </p>
                   </div>
                   <h2 class="challenge-title"><%= challenges[i].title%></h2>
-                  <section>
-                    <p class="challenge-join-users">
-                      <%= challenges[i].joinusers.length%>명 참여
-                    </p>
-
-                    <p
-                      class="challenge-condition"
-                      id="color<%= processDates(challenges[i].startdate,challenges[i].enddate).value %>"
-                    >
-                      <%=processDates(challenges[i].startdate,challenges[i].enddate).condition%>
-                    </p>
-                  </section>
+                  <p class="challenge-join-users">
+                    <%= challenges[i].joinusers.length%>명 참여
+                  </p>
                 </div>
               </div>
             </a>
