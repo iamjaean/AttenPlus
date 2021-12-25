@@ -260,26 +260,8 @@ label.submitBox {
   overflow: hidden;
 }
 
-.user-img-wrapper {
-  width: 246px;
-  height: 184px;
-  overflow: hidden;
-  margin-bottom: 16px;
-}
-
-.user-img-wrapper img {
-  display: block;
-  align-self: center;
-  width: 240px;
-  height: 184px;
-  cursor: pointer;
-  position: absolute;
-  overflow: hidden;
-}
-
-.user-img-wrapper img:hover {
-  transform: scale(1.07);
-  transition: transform 0.2s ease-in;
+.card section {
+  display: flex;
 }
 
 .category-tag {
@@ -309,4 +291,47 @@ label.submitBox {
   text-align: left;
   color: rgb(253, 95, 130);
   font-weight: 700;
+  width: 25%;
+}
+
+.challenge-condition {
+  font-size: 12px;
+  text-decoration: none;
+  text-align: left;
+  font-weight: 700;
+  width: 50%;
+}
+
+.challenge-condition#color1 {
+  color: rgb(255, 140, 193);
+}
+
+.challenge-condition#color2 {
+  color: rgb(161, 64, 84);
+}
+
+.challenge-condition#color3 {
+  color: rgba(247, 19, 19, 0.801);
+}
+
+.user-img-wrapper {
+  width: 246px;
+  height: 184px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.user-img-wrapper img {
+  display: block;
+  align-self: center;
+  width: 240px;
+  height: 184px;
+  cursor: pointer;
+  position: absolute;
+  overflow: hidden;
+}
+
+.user-img-wrapper img:hover {
+  transform: scale(1.07);
+  transition: transform 0.2s ease-in;
 }

@@ -74,8 +74,9 @@ async function showJoinedChallenges() {
 async function getCreatedChallenges() {
   pageCreated++;
   const response = await fetch(
-    `http://elice-kdt-sw-1st-vm04.koreacentral.cloudapp.azure.com/user/${authorShortId}/created?_limit=${limit}&_page=${pageCreated}`
+    `http://localhost:3000/user/${authorShortId}/created?_limit=${limit}&_page=${pageCreated}`
   );
+  // `http://elice-kdt-sw-1st-vm04.koreacentral.cloudapp.azure.com/user/${authorShortId}/created?_limit=${limit}&_page=${pageCreated}`
   const data = await response.json();
   return data;
 }
@@ -93,7 +94,7 @@ async function showCreatedChallenges() {
 // challenge에 따른 HTML 반환
 
 function challengeHTML(challenge) {
-  const challengeCondition = processDates(
+  const { condition, value } = processDates(
     challenge.startdate,
     challenge.enddate
   );
@@ -112,8 +113,10 @@ function challengeHTML(challenge) {
                         <div class="card-title">
                                 <a href="${challenge.url}" class="challenge-title">${challenge.title}</a>
                         </div>
-                        <p class="card-joinusers">${challenge.numJoined}명 참여</p>
-                        <p class= "challenge-condition">${challengeCondition}</p>
+                        <section>
+                          <p class="card-joinusers">${challenge.numJoined}명 참여</p>
+                          <p class= "challenge-condition" id="color${value}">${condition}</p>
+                        </section>
                       </div>
                     </article>
     `;
@@ -127,22 +130,35 @@ function processDates(startdate, enddate) {
 
   //startdate 와 enddate의 형태를 Date 형식으로 변경
   const [startYear, startMonth, startDay] = startdate.split("-");
-  startTime = new Date(startYear, startMonth - 1, startDay).valueOf();
-  console.log(startdate);
+  startTime = new Date(
+    Number(startYear),
+    Number(startMonth - 1),
+    Number(startDay)
+  ).valueOf();
+  console.log(startTime);
 
   const [endYear, endMonth, endDay] = enddate.split("-");
-  endTime = new Date(endYear, endMonth - 1, endDay + 1).valueOf();
+  endTime = new Date(
+    Number(endYear),
+    Number(endMonth) - 1,
+    Number(endDay) + 1
+  ).valueOf();
+  console.log(endTime);
 
   let condition = "";
+  let value = 1;
   if (today < startTime) {
     condition = "모집중";
+    value = 1;
   } else if (today > endTime) {
     condition = "종료";
+    value = 3;
   } else {
     condition = "진행중";
+    value = 2;
   }
 
-  return condition;
+  return { condition, value };
 }
 
 // infinite scroll 기능구현을 위한 eventlistener
