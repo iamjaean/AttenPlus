@@ -1,3 +1,32 @@
+/* header */
+.logo a h1 {
+  text-align: center;
+  font-weight: 700;
+  color: #000;
+}
+
+.global-header {
+  padding-top: 1px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  margin: auto 0;
+}
+
+.upload-btn:hover {
+  color: #000;
+}
+
+.nav-list {
+  margin: auto 0;
+}
+
+.search-wrapper input {
+  width: 162px;
+}
+
 .nav-item a:hover {
   color: #fa6461;
   transition: color 0.5s ease-in-out;
