@@ -93,6 +93,10 @@ async function showCreatedChallenges() {
 // challenge에 따른 HTML 반환
 
 function challengeHTML(challenge) {
+  const challengeCondition = processDates(
+    challenge.startdate,
+    challenge.enddate
+  );
   return `
                     <article class="card">
                       <div class="user-img-wrapper">
@@ -109,9 +113,36 @@ function challengeHTML(challenge) {
                                 <a href="${challenge.url}" class="challenge-title">${challenge.title}</a>
                         </div>
                         <p class="card-joinusers">${challenge.numJoined}명 참여</p>
+                        <p class= "challenge-condition">${challengeCondition}</p>
                       </div>
                     </article>
     `;
+}
+
+// 각 챌린지 참여가능 여부 표시를 위한 날짜 처리
+
+function processDates(startdate, enddate) {
+  const today = Date.now();
+  console.log(today);
+
+  //startdate 와 enddate의 형태를 Date 형식으로 변경
+  const [startYear, startMonth, startDay] = startdate.split("-");
+  startTime = new Date(startYear, startMonth - 1, startDay).valueOf();
+  console.log(startdate);
+
+  const [endYear, endMonth, endDay] = enddate.split("-");
+  endTime = new Date(endYear, endMonth - 1, endDay + 1).valueOf();
+
+  let condition = "";
+  if (today < startTime) {
+    condition = "모집중";
+  } else if (today > endTime) {
+    condition = "종료";
+  } else {
+    condition = "진행중";
+  }
+
+  return condition;
 }
 
 // infinite scroll 기능구현을 위한 eventlistener
