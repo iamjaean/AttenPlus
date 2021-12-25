@@ -24,8 +24,10 @@
     <title><%=author.name %>님의 페이지</title>
   </head>
   <body>
+    <!-- header.ejs 호출 -->
     <div id="header"><%- include('header') %></div>
 
+    <!-- 상단 배너를 이미지를 내려 받은 뒤 생성 -->
     <div class="banner">
       <img
         src="data:<%=author.img.contentType%>;base64,
@@ -35,6 +37,7 @@
       <h1><%=author.name %>님의 페이지</h1>
     </div>
 
+    <!-- 각 탭의 버튼들-->
     <div class="tabs">
       <ul class="tabs_sidebar">
         <li data-tab-target="#content1" class="tab active"><h3>프로필</h3></li>
@@ -43,8 +46,11 @@
       </ul>
     </div>
 
+    <!-- 탭 및으로 들어갈 컨텐츠들. 1부터 3까지 있으며, active 클래스의 유무에 따라 보여짐.-->
+    <!-- content 1: 유저 정보 표시-->
     <div class="content active" id="content1" data-tab-content>
       <div class="profile">
+        <!-- 프로필 사진-->
         <div class="comp">
           <div class="comp-top">
             <p class="comp-title"><strong>프로필 사진</strong></p>
@@ -69,6 +75,7 @@
           <%= typeof msg != 'undefined' ? msg : ''%>
           <p class="comp-content" id="image-content"></p>
         </div>
+        <!-- 유저 이름 -->
         <div class="comp">
           <div class="comp-top">
             <p class="comp-title"><strong>이름</strong></p>
@@ -84,6 +91,7 @@
           </div>
           <p class="comp-content" id="name-content"><%= author.name %></p>
         </div>
+        <!-- 유저 소개 -->
         <div class="comp">
           <div class="comp-top">
             <p class="comp-title"><strong>소개</strong></p>
@@ -99,12 +107,14 @@
           </div>
           <p class="comp-content" id="intro-content"><%=author.introduce%></p>
         </div>
+        <!-- 유저 이메일 주소 -->
         <div class="comp">
           <div class="comp-top">
             <p class="comp-title"><strong>이메일</strong></p>
           </div>
           <p class="comp-content" id="website-content"><%=author.email%></p>
         </div>
+        <!-- 유저 비밀번호 (접속한 유저가 접속한 유저페이지의 소유자일 경우 보여짐) -->
         <% if(author.shortId === user.shortId){%>
         <div class="comp">
           <div class="comp-top">
@@ -120,26 +130,27 @@
           <p class="comp-content" id="password-content"></p>
         </div>
         <% } %>
-        <!-- <div class="comp">
-          <div class="comp-top">
-            <p class="comp-title"><strong>달성한 업적</strong></p>
-          </div>
-          <p class="comp-content">내용</p>
-        </div> -->
       </div>
     </div>
 
+    <!-- 참여한 챌린지들. active 클래스가 추가되면 동적으로 생성 -->
     <div class="content" id="content2" data-tab-content>
       <div class="joinedChallenge card-wrapper"></div>
     </div>
 
+    <!-- 생성한 챌린지들. active 클래스가 추가되면 동적으로 생성 -->
     <div class="content" id="content3" data-tab-content>
       <div class="createdChallenge card-wrapper"></div>
     </div>
 
+    <!-- loading spinner가 동적으로 들어갔다 나오는 자리 -->
     <div id="loader-wrapper"></div>
     <div class="crossing-line"></div>
+
+    <!-- footer -->
     <div id="footer"><%- include('footer') %></div>
+
+    <!-- js 함수들에서 사용할 값들을 설정 -->
     <script>
       const authorShortId = "<%= author.shortId%>";
       const userShortId = "<%= user.shortId%>";
