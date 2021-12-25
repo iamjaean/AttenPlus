@@ -27,7 +27,7 @@
       <div class="slider">
         <ol class="slider-list">
           <% let temp = challenges; const hotChallenges =
-          temp.sort(function(a,b){return b.joinusers.length -
+          [...temp].sort(function(a,b){return b.joinusers.length -
           a.joinusers.length}).slice(0,4);
           hotChallenges.forEach(function(challenge) { %>
           <li class="slider-item">
