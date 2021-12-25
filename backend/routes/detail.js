@@ -45,9 +45,9 @@ router.post("/:shortId/comments", async (req, res, next) => {
 router.post("/:shortId/comments/edit", async (req, res, next) => {
   const { shortId } = req.params;
   const { comment_index, content } = req.body;
-  let challenge = await Challenge.findOne({shortId,});
-  console.log(comment_index);
-  try{
+  let challenge = await Challenge.findOne({ shortId });
+
+  try {
     challenge.comments[Number(comment_index)].content = content;
     await challenge.save();
     res.redirect(`/detail/${shortId}`);
@@ -61,8 +61,7 @@ router.post("/:shortId/comments/edit", async (req, res, next) => {
 router.post("/:shortId/comments/delete", async (req, res, next) => {
   const { shortId } = req.params;
   const { comment_index } = req.body;
-  let challenge = await Challenge.findOne({shortId,});
-  console.log(comment_index);
+  let challenge = await Challenge.findOne({ shortId });
 
   try{
     challenge.comments[Number(comment_index)].isDeleted = true;
