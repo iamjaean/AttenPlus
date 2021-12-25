@@ -29,6 +29,7 @@ tabs.forEach((tab) => {
     if (target.id == "content2") {
       createdChallenges.innerHTML = "";
       pageCreated = 0;
+      // 비동기 함수 호출하기 전 로딩 스피너 추가
       wrapper.innerHTML = `<div class="loader">Loading...</div>`;
       showJoinedChallenges();
     } else if (target.id == "content3") {
@@ -37,6 +38,7 @@ tabs.forEach((tab) => {
       wrapper.innerHTML = `<div class="loader">Loading...</div>`;
       showCreatedChallenges();
     } else {
+      // 프로필 칸으로 이동할 경우, 챌린지 정보들은 다 초기화
       createdChallenges.innerHTML = "";
       pageCreated = 0;
       joinedChallenges.innerHTML = "";
