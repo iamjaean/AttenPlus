@@ -233,10 +233,10 @@
 }
 .divideLayerMiddle {
   clear: both;
-  height: 0px;
+
+  width: 100%;
   border: 1px solid #c8c8c8;
   background-color: #c8c8c8;
-
   margin-top: 110px;
 }
 .challengeTxt {
@@ -254,6 +254,7 @@
   margin-top: 43px;
   width: 641.04px;
   height: 432.76px;
+  padding: 24px 24px 24px 24px;
   background: #f4f4f2;
   font-size: 13px;
   overflow-y: scroll;
@@ -502,4 +503,15 @@
 .deleteReviewForm {
   width: 50px;
   float: right;
+}
+.detailFooter {
+  clear: both;
+  display: block;
+}
+.detailFooterMargin {
+  clear: both;
+  width: 100%;
+
+  margin-top: 100px;
+  display: inline-block;
 }
