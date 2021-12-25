@@ -4,8 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <<<<<<< HEAD
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Monoton&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet" />
+    =======
+    <link rel="icon" type="image/png" href="data:image/x-icon;base64,<%- include('favicon')%>" />
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Monoton&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet" />
+    >>>>>>> develop
     <link rel="stylesheet" href="./css/main.css" />
     <title>Atten+</title>
   </head>
@@ -15,7 +21,9 @@
     <main class="main">
       <div class="slider">
         <ol class="slider-list">
-          <% let temp = challenges; const hotChallenges = temp.sort(function(a,b){return b.joinusers.length - a.joinusers.length}).slice(0,4); hotChallenges.forEach(function(challenge) { %>
+          <<<<<<< HEAD <% let temp = challenges; const hotChallenges = temp.sort(function(a,b){return b.joinusers.length - a.joinusers.length}).slice(0,4); hotChallenges.forEach(function(challenge) {
+          %> ======= <% let temp = challenges; const hotChallenges = [...temp].sort(function(a,b){return b.joinusers.length - a.joinusers.length}).slice(0,4); hotChallenges.forEach(function(challenge)
+          { %> >>>>>>> develop
           <li class="slider-item">
             <div>
               <a href="/detail/<%= challenge.shortId%>">
