@@ -32,14 +32,14 @@
             <h2>제목을 입력해 주세요</h2>
           </div>
           <div class="input_container" id="title_container">
-            <input type="text" id="create_title" name="title" required />
+            <input type="text" id="create_title" name="title" maxlength="25" required />
             <p id="title_length">0/25</p>
           </div>
           <div class="input_container" id="introduce_default">
             <h2>소개를 등록하세요</h2>
           </div>
           <div class="input_container" id="introduce_container">
-            <textarea id="create_introduce" name="description" required></textarea>
+            <textarea id="create_introduce" name="description" maxlength="100" required></textarea>
             <p id="introduce_length">0/100</p>
           </div>
           <div class="input_container" id="5">
@@ -69,7 +69,6 @@
       </form>
     </div>
     <div><%- include('footer') %></div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/createPage.js"></script>
   </body>
 </html>
