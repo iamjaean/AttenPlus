@@ -1,7 +1,7 @@
-a {
-  color: #00b7ff;
+.nav-item a:hover {
+  color: #fa6461;
+  transition: color 0.5s ease-in-out;
 }
-
 .create_container {
   margin-top: 36px;
   margin-left: auto;
