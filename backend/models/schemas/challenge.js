@@ -7,17 +7,18 @@ const CommentSchema = new Schema(
     },
     author: {
       type: Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
       index: true,
     },
-    isDeleted:{
+    isDeleted: {
       type: Boolean,
       default: false,
-    }
+    },
   },
-    {
-      timestamps: true,
-});
+  {
+    timestamps: true,
+  }
+);
 const ChallengeSchema = new Schema(
   {
     shortId,
@@ -47,14 +48,16 @@ const ChallengeSchema = new Schema(
     },
     author: {
       type: Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
       index: true,
     },
-    joinusers: [{
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-      index: true, 
-    }],
+    joinusers: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        index: true,
+      },
+    ],
     comments: [CommentSchema],
   },
   {

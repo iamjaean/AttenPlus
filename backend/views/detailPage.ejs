@@ -22,7 +22,7 @@
     <link rel="stylesheet"  href="/css/main.css" />
     <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
   </head>
-  <!-- header부분은 수정하지 않음, 카테고리 list도 추후 수정 -->
+  
   <body>
     <%- include('header') %>
     <%   function getTodayDate() { %>
@@ -42,8 +42,10 @@
       </div>
       <div class="challengeTitle">
         <div class="creator">
-          <!-- 유저이미지는 추후 추가할것 -->
-          <span class="creatorIcon"></span>
+          
+          <span class="creatorIcon"> <img src="data:user/<%=user.img.contentType%>;base64,
+            <%=user.img.data.toString('base64')%>" style="width: 33.74px;
+            height: 33px;"></span>
           <span class="creatorName"><%= challenge.author.name %></span>
         </div>
     
@@ -59,7 +61,6 @@
         <aside class="registerChallenge">
               <div class="registerDateTitle">
                 <div>
-                  <!-- 나중에 YYYY-MM-DD 형식으로 변환할 것 -->
                   <span class="startDateTxt">시작일</span>
                   <div class="startDate"><%= challenge.startdate %></div>
                   <span>종료일</span>
@@ -68,7 +69,7 @@
               </div>
               <div class="registerDateTitle">
                 
-                  <% if((challenge.startdate)<getTodayDate()) { %>
+                  <% if((challenge.startdate) < getTodayDate()) { %>
                   <button class="registerForbiddenButton">챌린지 신청 기간이 지났습니다</button>
                 
 
@@ -98,7 +99,7 @@
             <input class="calendar" />
           </div>
           <div class="challengeTitle">  
-            <%if((challenge.startdate)>getTodayDate()){ %>
+            <%if((challenge.startdate) > getTodayDate()){ %>
               <button class="registerForbiddenButton"><%= Number(challenge.startdate.slice(5,7))%>월 <%=Number(challenge.startdate.slice(8,10))%>일 부터 시작합니다!</button>        
               <%} else if((challenge.enddate)<getTodayDate()){ %>
             
@@ -121,6 +122,7 @@
           />
         </form>
         <% } %>
+     
           </div>
         </aside>
           <% } %>
@@ -133,7 +135,7 @@
 
         <div class="challengeTxt">
         챌린지 소개
-        <div class="storyContent"><%= challenge.description %></div>
+        <div class="storyContent" style="white-space:pre-line;" ><%= challenge.description %></div>
       </div>
 
       <div class="reviewWrite">후기</div>
@@ -142,44 +144,112 @@
     
       <!-- comment부분이 확정된 이후에 수정 -->
       <div class="reviewListBoard">
-        <!-- <div class="createCard">
-          후기를 등록해보세요!
-          <div class="createCardLink"><a href="">후기 쓰기</a></div> -->
+  
+        <% if(challenge.comments.map((v)=>!v.isDeleted?v.author.name:"").includes( user.name)){ %>
+          <% }else{ %>
+        <div class="createCard">
           <form
           method="post"
           action= <%= challenge.shortId+"/comments" %>
       >
-      <textarea name="content" ></textarea>
+      <textarea name="content" placeholder="후기를 등록해보세요!" style=" width: 85%;
+      height: 110px;
+      border: none;
+      resize: none;" ></textarea>
       <input
           type="submit"
+          class="postReviewButton"
           id="comment_submit"
           name="submit"
-          value="댓글"
+          value="후기 작성하기"
         />
       </form>
-
-
         </div>
+        <% }%>
+       
+
+
 
 
 
         <% if(challenge.comments !=="") { %>
         <% for(let q=0; q<challenge.comments.length; q++) { %>
+          <% if( !challenge.comments[q].isDeleted ) {%>
           <div class="reviewCard">
-            <span class="reviewIcon">icon</span>
+            <span class="reviewIcon"> <img src="data:challenge.comments[q].author/<%=challenge.comments[q].author.img.contentType%>;base64,
+              <%=challenge.comments[q].author.img.data.toString('base64')%>" style="width: 33.74px;
+              height: 33px; "></span>
             <span class="reviewWriteUser"><%= challenge.comments[q].author.name %></span>
-            <div class="reviewText"><%= challenge.comments[q].content %></div>
-          </div>
-        <% } %>
+            <% if(challenge.comments[q].author.name !== user.name) { %>
+              <form
+              class="deleteReviewForm"
+              id= <%= challenge.comments[q].author.name %><%= q %>
+              >
+              <input type="hidden" name="comment_index" value= <%= q %> >
+              <input
+                  readonly
+                  class="reviewDeleteButton"
+                  onClick="forbiddenFun()"
+                  value="삭제"
+                />
+              </form>
+            <% }else { %>
+              <form
+              class="deleteReviewForm"
+              id= <%= challenge.comments[q].author.name %><%= q %>
+                  method="post"
+                  action= <%= challenge.shortId+"/comments/delete" %>
+              >
+              <input type="hidden" name="comment_index" value= <%= q %> >
+              <input
+                  type="submit"
+                  class="reviewDeleteButton"
+                  id="comment_update_submit"
+                  name="submit"
+                  value="삭제"
+                />
+              </form>
+            <% } %>
+           
+            <button class="changeReviewText" id= <%= challenge.comments[q].author.name %><%=q%>change onclick="reviewFun(`<%= challenge.comments[q].content %>`,`<%= challenge.comments[q].author.name %>`,`<%= q %>`,`<%= challenge.comments[q].isDeleted %>`)">수정하기</button>
+
+            
+            <div class="reviewText" id=<%= challenge.comments[q].author.name %><%=q%>beforeText style="white-space:pre-line;"><%= challenge.comments[q].content %></div>
+    
+              <form
+              style="display: none;"
+              class="reviewChangeButton"
+              id= <%= challenge.comments[q].author.name %><%=q%>textArea
+            method="post"
+            action= <%= challenge.shortId+"/comments/edit" %>
+        >
+        <input type="hidden" name="comment_index" value= <%= q %>>
+        <textarea name="content"class="reviewUpdateText"><%= challenge.comments[q].content %></textarea>
+        <input
+            type="submit"
+            class="reviewUpdateButton"
+            id="comment_update_submit"
+            name="submit"
+            value="후기 수정하기"
+          />
+        </form>
+       
+        
+        
       </div>
+      <% } %>
+      <% } %>
     <% } %>
  
       </div>
     </div>
-    <div class="detailPageMargin"></div>
-    <div class="line"></div>
+    <!-- <div class="detailPageMargin"></div>
+    <div class="line"></div> -->
     <div class="detailPageModal">
-      <div class="detailPageModalBody">챌린지를 모두 완료하셨습니다! 축하합니다!</div>
+
+        <div class="detailPageModalBody">챌린지를 모두 완료하셨습니다! 축하합니다!</div>
+
+      
 
     </div>
 
@@ -187,13 +257,30 @@
   </body>
  <!-- footer영역 -->
   <script>
-    var challenge = `<%= challenge %>`
-    var thisAttendDate = `<%= attendance.map(v=>v.attendanceDate) %>`
+
+  var thisAttendDate = `<%= attendance.map(v=>v.attendanceDate) %>`
   var thisPageInfo= `<%= challenge.shortId %>`;
   var thisStartDate= `<%= challenge.startdate %>`;
   var thisEndDate= `<%= challenge.enddate %>`;
   </script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="/js/detailPage.js"></script>
+    <script>
+function reviewFun(thisContent,thisAuthor,thisIndex,isdel){
+  if(thisAuthor!==`<%= user.name %>`){
+    alert("이 후기를 작성한 사용자만 수정이 가능합니다!")
+  }else {
+    document.querySelector(`#${thisAuthor}${thisIndex}beforeText`).style="display:none;"
+    document.querySelector(`#${thisAuthor}${thisIndex}change`).style="display:none;"
+    document.querySelector(`#${thisAuthor}${thisIndex}`).style="display:none;"
+    document.querySelector(`#${thisAuthor}${thisIndex}textArea`).style=""
+  }
+}
+function forbiddenFun(){
+  alert("이 후기를 작성한 사용자만 삭제가 가능합니다!")
+}
+
+
+    </script>
 
     </html>

@@ -4,19 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="icon"
-      type="image/png"
-      href="data:image/x-icon;base64,<%- include('favicon')%>"
-    />
-    <link
-      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Monoton&family=Nanum+Gothic:wght@400;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <<<<<<< HEAD
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Monoton&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet" />
+    =======
+    <link rel="icon" type="image/png" href="data:image/x-icon;base64,<%- include('favicon')%>" />
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Monoton&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet" />
+    >>>>>>> develop
     <link rel="stylesheet" href="./css/main.css" />
     <title>Atten+</title>
   </head>
@@ -26,10 +21,9 @@
     <main class="main">
       <div class="slider">
         <ol class="slider-list">
-          <% let temp = challenges; const hotChallenges =
-          [...temp].sort(function(a,b){return b.joinusers.length -
-          a.joinusers.length}).slice(0,4);
-          hotChallenges.forEach(function(challenge) { %>
+          <<<<<<< HEAD <% let temp = challenges; const hotChallenges = temp.sort(function(a,b){return b.joinusers.length - a.joinusers.length}).slice(0,4); hotChallenges.forEach(function(challenge) {
+          %> ======= <% let temp = challenges; const hotChallenges = [...temp].sort(function(a,b){return b.joinusers.length - a.joinusers.length}).slice(0,4); hotChallenges.forEach(function(challenge)
+          { %> >>>>>>> develop
           <li class="slider-item">
             <div>
               <a href="/detail/<%= challenge.shortId%>">
@@ -57,8 +51,7 @@
         <div class="new-challenges">
           <span class="main-section-title">신규 챌린지</span>
           <div class="container">
-            <% const newChallenge = 8 %> <% for (let i = 0; i < newChallenge ;
-            i++) { %>
+            <% const newChallenge = 8 %> <% for (let i = 0; i < newChallenge ; i++) { %>
             <a href="/detail/<%= challenges[i].shortId%>">
               <div class="item-box">
                 <div class="img-wrapper">
@@ -70,17 +63,11 @@
                 </div>
                 <div class="challenge-info">
                   <div class="detail-info">
-                    <p class="challenge-category">
-                      <%= challenges[i].category%>
-                    </p>
-                    <p class="challenge-maker">
-                      <%= challenges[i].author.name%>
-                    </p>
+                    <p class="challenge-category"><%= challenges[i].category%></p>
+                    <p class="challenge-maker"><%= challenges[i].author.name%></p>
                   </div>
                   <h2 class="challenge-title"><%= challenges[i].title%></h2>
-                  <p class="challenge-join-users">
-                    <%= challenges[i].joinusers.length%>명 참여
-                  </p>
+                  <p class="challenge-join-users"><%= challenges[i].joinusers.length%>명 참여</p>
                 </div>
               </div>
             </a>

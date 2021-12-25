@@ -12,7 +12,7 @@ a {
   border: 2px solid #c8c8c8;
   border-radius: 10px;
 }
-#profile_text{
+#profile_text {
   font-size: 20px;
   position: absolute;
   margin-top: 90px;
@@ -66,7 +66,7 @@ a {
   border-radius: 10px;
 }
 
-#title_default{
+#title_default {
   margin-top: 60px;
 }
 
@@ -74,12 +74,12 @@ a {
   margin-left: 68px;
   margin-top: 25px;
 }
-.input_container h2{
+.input_container h2 {
   font-size: 24px;
   font-weight: 700;
 }
 
-#type_check_container{
+#type_check_container {
   margin-left: 68px;
   margin-top: 10px;
 }
@@ -92,7 +92,7 @@ a {
 }
 
 #title_length {
-  margin-top: 6px;  
+  margin-top: 6px;
   margin-left: 465px;
   color: #838383;
 }
@@ -113,18 +113,18 @@ a {
 #category {
   width: 200px;
 }
-#start_date_con{
+#start_date_con {
   margin-top: 10px;
 }
-#start_date{
+#start_date {
   padding-right: 5px;
   width: 200px;
   background-image: none;
 }
-#end_date_con{
+#end_date_con {
   margin-top: 10px;
 }
-#end_date{
+#end_date {
   padding-right: 5px;
   width: 200px;
   background-image: none;

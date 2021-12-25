@@ -16,7 +16,7 @@ const reviewIcon = document.querySelector(".reviewIcon");
 const createCardLink = document.querySelector(".createCardLink");
 const detailPageModal = document.querySelector(".detailPageModal");
 // "November 12, 2021", "December 13, 2021", "December 15, 2021" 이러한 형식으로.
-
+const changeReviewText = document.querySelector(".changeReviewText");
 const attendDay = [];
 const absentDay = [];
 const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -56,7 +56,8 @@ detailCalendar &&
 if (allPlanDay.length === attendDay.length) {
   document.querySelector(".registerForbiddenButton").innerHTML = "모든 챌린지를 완료했습니다";
 }
-if (thisEndDate <= getTodayDate() && allPlanDay.length !== attendDay.length && document.querySelector(".registerForbiddenButton")) {
+
+if (thisEndDate <= getTodayDate() && attendDay != "" && allPlanDay.length !== attendDay.length && document.querySelector(".registerForbiddenButton")) {
   document.querySelector(".registerForbiddenButton").innerHTML = "챌린지를 모두 완료하지 못했습니다";
   document.querySelector(".registerForbiddenButton").style["font-size"] = "18px";
 }
@@ -83,28 +84,6 @@ function getTodayDate() {
 }
 
 //이부분 삭제해야 하는데, 버튼 누른 후 성공 여부 확인 방법?
-
-createCardLink.addEventListener("click", (e) => {
-  e.preventDefault();
-  //요청을 보내 정상적으로 처리되었는지 확인되었을때 alert를 쓰기
-  document.querySelector(".createCard").innerHTML = ` 
-  
-
-
-  <form class="reviewForm"  method="post"
-  action=${challenge.shortId}+"/comments">
-    <textarea cols="40" rows="4" style="resize: none; border: 0px;margin-top:-20px;border-radius: 10px;"  name="content"></textarea>
-    <input
-    type="submit"
-    id="comment_submit"
-    name="submit"
-    value="댓글"
-  />
-  
-  
-    </form>
-  `;
-});
 
 {
   /* <div class="addCardLink"><button type="button" onclick="location.href='/'">후기 쓰기</button></div> */

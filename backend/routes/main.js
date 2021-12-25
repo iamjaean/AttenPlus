@@ -4,11 +4,8 @@ const { Challenge, User } = require("../models");
 const router = Router();
 
 router.get("/", async (req, res, next) => {
-  try{
-    const challenges = await Challenge.find({})
-    .sort({ createdAt: -1 })
-    .populate("author")
-    .populate("joinusers");
+  try {
+    const challenges = await Challenge.find({}).sort({ createdAt: -1 }).populate("author").populate("joinusers");
 
     let user = "";
     if (req.cookies.token) {
@@ -17,8 +14,7 @@ router.get("/", async (req, res, next) => {
       });
     }
     res.render("main", { challenges: challenges, user: user });
-  }
-  catch(err){
+  } catch (err) {
     next(err);
   }
 });

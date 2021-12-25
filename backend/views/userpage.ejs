@@ -4,19 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Monoton&family=Nanum+Gothic:wght@400;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      href="data:image/x-icon;base64,<%- include('favicon')%>"
-    />
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Monoton&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="data:image/x-icon;base64,<%- include('favicon')%>" />
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/userpage.css" />
     <link rel="stylesheet" href="/css/loader.css" />
@@ -49,13 +39,7 @@
           <div class="comp-top">
             <p class="comp-title"><strong>프로필 사진</strong></p>
             <% if(author.shortId === user.shortId){%>
-            <button
-              class="update-btn"
-              id="image"
-              onclick="changeProfileImage(this.id)"
-            >
-              수정
-            </button>
+            <button class="update-btn" id="image" onclick="changeProfileImage(this.id)">수정</button>
             <% } %>
           </div>
           <div class="comp-img">
@@ -73,13 +57,7 @@
           <div class="comp-top">
             <p class="comp-title"><strong>이름</strong></p>
             <% if(author.shortId === user.shortId){%>
-            <button
-              class="update-btn"
-              id="name"
-              onclick="changeContent(this.id)"
-            >
-              수정
-            </button>
+            <button class="update-btn" id="name" onclick="changeContent(this.id)">수정</button>
             <% } %>
           </div>
           <p class="comp-content" id="name-content"><%= author.name %></p>
@@ -88,13 +66,7 @@
           <div class="comp-top">
             <p class="comp-title"><strong>소개</strong></p>
             <% if(author.shortId === user.shortId){%>
-            <button
-              class="update-btn"
-              id="intro"
-              onclick="changeContent(this.id)"
-            >
-              수정
-            </button>
+            <button class="update-btn" id="intro" onclick="changeContent(this.id)">수정</button>
             <% } %>
           </div>
           <p class="comp-content" id="intro-content"><%=author.introduce%></p>
@@ -109,13 +81,7 @@
         <div class="comp">
           <div class="comp-top">
             <p class="comp-title"><strong>비밀번호</strong></p>
-            <button
-              class="update-btn"
-              id="password"
-              onclick="changeContent(this.id)"
-            >
-              수정
-            </button>
+            <button class="update-btn" id="password" onclick="changeContent(this.id)">수정</button>
           </div>
           <p class="comp-content" id="password-content"></p>
         </div>

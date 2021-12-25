@@ -1,10 +1,5 @@
 const { Router } = require("express");
-const {
-  Challenge,
-  User,
-  JoinChallenge,
-  attendenceCheck,
-} = require("../models/index");
+const { Challenge, User, JoinChallenge, attendenceCheck } = require("../models/index");
 const multer = require("multer");
 var fs = require("fs");
 var path = require("path");
@@ -36,9 +31,7 @@ router.post("/", upload.single("uploaded_file"), async (req, res, next) => {
     shortId: req.user.shortId,
   });
   const img = {
-    data: fs.readFileSync(
-      path.join(__dirname + "/data/uploads/" + req.file.filename)
-    ),
+    data: fs.readFileSync(path.join(__dirname + "/data/uploads/" + req.file.filename)),
     contentType: "image/png",
   };
 
