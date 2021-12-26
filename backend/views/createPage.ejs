@@ -20,7 +20,7 @@
   <body>
     <div><%- include('header') %></div>
     <div>
-      <form method="post" enctype="multipart/form-data" action="/create">
+      <form method="post" enctype="multipart/form-data" onsubmit = "return date_check()" action="/create">
         <div class="create_container">
           <div id="picture_container">
             <p id="profile_text">프로필 사진 업로드</p>
