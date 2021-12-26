@@ -12,6 +12,7 @@ const passport = require("passport");
 const cookieParser = require("cookie-parser");
 const loginRequired = require("./middlewares/login-required");
 const getUserFromJWT = require("./middlewares/get-user-from-jwt");
+const getUserData = require("./middlewares/get-user-data");
 require("./passport")();
 // DB 연결
 mongoose.connect(
@@ -38,11 +39,15 @@ app.use("/create", loginRequired, createRouter);
 app.use("/detail", loginRequired, detailRouter);
 
 app.use(function (req, res, next) {
-  res.status(404).render("error", { title: 404 });
+  getUserData(req, res, next).then((user) => {
+    res.status(404).render("error", { title: 404, user: user });
+  });
 });
 
 app.use(function (err, req, res, next) {
-  res.status(500).render("error", { title: 500 });
+  getUserData(req, res, next).then((user) => {
+    res.status(502).render("error", { title: 502, user: user });
+  });
 });
 
 module.exports = app;
