@@ -84,9 +84,18 @@
                     </p>
                   </div>
                   <h2 class="challenge-title"><%= challenges[i].title%></h2>
-                  <p class="challenge-join-users">
-                    <%= challenges[i].joinusers.length%>명 참여
-                  </p>
+                  <section>
+                    <p class="challenge-join-users">
+                      <%= challenges[i].joinusers.length%>명 참여
+                    </p>
+
+                    <p
+                      class="challenge-condition"
+                      id="color<%= processDates(challenges[i].startdate,challenges[i].enddate).value %>"
+                    >
+                      <%=processDates(challenges[i].startdate,challenges[i].enddate).condition%>
+                    </p>
+                  </section>
                 </div>
               </div>
             </a>
@@ -101,7 +110,6 @@
       </div>
     </main>
     <div class="line"></div>
-
     <div id="footer"><%- include('footer') %></div>
     <script src="/js/userpageMenu.js"></script>
     <script>
@@ -123,6 +131,10 @@
         let j = 1;
         while (j <= 8) {
           if (curChallenge == dataSet.length) return;
+          const startdate = dataSet[curChallenge].startdate
+          const enddate = dataSet[curChallenge].enddate
+          let processDates = <%-processDates%>;
+          const {condition, value} = processDates(startdate, enddate);
           allContainer.innerHTML += `
                       <div class="item-box">
                         <a href = "/detail/${dataSet[curChallenge].shortId}">
@@ -135,9 +147,14 @@
                               <p class="challenge-maker">${dataSet[curChallenge].author.name}</p>
                             </div>
                             <h2 class="challenge-title">${dataSet[curChallenge].title}</h2>
+                            <section>
                             <p class="challenge-join-users">
                               ${dataSet[curChallenge].joinusers.length}명 참여
                             </p>
+                            <p class="challenge-condition" id="color${value}">
+                              ${condition}
+                            </p>
+                            </section>
                           </div>
                         </a>
                       </div>
