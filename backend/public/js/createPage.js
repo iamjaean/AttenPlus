@@ -34,7 +34,7 @@ start_date.value = today;
 end_date.value = today;
 
 function date_check(){
-	if(start_date.value > end_date.value){
+  if(start_date.value > end_date.value){
       alert("시작일이 종료일보다 이릅니다. 날짜를 다시 선택해 주세요");
       start_date.value = today;
       return false;
