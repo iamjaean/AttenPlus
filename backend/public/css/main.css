@@ -18,6 +18,7 @@ body {
 
 .header-right {
   display: flex;
+  align-items: center;
 }
 
 .upload-btn {
@@ -147,7 +148,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  z-index: 1;
+  z-index: 50;
 }
 .nav-wrapper {
   display: flex;
@@ -252,6 +253,30 @@ body {
   float: left;
 }
 
+.slider-card {
+  position: relative;
+}
+
+.slider-card-info {
+  position: absolute;
+  top: 170px;
+  right: 70px;
+  text-align: right;
+  font-size: 20px;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  font-weight: 700;
+}
+
+.card-info-join {
+  padding-top: 5px;
+  font-weight: 400;
+  font-size: 12px;
+  color: black;
+}
+
 .slider-item img {
   width: 1056px;
   height: 380px;
@@ -260,8 +285,8 @@ body {
 .slider-btns {
   display: flex;
   position: absolute;
-  right: 190px;
-  bottom: 70px;
+  right: 25px;
+  bottom: 25px;
 }
 
 .slider-btn {
@@ -360,9 +385,34 @@ body {
   min-height: 50px;
 }
 
+.container section {
+  display: flex;
+  margin-right: 0;
+}
+
 .challenge-join-users {
   font-size: 12px;
   color: #fa6461;
+  width: 25%;
+}
+
+.challenge-condition {
+  font-size: 12px;
+  text-decoration: none;
+  text-align: left;
+  font-weight: 700;
+  width: 50%;
+}
+
+.challenge-condition#color1 {
+  color: rgb(255, 0, 119);
+}
+.challenge-condition#color2 {
+  color: rgb(136, 136, 136);
+}
+
+.challenge-condition#color3 {
+  color: rgba(247, 19, 19, 0.801);
 }
 
 /* footer */

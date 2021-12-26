@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="icon"
+    type="image/png"
+    href="data:image/x-icon;base64,<%- include('favicon')%>"
+  />
+  <link
+    href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Monoton&family=Nanum+Gothic:wght@400;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/error.css" />
+  <title>Atten+</title>
+</head>
+<body>
+    <div id="header"><%- include('header') %></div>
+    <div class="error_container">
+    <div>
+        <h1 class="error_404"><%=title %></h1>
+    </div>
+    <div>
+        <% if(title==404){ %>
+        <div class="error_sub">죄송합니다. 요청하신 페이지를 찾을 수 없습니다.</div>
+        <div>
+        존재하지 않는 주소를 입력하셨거나,<br>
+        요청하신 페이지의 주소가 변경, 삭제되어 찾을 수 없습니다.
+        </div>
+        <%} else { %>
+          <div class="error_sub">죄송합니다. 일시적인 오류가 발생했습니다.</div>
+          <div>
+          서비스 사용에 불편을 끼쳐드려서 대단히 죄송합니다.<br>
+          빠른 시간내에 문제를 처리하겠습니다.
+          </div>
+        <%}%>
+    </div>
+
+    <div class="btn_box">
+        <button class="error_main" onclick="location.href='/'">메인으로</button>
+        <button class="error_prev" onclick="history.back()" id="prevBtn">이전페이지</button>
+    </div>
+</div>
+    <%-include('footer') %>
+    <script src="/js/userpageMenu.js"></script>
+</body>
+</html>

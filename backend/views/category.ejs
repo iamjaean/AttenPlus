@@ -24,44 +24,9 @@
     <div id="header"><%- include('header') %></div>
 
     <main class="main">
-      <div class="slider">
-        <ol class="slider-list">
-          <% let temp = challenges; const hotChallenges =
-          [...temp].sort(function(a,b){return b.joinusers.length -
-          a.joinusers.length}).slice(0,4);
-          hotChallenges.forEach(function(challenge) { %>
-          <li class="slider-item">
-            <a href="/detail/<%= challenge.shortId%>">
-              <div class="slider-card">
-                <div class="slider-card-info">
-                  <p><%= challenge.title %></p>
-                  <p class="card-info-join">
-                    현재 <%= challenge.joinusers.length %>명 참여 중
-                  </p>
-                </div>
-                <img
-                  src="data:challenge/<%=challenge.img.contentType%>;base64,
-            <%=challenge.img.data.toString('base64')%>
-"
-                />
-              </div>
-            </a>
-          </li>
-          <% }) %>
-        </ol>
-        <div class="slider-btns">
-          <div class="prev slider-btn">
-            <i class="icon-chevron"></i>
-          </div>
-          <div class="next slider-btn">
-            <i class="icon-chevron"></i>
-          </div>
-        </div>
-      </div>
-
       <div class="challenges-wrapper">
-        <div class="new-challenges">
-          <span class="main-section-title">신규 챌린지</span>
+        <div class="new-challenges" style="padding-top: 0px">
+          <span class="main-section-title"><%=title %></span>
           <div class="container">
             <% const newChallenge = 8 %> <% for (let i = 0; i < newChallenge ;
             i++) { %>
@@ -102,20 +67,16 @@
             <% } %>
           </div>
         </div>
-
-        <div class="all-challenges">
-          <span class="main-section-title">모든 챌린지</span>
-          <div class="container"></div>
-        </div>
       </div>
     </main>
     <div class="line"></div>
+
     <div id="footer"><%- include('footer') %></div>
     <script src="/js/userpageMenu.js"></script>
     <script>
       const dataSet = <%-JSON.stringify(challenges)%>;
       let curChallenge = 8;
-      const allContainer = document.querySelector(".all-challenges .container");
+      const allContainer = document.querySelector(".container");
       loadImages();
 
       window.addEventListener("scroll", () => {
@@ -168,6 +129,5 @@
         return btoa(arr.reduce((data, byte) => data + String.fromCharCode(byte), ''));
       }
     </script>
-    <script src="./js/mainpageSlide.js"></script>
   </body>
 </html>
