@@ -74,9 +74,8 @@ async function showJoinedChallenges() {
 async function getCreatedChallenges() {
   pageCreated++;
   const response = await fetch(
-    `http://localhost:3000/user/${authorShortId}/created?_limit=${limit}&_page=${pageCreated}`
+    `http://elice-kdt-sw-1st-vm04.koreacentral.cloudapp.azure.com/user/${authorShortId}/created?_limit=${limit}&_page=${pageCreated}`
   );
-  // `http://elice-kdt-sw-1st-vm04.koreacentral.cloudapp.azure.com/user/${authorShortId}/created?_limit=${limit}&_page=${pageCreated}`
   const data = await response.json();
   return data;
 }
@@ -121,12 +120,9 @@ function challengeHTML(challenge) {
                     </article>
     `;
 }
-
 // 각 챌린지 참여가능 여부 표시를 위한 날짜 처리
-
 function processDates(startdate, enddate) {
   const today = Date.now();
-  console.log(today);
 
   //startdate 와 enddate의 형태를 Date 형식으로 변경
   const [startYear, startMonth, startDay] = startdate.split("-");
@@ -135,7 +131,6 @@ function processDates(startdate, enddate) {
     Number(startMonth - 1),
     Number(startDay)
   ).valueOf();
-  console.log(startTime);
 
   const [endYear, endMonth, endDay] = enddate.split("-");
   endTime = new Date(
@@ -143,8 +138,8 @@ function processDates(startdate, enddate) {
     Number(endMonth) - 1,
     Number(endDay) + 1
   ).valueOf();
-  console.log(endTime);
 
+  // 조건에 따른 챌린지 상태 설정
   let condition = "";
   let value = 1;
   if (today < startTime) {

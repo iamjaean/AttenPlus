@@ -303,11 +303,11 @@ label.submitBox {
 }
 
 .challenge-condition#color1 {
-  color: rgb(255, 140, 193);
+  color: rgb(255, 0, 119);
 }
 
 .challenge-condition#color2 {
-  color: rgb(161, 64, 84);
+  color: rgb(136, 136, 136);
 }
 
 .challenge-condition#color3 {
@@ -329,7 +329,7 @@ label.submitBox {
   cursor: pointer;
   position: absolute;
   overflow: hidden;
-}
+c}
 
 .user-img-wrapper img:hover {
   transform: scale(1.07);

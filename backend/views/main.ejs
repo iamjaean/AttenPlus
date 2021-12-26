@@ -4,9 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="data:image/x-icon;base64,<%- include('favicon')%>" />
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Monoton&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="data:image/x-icon;base64,<%- include('favicon')%>"
+    />
+    <link
+      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Monoton&family=Nanum+Gothic:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/main.css" />
     <title>Atten+</title>
   </head>
@@ -16,7 +26,10 @@
     <main class="main">
       <div class="slider">
         <ol class="slider-list">
-          <% let temp = challenges; const hotChallenges = [...temp].sort(function(a,b){return b.joinusers.length - a.joinusers.length}).slice(0,4); hotChallenges.forEach(function(challenge) { %>
+          <% let temp = challenges; const hotChallenges =
+          [...temp].sort(function(a,b){return b.joinusers.length -
+          a.joinusers.length}).slice(0,4);
+          hotChallenges.forEach(function(challenge) { %>
           <li class="slider-item">
             <div>
               <a href="/detail/<%= challenge.shortId%>">
@@ -65,9 +78,18 @@
                     </p>
                   </div>
                   <h2 class="challenge-title"><%= challenges[i].title%></h2>
-                  <p class="challenge-join-users">
-                    <%= challenges[i].joinusers.length%>명 참여
-                  </p>
+                  <section>
+                    <p class="challenge-join-users">
+                      <%= challenges[i].joinusers.length%>명 참여
+                    </p>
+
+                    <p
+                      class="challenge-condition"
+                      id="color<%= processDates(challenges[i].startdate,challenges[i].enddate).value %>"
+                    >
+                      <%=processDates(challenges[i].startdate,challenges[i].enddate).condition%>
+                    </p>
+                  </section>
                 </div>
               </div>
             </a>
@@ -82,7 +104,6 @@
       </div>
     </main>
     <div class="line"></div>
-
     <div id="footer"><%- include('footer') %></div>
     <script src="/js/userpageMenu.js"></script>
     <script>
@@ -104,6 +125,10 @@
         let j = 1;
         while (j <= 8) {
           if (curChallenge == dataSet.length) return;
+          const startdate = dataSet[curChallenge].startdate
+          const enddate = dataSet[curChallenge].enddate
+          let processDates = <%-processDates%>;
+          const {condition, value} = processDates(startdate, enddate);
           allContainer.innerHTML += `
                       <div class="item-box">
                         <a href = "/detail/${dataSet[curChallenge].shortId}">
@@ -116,9 +141,14 @@
                               <p class="challenge-maker">${dataSet[curChallenge].author.name}</p>
                             </div>
                             <h2 class="challenge-title">${dataSet[curChallenge].title}</h2>
+                            <section>
                             <p class="challenge-join-users">
                               ${dataSet[curChallenge].joinusers.length}명 참여
                             </p>
+                            <p class="challenge-condition" id="color${value}">
+                              ${condition}
+                            </p>
+                            </section>
                           </div>
                         </a>
                       </div>
