@@ -26,7 +26,7 @@
   <body>
     <div><%- include('header') %></div>
     <div>
-      <form method="post" enctype="multipart/form-data" action="/create">
+      <form method="post" enctype="multipart/form-data" onsubmit = "return date_check()" action="/create">
         <div class="create_container">
           <img id="img" />
           <div id="picture_container">
