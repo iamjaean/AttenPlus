@@ -37,4 +37,12 @@ app.use("/user", loginRequired, userPageRouter);
 app.use("/create", loginRequired, createRouter);
 app.use("/detail", loginRequired, detailRouter);
 
+app.use(function (req, res, next) {
+  res.status(404).render("error", { title: 404 });
+});
+
+app.use(function (err, req, res, next) {
+  res.status(500).render("error", { title: 500 });
+});
+
 module.exports = app;
