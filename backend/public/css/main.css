@@ -361,9 +361,34 @@ body {
   min-height: 50px;
 }
 
+.container section {
+  display: flex;
+  margin-right: 0;
+}
+
 .challenge-join-users {
   font-size: 12px;
   color: #fa6461;
+  width: 25%;
+}
+
+.challenge-condition {
+  font-size: 12px;
+  text-decoration: none;
+  text-align: left;
+  font-weight: 700;
+  width: 50%;
+}
+
+.challenge-condition#color1 {
+  color: rgb(255, 0, 119);
+}
+.challenge-condition#color2 {
+  color: rgb(136, 136, 136);
+}
+
+.challenge-condition#color3 {
+  color: rgba(247, 19, 19, 0.801);
 }
 
 /* footer */
