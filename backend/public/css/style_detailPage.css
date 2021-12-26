@@ -352,7 +352,7 @@
   font-size: 18px;
   line-height: 21px;
   float: left;
-  padding-top: 22px;
+  padding-top: 21px;
   padding-left: 8px;
 }
 .reviewText {
@@ -466,8 +466,7 @@
 }
 
 .reviewUpdateButton {
-  top: 10px;
-  width: 130px;
+  width: 84px;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -476,6 +475,7 @@
   float: right;
   top: 10px;
   padding-right: 2px;
+  margin: 0 24px 0 0;
 }
 .reviewDeleteButton {
   padding-top: 27px;

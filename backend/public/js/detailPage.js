@@ -82,9 +82,3 @@ function getTodayDate() {
   var day = ("0" + date.getDate()).slice(-2);
   return year + "-" + month + "-" + day;
 }
-
-//이부분 삭제해야 하는데, 버튼 누른 후 성공 여부 확인 방법?
-
-{
-  /* <div class="addCardLink"><button type="button" onclick="location.href='/'">후기 쓰기</button></div> */
-}
