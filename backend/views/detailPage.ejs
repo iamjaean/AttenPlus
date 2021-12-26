@@ -42,11 +42,12 @@
       </div>
       <div class="challengeTitle">
         <div class="creator">
-          
+          <a href="/user/<%= challenge.author.shortId %>">
           <span class="creatorIcon"> <img src="data:challenge.author/<%=challenge.author.img.contentType%>;base64,
             <%=challenge.author.img.data.toString('base64')%>" style="width: 33.74px;
             height: 33px;"></span>
           <span class="creatorName"><%= challenge.author.name %></span>
+        </a>
         </div>
     
       </div>
@@ -176,10 +177,12 @@
         <% for(let q=0; q<challenge.comments.length; q++) { %>
           <% if( !challenge.comments[q].isDeleted ) {%>
           <div class="reviewCard">
+            <a href="/user/<%=challenge.comments[q].author.shortId%>">
             <span class="reviewIcon"> <img src="data:challenge.comments[q].author/<%=challenge.comments[q].author.img.contentType%>;base64,
-              <%=challenge.comments[q].author.img.data.toString('base64')%>" style="width: 33.74px;
-              height: 33px; "></span>
+              <%=challenge.comments[q].author.img.data.toString('base64')%>" style="width: 24.83px; height: 24.29px;"></span>
+              
             <span class="reviewWriteUser"><%= challenge.comments[q].author.name %></span>
+          </a>
             <% if(challenge.comments[q].author.name !== user.name) { %>
               <form
               class="deleteReviewForm"
@@ -224,7 +227,17 @@
             action= <%= challenge.shortId+"/comments/edit" %>
         >
         <input type="hidden" name="comment_index" value= <%= q %>>
-        <textarea name="content"class="reviewUpdateText"><%= challenge.comments[q].content %></textarea>
+        <textarea name="content"class="reviewUpdateText" style="border:none; outline:none;" id=<%= challenge.comments[q].author.name %><%=q%>changeText ><%= challenge.comments[q].content %></textarea>
+        <div class="reviewUpdateCancelButton" 
+        onclick="cancelFun(`<%= challenge.comments[q].content %>`,`<%= challenge.comments[q].author.name %>`,`<%= q %>`,`<%= challenge.comments[q].isDeleted %>`)"
+        style="float: right;
+        width: 32px;
+        color: #1f9de6;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 13.5px;
+        margin-top: -1.5px;
+        margin-right: 22px;"> 취소</div>
         <input
             type="submit"
             class="reviewUpdateButton"
@@ -232,10 +245,11 @@
             name="submit"
             value="후기 수정하기"
           />
+          
         </form>
        
         
-        
+     
       </div>
       <% } %>
       <% } %>
@@ -281,11 +295,20 @@ function reviewFun(thisContent,thisAuthor,thisIndex,isdel){
     document.querySelector(`#${thisAuthor}${thisIndex}change`).style="display:none;"
     document.querySelector(`#${thisAuthor}${thisIndex}`).style="display:none;"
     document.querySelector(`#${thisAuthor}${thisIndex}textArea`).style=""
+    document.querySelector(`#${thisAuthor}${thisIndex}changeText`).focus()
   }
 }
 function forbiddenFun(){
   alert("이 후기를 작성한 사용자만 삭제가 가능합니다!")
 }
+
+function cancelFun(thisContent,thisAuthor,thisIndex,isdel){
+  document.querySelector(`#${thisAuthor}${thisIndex}beforeText`).style=""
+  document.querySelector(`#${thisAuthor}${thisIndex}change`).style=""
+  document.querySelector(`#${thisAuthor}${thisIndex}`).style=""
+  document.querySelector(`#${thisAuthor}${thisIndex}textArea`).style="display:none;"
+}
+
 
 
     </script>
