@@ -6,7 +6,6 @@ const create_title = document.getElementById("create_title");
 const create_introduce = document.getElementById("create_introduce");
 const title_length = document.getElementById("title_length");
 const introduce_length = document.getElementById("introduce_length");
-
 //글자수 세기
 create_title.addEventListener("keyup", (e) => {
   var content = create_title.value;
@@ -34,18 +33,14 @@ end_date.min = today;
 start_date.value = today;
 end_date.value = today;
 
-start_date.addEventListener("change", () => {
-  if(start_date.value > end_date.value){
+function date_check(){
+	if(start_date.value > end_date.value){
       alert("시작일이 종료일보다 이릅니다. 날짜를 다시 선택해 주세요");
       start_date.value = today;
-  }  
-})
-end_date.addEventListener("change", () => {
-  if(start_date.value > end_date.value){
-      alert("시작일이 종료일보다 이릅니다. 날짜를 다시 선택해 주세요");
-      start_date.value = today;
-  }  
-})
+      return false;
+  } 
+  return true;
+}
 
 // 이미지 미리보기
 document.getElementById("uploaded_file").onchange = function () {
