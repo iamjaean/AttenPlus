@@ -172,13 +172,11 @@ router.post(
           res.send(
             "<script>alert('입력하신 비밀번호가 일치하지 않습니다.');history.back();</script>"
           );
-          res.redirect(`/user/${shortId}`);
           return;
         } else if (newPassword !== confirmNewPassword) {
           res.send(
             "<script>alert('변경할 비밀번호 확인이 일치하지 않습니다.');history.back();</script>"
           );
-          res.redirect(`/user/${shortId}`);
           return;
         }
       }
@@ -189,10 +187,6 @@ router.post(
         {
           password: hashPassword(newPassword),
         }
-      );
-
-      res.send(
-        "<script>alert('비밀번호가 변경되었습니다.');history.back();</script>"
       );
       res.redirect(`/user/${shortId}`);
     } catch (err) {
