@@ -48,6 +48,7 @@ router.get("/board", async (req, res, next) => {
         title: param,
         challenges: challenges,
         user: user,
+        processDates: processDates,
       });
     } else {
       next();
